@@ -1,55 +1,3 @@
-# virtual_holiday
-
-An interactive app which allows the user to select a holiday type to be provided with everything they need to recreate the holiday feeling virtually.
-
-[Deployed GitHub URL](...)
-
-## Technologies
-
-- HTML
-- CSS
-  <!-- - Animation
-  - Media queries
-  - Flexbox
-  - Variables -->
-- JavaScript
-  <!-- - Objects
-  - Arrays
-  - Intervals
-  - Timeout
-  - Event Listeners
-  - Template Strings
-  - Event Bubbling
-  - Loops
-  - Conditional Statements -->
-- Web APIs
-  <!-- - Document Object Model
-  - Local Storage -->
-- Third Party APIs
-  <!-- - jQuery
-  - Bootstrap
-  - FontAwesome
-  - GoogleFonts -->
-- GitHub Pages
-- GitHub Projects
-
-## Screenshots
-
-<details>
-<summary>Desktop viewport</summary>
-
-![desktop-viewport](...)
-
-</details>
-
-<details>
-<summary>Mobile viewport</summary>
-
-![mobile-viewport](...)
-
-</details>
-</br>
-
 ## User Story
 
 ```md
@@ -75,3 +23,32 @@ THEN a barman will offer me a beverage and a random joke
 WHEN I click on the holiday snap button
 THEN all of my holiday details will be saved so I can revisit and/or share
 ```
+
+MVP - minimum viable product
+
+First steps - navbar - control panel and console log API response
+
+- Select a holiday type from 3 options
+  1 Beach holiday
+  2
+  Ski holiday, city break, safari, backpacker, camping, cruise
+
+- Scenery
+  MVP - webcam video content
+  Back up - gif
+  Builds - skip to alt scenery
+  Decisions - locations
+
+- Playlist(s)
+  MVP - one playlist per destination, but reflective of holiday type/destination
+  Back up - one song
+  Decisions - vibe or mention of location - how to access
+
+- Temperature
+  MVP - temperature of location
+  Back up - hard-coded average temperature of location
+  Builds -
+- Bartender & jokes
+  MVP - avatar and speech bubble of a bartender telling you a random joke
+  Back up - hard-coded joke
+  Builds - different bartender/names for each location
