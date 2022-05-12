@@ -26,3 +26,19 @@ const getTrackName = (holidayType) => {
 };
 
 //start the experience will call getTrackName
+
+const playRandomSong = () => {
+  const randomTrack = getTrackName("beach");
+  console.log(randomTrack);
+
+  const randomAudioPath = `./assets/audio/${randomTrack}`;
+  console.log(randomAudioPath);
+
+  const audio = new Audio(randomAudioPath);
+
+  // audio.play();
+
+  console.log(audio);
+};
+
+$("#start-btn").click(playRandomSong);
