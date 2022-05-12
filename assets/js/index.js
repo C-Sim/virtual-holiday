@@ -1,22 +1,23 @@
 // CS weather API key
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
-const linkPlaceName = () => {
-  if (holidayType === "Beach") {
-    place === "Jamaica";
-  } else if (holidayType === "City Break") {
-    place === "New York";
-  } else if (holidayType === "Ski") {
-    place === "Aspen";
-  }
+const tempContainer = $("");
 
-  return place;
+const navBar = $("");
+
+const linkPlaceName = (holidayType) => {
+  if (holidayType === "Beach") {
+    return "Jamaica";
+  }
+  if (holidayType === "City Break") {
+    return "New York";
+  }
+  if (holidayType === "Ski") {
+    return "Aspen";
+  }
 };
 
-const tempContainer = 
-
-const handleButtonClick = async (event) => {
-  event.preventDefault();
+const handleLinkClick = async (event) => {
   // find target from navbar
   const target = $(event.target);
 
@@ -24,9 +25,9 @@ const handleButtonClick = async (event) => {
   if (target.is('li[class="holiday-type"]')) {
     const holidayType = target.attr("id");
 
-    await renderWeatherData(place);
+    const place = linkPlaceName(holidayType);
 
-    return holidayType;
+    await renderWeatherData(place);
 
     renderHoliday();
   }
@@ -79,10 +80,11 @@ const fetchWeatherData = async (place) => {
   // await fetch response
   const currentData = await fetchData(currentWeatherUrl);
 
-  console.log(currentWeatherUrl);
+  console.log(currentData);
 
+  //   TODO check structure
   // get temperature for place
-  const temp = currentData?.temp || [];
+  const temp = currentData?.temp || "";
 
   console.log(temp);
 
@@ -96,10 +98,10 @@ const renderWeatherData = async (place) => {
     // fetch weather data
     const weatherData = await fetchWeatherData(place);
 
+    console.log(weatherData);
+
     // empty container
     tempContainer.empty();
-
-    console.log(weatherData);
 
     // render current data
     renderTemperature(weatherData);
@@ -115,9 +117,10 @@ const renderWeatherData = async (place) => {
 const renderTemperature = (data) => {
   console.log(data);
   // render the temperature data and append to section
+  //   TODO check data structure
   tempContainer.append(`
   <span>${data.weatherData.current.temp}&deg;C</span>
   `);
 };
 
-$(navBar).click(handleButtonClick);
+navBar.click(handleLinkClick);
