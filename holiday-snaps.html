@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
     <!-- font links -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,34 +23,52 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/styles.css"/>
+    <title>Virtual Holiday | Holiday Snaps</title>
   </head>
   <body>
     <header class="nav-container">
-      <nav>
-        <ul class="nav-links">
-          <li>Logo</li>
-          <li><a>Beach</a></li>
-          <li><a>Ski</a></li>
-          <li><a>Safari</a></li>
-          <li><a>Holiday Snaps</a></li>
-        </ul>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <!-- Nav Bar -->
+          <a class="navbar-item" href="https://bulma.io">
+            <img
+              src="./assets/images/logo2.png"
+              width="65"/>
+          </a>
+
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+          <div class="navbar-start">
+            <a class="navbar-item" href="./index.html"> Home </a>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link"> Holidays </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item"> Beach </a>
+                <a class="navbar-item"> Ski </a>
+                <a class="navbar-item"> Safari </a>
+              </div>  
+            <div>   
+                  
+          </div>
+        </div>
+        <div class="navbar-item"><a href="./holiday-snaps.html">  Holiday Snaps </a></div>
+        
       </nav>
     </header>
-
-    <main class="local-storage-container">
-      <section id="snap-container">
-        <div id="song-choice">Name of the song that was playing</div>
-        <div id="webcam-location">Location of the webcam</div>
-        <div id="current-temperature">Temperature</div>
-        <div id="drink-choice">Drink of choice</div>
-        <div id="current-joke">Joke we were told</div>
-      </section>
+    <!-- Main Section -->
+    <main class="main-container">
     </main>
 
     <script
