@@ -6,13 +6,13 @@ const tempContainer = $("");
 const navBar = $("");
 
 const linkPlaceName = (holidayType) => {
-  if (holidayType === "Beach") {
+  if (holidayType === "beach") {
     return "Jamaica";
   }
-  if (holidayType === "City Break") {
+  if (holidayType === "cityBreak") {
     return "New York";
   }
-  if (holidayType === "Ski") {
+  if (holidayType === "ski") {
     return "Aspen";
   }
 };
