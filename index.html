@@ -75,12 +75,13 @@
           </figcaption>
 
           <figcaption id="hero-caption-two">
-            <div class="dropdown is-active">
+            <div class="dropdown" id="holiday-dropdown">
               <div class="dropdown-trigger">
                 <button
                   class="button"
                   aria-haspopup="true"
                   aria-controls="dropdown-menu"
+                  id="holiday-dropdown-btn"
                 >
                   <span>Select Your Holiday Destination</span>
                   <span class="icon is-small">
@@ -90,11 +91,18 @@
               </div>
               <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
-                  <a href="#" class="dropdown-item"> Beach Holiday</a>
-                  <a class="dropdown-item"> City Break</a>
-                  <a href="#" class="dropdown-item is-active"> Ski Trip </a>
+                  <div name="holiday-type" class="dropdown-item is-clickable" id="beach">
+                 Beach Holiday
+                  </div>
+                  <hr class="dropdown-divider">
+                  <div name="holiday-type"  class="dropdown-item is-clickable" id="cityBreak">
+                    City Break
+                  </div>
+                  <hr class="dropdown-divider">
+                  <div name="holiday-type" class="dropdown-item is-clickable" id="ski">
+                    Ski Trip
+                  </div>
                 </div>
-              </div>
             </div>
           </figcaption>
         </div>
