@@ -14,3 +14,12 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
+
+.title {
+  text-align: center;
+  font-size: 10vh;
+  padding-top: 80px;
+  transform: rotate(-16deg);
+  color: white;
+  text-shadow: 2px 2px 5px #023047ff;
+}
