@@ -1,3 +1,9 @@
+const beachButton = document.getElementById("beach-btn");
+
+const skiButton = document.getElementById("ski-btn");
+
+const cityButton = document.getElementById("city-btn");
+
 const beachSongs = ["swim-good.mp3", "summer-time.mp3"];
 const skiSongs = [];
 const cityBreakSongs = [];
@@ -42,3 +48,21 @@ const playRandomSong = () => {
 };
 
 $("#start-btn").click(playRandomSong);
+
+const beachMusic = () => {
+  console.log("beach button clicked");
+};
+
+const skiMusic = () => {
+  console.log("ski button clicked");
+};
+
+const cityMusic = () => {
+  console.log("city button clicked");
+};
+
+beachButton.addEventListener("click", beachMusic);
+
+skiButton.addEventListener("click", skiMusic);
+
+cityButton.addEventListener("click", cityMusic);
