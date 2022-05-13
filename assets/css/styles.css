@@ -17,9 +17,28 @@
 
 .title {
   text-align: center;
-  font-size: 10vh;
+  font-size: 80px;
   padding-top: 80px;
-  transform: rotate(-16deg);
   color: white;
   text-shadow: 2px 2px 5px #023047ff;
+}
+
+#holiday-dropdown {
+  width: 50vw;
+}
+
+.dropdown,
+.dropdown-menu,
+.dropdown-trigger,
+#holiday-dropdown-btn {
+  width: 100%;
+}
+
+@media screen and (max-width: 576px) {
+  .title {
+    font-size: 60px;
+  }
+  #holiday-dropdown {
+    width: 90vw;
+  }
 }
