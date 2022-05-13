@@ -4,6 +4,8 @@ const holidayDropdown = $("#holiday-dropdown");
 
 const dropdownMenu = $("#dropdown-menu");
 
+const holidaySpan = $("#holiday-span");
+
 const handleNavBarToggle = () => {
   const navBurgerBtn = $(".navbar-burger");
 
@@ -31,6 +33,9 @@ const startHolidayExperience = (event) => {
   if (target.is('div[name="holiday-type"]')) {
     const holidayType = target.attr("id");
     console.log(holidayType);
+    holidayDropdown.toggleClass("is-active");
+    const displayLabel = target.attr("data-label");
+    holidaySpan.text(displayLabel);
   }
 };
 
