@@ -1,7 +1,7 @@
 // CS weather API key
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
-const tempContainer = $("");
+const tempContainer = $("#temperature");
 
 const navBar = $("");
 
@@ -84,7 +84,7 @@ const fetchWeatherData = async (place) => {
 
   //   TODO check structure
   // get temperature for place
-  const temp = currentData?.temp || "";
+  const temp = currentData?.main?.temp || "";
 
   console.log(temp);
 
@@ -119,7 +119,7 @@ const renderTemperature = (data) => {
   // render the temperature data and append to section
   //   TODO check data structure
   tempContainer.append(`
-  <span>${data.weatherData.current.temp}&deg;C</span>
+  <span>${data.weatherData.main.temp}&deg;C</span>
   `);
 };
 
