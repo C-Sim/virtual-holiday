@@ -31,7 +31,7 @@
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <!-- Nav Bar -->
-          <a class="navbar-item" href="https://bulma.io">
+          <a class="navbar-item" href="./index.html">
             <img src="./assets/images/logo2.png" width="65" />
           </a>
 
@@ -40,7 +40,7 @@
             class="navbar-burger"
             aria-label="menu"
             aria-expanded="false"
-            data-target="navbarBasicExample"
+            data-target="navbar"
           >
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -48,19 +48,19 @@
           </a>
         </div>
 
-        <div class="navbar-start is-flex-grow-5">
-          <a class="navbar-item"> Home </a>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link"> Holidays </a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item"> Beach </a>
-              <a class="navbar-item"> Ski </a>
-              <a class="navbar-item"> City Break </a>
-            </div>
+        <div id="navbar" class="navbar-menu">
+          <!-- nav links at the start -->
+          <div class="navbar-start">
+            <a class="navbar-item" href="./index.html"> Home </a>
+            <a class="navbar-item" href="./holiday-snaps.html">
+              Holiday Snaps
+            </a>
           </div>
-        </div>
-        <div class="navbar-item is-flex-grow-11">
-          <a href="./holiday-snaps.html"> Holiday Snaps </a>
+
+          <!-- nav links at the end -->
+          <div class="navbar-end">
+            <a class="navbar-item" href="./about-us.html"> About Us </a>
+          </div>
         </div>
       </nav>
     </header>
