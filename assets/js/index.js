@@ -3,7 +3,13 @@ const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
 const tempContainer = $("#temperature");
 
-const navBar = $("");
+const holidayDropdownButton = $("#holiday-dropdown-btn");
+
+const holidayDropdown = $("#holiday-dropdown");
+
+const dropdownMenu = $("#dropdown-menu");
+
+const holidaySpan = $("#holiday-span");
 
 const linkPlaceName = (holidayType) => {
   if (holidayType === "beach") {
@@ -22,14 +28,14 @@ const handleLinkClick = async (event) => {
   const target = $(event.target);
 
   // if target is holiday type link, record value and write to LS
-  if (target.is('li[class="holiday-type"]')) {
+  if (target.is('div[name="holiday-type"]')) {
     const holidayType = target.attr("id");
 
     const place = linkPlaceName(holidayType);
 
     await renderWeatherData(place);
 
-    renderHoliday();
+    // renderHoliday();
   }
 };
 
@@ -71,6 +77,7 @@ const fetchWeatherData = async (place) => {
     "https://api.openweathermap.org/data/2.5/weather",
     {
       q: place,
+      units: "metric",
       appid: weather_API_KEY,
     }
   );
@@ -104,11 +111,14 @@ const renderWeatherData = async (place) => {
     tempContainer.empty();
 
     // render current data
+    tempContainer.append(`
+    <span>${temp}&deg;C</span>
+    `);
+
     renderTemperature(weatherData);
 
     return true;
   } catch (error) {
-    console.log(error.message);
     renderError();
     return false;
   }
@@ -119,16 +129,20 @@ const renderTemperature = (data) => {
   // render the temperature data and append to section
   //   TODO check data structure
   tempContainer.append(`
-  <span>${data.weatherData.main.temp}&deg;C</span>
+  <span>${data.main.temp}&deg;C</span>
   `);
 };
-const holidayDropdownButton = $("#holiday-dropdown-btn");
 
-const holidayDropdown = $("#holiday-dropdown");
+const renderError = () => {
+  //    remove existing data from container
+  tempContainer.empty();
 
-const dropdownMenu = $("#dropdown-menu");
+  const message = "Oops, that didn't work. Please try again.";
 
-const holidaySpan = $("#holiday-span");
+  tempContainer.append(`<h2 class="message">${message}</h2>`);
+};
+
+dropdownMenu.click(handleLinkClick);
 
 const handleNavBarToggle = () => {
   const navBurgerBtn = $(".navbar-burger");
@@ -148,9 +162,6 @@ const handleNavBarToggle = () => {
   navBurgerBtn.click(toggleNavBar);
 };
 
-<<<<<<< HEAD
-navBar.click(handleLinkClick);
-=======
 const holidayDropdownToggle = () => {
   holidayDropdown.toggleClass("is-active");
 };
@@ -170,7 +181,6 @@ const startHolidayExperience = (event) => {
 holidayDropdownButton.click(holidayDropdownToggle);
 
 dropdownMenu.click(startHolidayExperience);
->>>>>>> main
 
 $(document).ready(() => {
   handleNavBarToggle();
