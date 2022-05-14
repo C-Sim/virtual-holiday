@@ -1,3 +1,11 @@
+const holidayDropdownButton = $("#holiday-dropdown-btn");
+
+const holidayDropdown = $("#holiday-dropdown");
+
+const dropdownMenu = $("#dropdown-menu");
+
+const holidaySpan = $("#holiday-span");
+
 const handleNavBarToggle = () => {
   const navBurgerBtn = $(".navbar-burger");
 
@@ -15,6 +23,26 @@ const handleNavBarToggle = () => {
 
   navBurgerBtn.click(toggleNavBar);
 };
+
+const holidayDropdownToggle = () => {
+  holidayDropdown.toggleClass("is-active");
+};
+
+const startHolidayExperience = (event) => {
+  const target = $(event.target);
+  if (target.is('div[name="holiday-type"]')) {
+    const holidayType = target.attr("id");
+    console.log(holidayType);
+    holidayDropdown.toggleClass("is-active");
+    const displayLabel = target.attr("data-label");
+    holidaySpan.text(displayLabel);
+    window.location.replace(`#${holidayType}`);
+  }
+};
+
+holidayDropdownButton.click(holidayDropdownToggle);
+
+dropdownMenu.click(startHolidayExperience);
 
 $(document).ready(() => {
   handleNavBarToggle();

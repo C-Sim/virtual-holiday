@@ -70,16 +70,61 @@
       <section id="hero-image-container">
         <!-- hero background image -->
         <div id="hero" title="Departure Lounge">
-          <figcaption id="hero-caption">
-            Welcome to the Departure Lounge of your Virtual Holiday
+          <figcaption id="hero-caption" class="title">
+            Welcome to the departure lounge
           </figcaption>
-          <figcaption id="hero-caption-two">
-            Start by selecting your destination above
-          </figcaption>
+
+          <div class="is-flex is-justify-content-center">
+            <div class="dropdown" id="holiday-dropdown">
+              <div class="dropdown-trigger">
+                <button
+                  class="button"
+                  aria-haspopup="true"
+                  aria-controls="dropdown-menu"
+                  id="holiday-dropdown-btn"
+                >
+                  <span id="holiday-span">Select Your Holiday Destination</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <div
+                    name="holiday-type"
+                    class="dropdown-item is-clickable"
+                    id="beach"
+                    data-label="Beach Holiday"
+                  >
+                    Beach Holiday
+                  </div>
+                  <hr class="dropdown-divider" />
+                  <div
+                    name="holiday-type"
+                    class="dropdown-item is-clickable"
+                    id="cityBreak"
+                    data-label="City Break"
+                  >
+                    City Break
+                  </div>
+                  <hr class="dropdown-divider" />
+                  <div
+                    name="holiday-type"
+                    class="dropdown-item is-clickable"
+                    id="ski"
+                    data-label="Ski Trip"
+                  >
+                    Ski Trip
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="holiday-container">
+      <section id="beach">
         <div id="webcam-video">Webcam Video</div>
         <div id="temperature">Temperature</div>
         <div id="bartender">Bartender</div>
