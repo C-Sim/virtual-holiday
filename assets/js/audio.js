@@ -1,6 +1,18 @@
-const beachSongs = ["highwave.mp3", "island.mp3"];
+const beachSongs = [
+  "highwave.mp3",
+  "island.mp3",
+  "lost.mp3",
+  "ginger.mp3",
+  "soco.mp3",
+];
 const skiSongs = ["winter-magic.mp3"];
-const cityBreakSongs = [];
+const cityBreakSongs = [
+  "city-life.mp3",
+  "dont-matter.mp3",
+  "maria.mp3",
+  "mia.mp3",
+  "human-nature.mp3",
+];
 
 let audio;
 
