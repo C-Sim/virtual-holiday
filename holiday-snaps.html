@@ -70,9 +70,9 @@
     <h1 class="page-title has-text-centered">Your Holiday</h1>
 
     <!-- Main Section -->
-    <main class="main-container is-flex">
+    <main class="main-container">
       <!-- holiday snaps cards  -->
-      <div class="card flex-wrap">
+      <div class="card">
         <div class="card-image">
           <img
             class="holiday-images"
@@ -93,7 +93,33 @@
             <span class="hastag-texts">#Living-my-best-life</span>
           </p>
         </div>
+        <div class="buttons-container is-flex">
+            <button class="save-btn">save</button>
+            <button class="delete-btn ">delete</button></div>
+        </div>
       </div>
+
+      <div class="card">
+        <div class="card-image">
+          <img
+            class="holiday-images"
+            src="./assets/images/card-image.jpg"
+            alt="Placeholder image"
+          />
+        </div>
+        <div class="card-content">
+          <p class="card-title has-text-centered">Your Holiday Destination</p>
+          <!-- render user holiday destination in this div  -->
+          <div class="user-holiday-info">
+            <!-- use template literal in js  -->
+          </div>
+        </div>
+        <div class="hastags has-text-centered">
+          <p>
+            <span class="hastag-texts">#Virtual-party-experience</span>
+            <span class="hastag-texts">#Living-my-best-life</span>
+          </p>
+        </div>
     </main>
 
     <script

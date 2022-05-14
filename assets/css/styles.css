@@ -51,7 +51,7 @@ body {
 
 /* card styling */
 .card {
-  margin: 40px 250px;
+  margin: 70px 250px;
 }
 
 .card-title {
@@ -59,11 +59,12 @@ body {
 }
 
 .hastags {
-  padding-bottom: 20px;
+  padding-bottom: 25px;
 }
 
 .hastag-texts {
   margin: 0 10px;
+  color: var(--blue-green);
 }
 
 @media screen and (max-width: 576px) {
