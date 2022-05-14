@@ -5,7 +5,7 @@ const beachSongs = [
   "ginger.mp3",
   "soco.mp3",
 ];
-const skiSongs = ["winter-magic.mp3"];
+const skiSongs = ["winter-magic.mp3", "acoustic-guitar.mp3", "dream-koala.mp3"];
 const cityBreakSongs = [
   "city-life.mp3",
   "dont-matter.mp3",
