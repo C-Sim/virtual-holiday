@@ -4,6 +4,7 @@
   --prussian-blue: #023047ff;
   --selective-yellow: #ffb703ff;
   --tangerine: #fb8500ff;
+  --black: black;
 }
 
 body {
@@ -67,7 +68,18 @@ body {
   color: var(--blue-green);
 }
 
-@media screen and (max-width: 576px) {
+.buttons {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  padding-bottom: 20px;
+}
+
+.btn a:hover {
+  cursor: pointer;
+}
+
+.save @media screen and (max-width: 576px) {
   .title {
     font-size: 60px;
   }
