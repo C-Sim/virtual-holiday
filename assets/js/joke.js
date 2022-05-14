@@ -13,11 +13,22 @@ const handleButtonClick = () => {
   // optional path params
   // optional query params
 
-  const fetchOptions = {
+  const options = {
     method: "GET",
+    headers: {
+      "X-RapidAPI-Host": "papajoke.p.rapidapi.com",
+      "X-RapidAPI-Key": "ca45ec61a4msh24fe699dc35cc23p1151b5jsn5e05295b9d8f",
+    },
   };
 
-  fetch(url, fetchOptions);
+  fetch("https://papajoke.p.rapidapi.com/api/jokes", options)
+    .then((response) => response.json())
+    .then((response) => console.log(response))
+    .catch((err) => console.error(err));
+
+  const data = fetch(url, options);
+
+  console.log(data);
 };
 
 jokeApiButton.addEventListener("click", handleButtonClick);
