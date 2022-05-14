@@ -37,14 +37,11 @@ const constructUrl = (baseUrl, params) => {
 };
 
 const fetchData = async (url, options = {}) => {
-  console.log(url);
-
   try {
     const response = await fetch(url, options);
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
       return data;
     } else {
       throw new Error("Failed to fetch data");
@@ -56,7 +53,6 @@ const fetchData = async (url, options = {}) => {
 
 const fetchWeatherData = async (place) => {
   // use API to fetch current weather data
-  console.log(place);
   const currentWeatherUrl = constructUrl(
     "https://api.openweathermap.org/data/2.5/weather",
     {
@@ -66,30 +62,22 @@ const fetchWeatherData = async (place) => {
     }
   );
 
-  console.log(currentWeatherUrl);
-
   // await fetch response
   const currentData = await fetchData(currentWeatherUrl);
-
-  console.log(currentData);
 
   //   TODO check structure
   // get temperature for place
   const temp = currentData?.main?.temp || "";
-
-  console.log(temp);
+  const humidity = currentData?.main?.humidity || "";
 
   // return data retrieved from api
   return temp;
 };
 
 const renderWeatherData = async (place) => {
-  console.log(place);
   try {
     // fetch weather data
     const temperature = await fetchWeatherData(place);
-
-    console.log(temperature);
 
     // empty container
     tempContainer.empty();
@@ -139,7 +127,7 @@ const startHolidayExperience = async (event) => {
   const target = $(event.target);
   if (target.is('div[name="holiday-type"]')) {
     const holidayType = target.attr("id");
-    console.log(holidayType);
+
     holidayDropdown.toggleClass("is-active");
     const displayLabel = target.attr("data-label");
     holidaySpan.text(displayLabel);
