@@ -1,12 +1,12 @@
-const beachButton = document.getElementById("beach-btn");
-
-const skiButton = document.getElementById("ski-btn");
-
-const cityButton = document.getElementById("city-btn");
+const beachButton = $("#beach-btn");
+const skiButton = $("#ski-btn");
+const cityButton = $("#city-btn");
 
 const beachSongs = ["swim-good.mp3", "summer-time.mp3"];
 const skiSongs = [];
 const cityBreakSongs = [];
+
+let audio;
 
 const getRandomItemFromArray = (array) => {
   const randomIndex = Math.floor(Math.random() * array.length);
@@ -31,38 +31,38 @@ const getTrackName = (holidayType) => {
   return randomTrack;
 };
 
-//start the experience will call getTrackName
+const playRandomSong = (holidayType) => {
+  stopAllAudio();
 
-const playRandomSong = () => {
-  const randomTrack = getTrackName("beach");
-  console.log(randomTrack);
-
+  const randomTrack = getTrackName(holidayType);
   const randomAudioPath = `./assets/audio/${randomTrack}`;
-  console.log(randomAudioPath);
 
-  const audio = new Audio(randomAudioPath);
+  audio = new Audio(randomAudioPath);
 
-  // audio.play();
-
-  console.log(audio);
+  audio.play();
 };
 
-$("#start-btn").click(playRandomSong);
+const stopAllAudio = () => {
+  if (audio) {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+};
 
 const beachMusic = () => {
-  console.log("beach button clicked");
+  playRandomSong("beach");
 };
 
 const skiMusic = () => {
-  console.log("ski button clicked");
+  playRandomSong("ski");
 };
 
 const cityMusic = () => {
-  console.log("city button clicked");
+  playRandomSong("cityBreak");
 };
 
-beachButton.addEventListener("click", beachMusic);
+beachButton.click(beachMusic);
 
-skiButton.addEventListener("click", skiMusic);
+skiButton.click(skiMusic);
 
-cityButton.addEventListener("click", cityMusic);
+cityButton.click(cityMusic);
