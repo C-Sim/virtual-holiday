@@ -33,6 +33,11 @@
 #holiday-dropdown-btn {
   width: 100%;
 }
+/* css for holiday snaps html */
+
+.card {
+  margin: 70px;
+}
 
 @media screen and (max-width: 576px) {
   .title {
