@@ -48,6 +48,8 @@ body {
   margin-top: 20px;
   color: var(--selective-yellow);
 }
+
+/* card styling */
 .card {
   margin: 40px 250px;
 }
@@ -58,6 +60,10 @@ body {
 
 .hastags {
   padding-bottom: 20px;
+}
+
+.hastag-texts {
+  margin: 0 10px;
 }
 
 @media screen and (max-width: 576px) {
