@@ -23,22 +23,6 @@ const linkPlaceName = (holidayType) => {
   }
 };
 
-const handleLinkClick = async (event) => {
-  // find target from navbar
-  const target = $(event.target);
-
-  // if target is holiday type link, record value and write to LS
-  if (target.is('div[name="holiday-type"]')) {
-    const holidayType = target.attr("id");
-
-    const place = linkPlaceName(holidayType);
-
-    await renderWeatherData(place);
-
-    // renderHoliday();
-  }
-};
-
 const writeToLocalStorage = (key, value) => {
   // stringify object value
   const stringifiedValue = JSON.stringify(value);
@@ -103,34 +87,21 @@ const renderWeatherData = async (place) => {
   console.log(place);
   try {
     // fetch weather data
-    const weatherData = await fetchWeatherData(place);
+    const temperature = await fetchWeatherData(place);
 
-    console.log(weatherData);
+    console.log(temperature);
 
     // empty container
     tempContainer.empty();
 
     // render current data
-    tempContainer.append(`
-    <span>${temp}&deg;C</span>
-    `);
-
-    renderTemperature(weatherData);
+    tempContainer.append(`<span>${temperature}&deg;C</span>`);
 
     return true;
   } catch (error) {
     renderError();
     return false;
   }
-};
-
-const renderTemperature = (data) => {
-  console.log(data);
-  // render the temperature data and append to section
-  //   TODO check data structure
-  tempContainer.append(`
-  <span>${data.main.temp}&deg;C</span>
-  `);
 };
 
 const renderError = () => {
@@ -141,8 +112,6 @@ const renderError = () => {
 
   tempContainer.append(`<h2 class="message">${message}</h2>`);
 };
-
-dropdownMenu.click(handleLinkClick);
 
 const handleNavBarToggle = () => {
   const navBurgerBtn = $(".navbar-burger");
@@ -166,7 +135,7 @@ const holidayDropdownToggle = () => {
   holidayDropdown.toggleClass("is-active");
 };
 
-const startHolidayExperience = (event) => {
+const startHolidayExperience = async (event) => {
   const target = $(event.target);
   if (target.is('div[name="holiday-type"]')) {
     const holidayType = target.attr("id");
@@ -175,6 +144,10 @@ const startHolidayExperience = (event) => {
     const displayLabel = target.attr("data-label");
     holidaySpan.text(displayLabel);
     window.location.replace(`#${holidayType}`);
+
+    const place = linkPlaceName(holidayType);
+
+    await renderWeatherData(place);
   }
 };
 
