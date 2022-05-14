@@ -8,9 +8,9 @@
 
 /* hero image */
 #hero {
-  height: 100vh;
+  height: 70vh;
   width: 100vw;
-  background-image: url("/assets/images/departure-lounge.png");
+  background-image: url("/assets/images/departure-lounge-hq.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }

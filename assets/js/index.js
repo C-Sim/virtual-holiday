@@ -36,6 +36,7 @@ const startHolidayExperience = (event) => {
     holidayDropdown.toggleClass("is-active");
     const displayLabel = target.attr("data-label");
     holidaySpan.text(displayLabel);
+    window.location.replace(`#${holidayType}`);
   }
 };
 
