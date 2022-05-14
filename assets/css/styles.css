@@ -6,6 +6,11 @@
   --tangerine: #fb8500ff;
 }
 
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 /* hero image */
 #hero {
   height: 100vh;
@@ -33,10 +38,26 @@
 #holiday-dropdown-btn {
   width: 100%;
 }
-/* css for holiday snaps html */
+/*~ css for holiday snaps html */
 
+/* page title styling */
+
+.page-title {
+  font-weight: bold;
+  font-size: 40px;
+  margin-top: 20px;
+  color: var(--selective-yellow);
+}
 .card {
-  margin: 70px;
+  margin: 40px 250px;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.hastags {
+  padding-bottom: 20px;
 }
 
 @media screen and (max-width: 576px) {
