@@ -3,8 +3,6 @@
 const jokeApiButton = document.getElementById("joke-api");
 
 const handleButtonClick = () => {
-  console.log("clicked");
-
   // requires a URL
   const url = "https://papajoke.p.rapidapi.com/api/jokes";
 
@@ -21,12 +19,17 @@ const handleButtonClick = () => {
     },
   };
 
+  const displayResults = (response) => {
+    console.log("displayResults");
+    console.log(response);
+  };
+
   fetch("https://papajoke.p.rapidapi.com/api/jokes", options)
     .then((response) => response.json())
     .then((response) => console.log(response))
     .catch((err) => console.error(err));
 
-  const data = fetch(url, options);
+  const data = fetch(url, options).then(displayResults);
 
   console.log(data);
 };
