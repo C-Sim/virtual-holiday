@@ -1,9 +1,5 @@
-const beachButton = $("#beach-btn");
-const skiButton = $("#ski-btn");
-const cityButton = $("#city-btn");
-
-const beachSongs = ["swim-good.mp3", "summer-time.mp3"];
-const skiSongs = [];
+const beachSongs = ["highwave.mp3", "island.mp3"];
+const skiSongs = ["winter-magic.mp3"];
 const cityBreakSongs = [];
 
 let audio;
@@ -48,21 +44,3 @@ const stopAllAudio = () => {
     audio.currentTime = 0;
   }
 };
-
-const beachMusic = () => {
-  playRandomSong("beach");
-};
-
-const skiMusic = () => {
-  playRandomSong("ski");
-};
-
-const cityMusic = () => {
-  playRandomSong("cityBreak");
-};
-
-beachButton.click(beachMusic);
-
-skiButton.click(skiMusic);
-
-cityButton.click(cityMusic);
