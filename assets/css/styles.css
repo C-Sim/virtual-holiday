@@ -21,7 +21,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.title {
+.main-title {
   text-align: center;
   font-size: 80px;
   padding-top: 80px;
@@ -41,6 +41,7 @@ body {
 }
 /*~ css for holiday snaps html */
 
+<<<<<<< HEAD
 /* page title styling */
 
 .page-title {
@@ -80,10 +81,25 @@ body {
 }
 
 .save @media screen and (max-width: 576px) {
+=======
+#weather-container {
+  width: 25vw;
+  margin: 8px;
+}
+
+@media screen and (max-width: 576px) {
+>>>>>>> main
   .title {
     font-size: 60px;
   }
-  #holiday-dropdown {
+  #holiday-dropdown,
+  #weather-container {
     width: 90vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #weather-container {
+    width: 50vw;
   }
 }
