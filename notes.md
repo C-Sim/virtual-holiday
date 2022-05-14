@@ -48,7 +48,8 @@ First steps - navbar - control panel and console log API response
   MVP - temperature of location
   Back up - hard-coded average temperature of location
   Builds -
+
 - Bartender & jokes
-  MVP - avatar and speech bubble of a bartender telling you a random joke
+  MVP - avatar and speech bubble of a bartender telling you a random joke and offering a drink
   Back up - hard-coded joke
   Builds - different bartender/names for each location
