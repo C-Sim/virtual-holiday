@@ -27,10 +27,11 @@
     <title>Virtual Holiday | Holiday Snaps</title>
   </head>
   <body>
+    <!-- Nav Bar -->
+
     <header class="nav-container">
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <!-- Nav Bar -->
           <a class="navbar-item" href="./index.html">
             <img src="./assets/images/logo2.png" width="65" />
           </a>
@@ -64,8 +65,66 @@
         </div>
       </nav>
     </header>
+
+    <!-- page title  -->
+    <h1 class="page-title has-text-centered">Your Experience</h1>
+
     <!-- Main Section -->
-    <main class="main-container"></main>
+    <main class="main-container">
+      <!-- holiday snaps cards  -->
+      <div class="card">
+        <div class="card-image">
+          <img
+            class="holiday-images"
+            src="./assets/images/card-image.jpg"
+            alt="Placeholder image"
+          />
+        </div>
+        <div class="card-content">
+          <p class="card-title has-text-centered">Your Holiday Destination</p>
+          <!-- render user holiday destination in this div  -->
+          <div class="holiday-type">
+            <!-- use template literal in js  -->
+          </div>
+        </div>
+        <div class="hastags has-text-centered">
+          <p>
+            <span class="hastag-texts">#Virtual-party-experience</span>
+            <span class="hastag-texts">#Living-my-best-life</span>
+          </p>
+        </div>
+        <div class="buttons">
+          <button  id="save-btn" class="button is-info is-align-items-center">Save</button>
+          <button  id="save-btn" class="button is-info is-align-items-center">Delete</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-image">
+          <img
+            class="holiday-images"
+            src="./assets/images/card-image.jpg"
+            alt="Placeholder image"
+          />
+        </div>
+        <div class="card-content">
+          <p class="card-title has-text-centered">Your Holiday Destination</p>
+          <!-- render user holiday destination in this div  -->
+          <div class="user-holiday-info">
+            <!-- use template literal in js  -->
+          </div>
+        </div>
+        <div class="hastags has-text-centered">
+          <p>
+            <span class="hastag-texts">#Virtual-party-experience</span>
+            <span class="hastag-texts">#Living-my-best-life</span>
+          </p>
+        </div>
+        <div class="buttons">
+          <button  id="save-btn" class="button is-info is-align-items-center">Save</button>
+          <button  id="save-btn" class="button is-info is-align-items-center">Delete</button>
+        </div>
+    </main>
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"

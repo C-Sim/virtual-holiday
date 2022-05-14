@@ -4,8 +4,14 @@
   --prussian-blue: #023047ff;
   --selective-yellow: #ffb703ff;
   --tangerine: #fb8500ff;
+  --black: black;
 }
 
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 /* hero image */
 #hero {
   height: 100vh;
@@ -33,13 +39,56 @@
 #holiday-dropdown-btn {
   width: 100%;
 }
+/*~ css for holiday snaps html */
 
+<<<<<<< HEAD
+/* page title styling */
+
+.page-title {
+  font-weight: bold;
+  font-size: 40px;
+  margin-top: 20px;
+  color: var(--selective-yellow);
+}
+
+/* card styling */
+.card {
+  margin: 70px 250px;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.hastags {
+  padding-bottom: 25px;
+}
+
+.hastag-texts {
+  margin: 0 10px;
+  color: var(--blue-green);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  padding-bottom: 20px;
+}
+
+.btn a:hover {
+  cursor: pointer;
+}
+
+.save @media screen and (max-width: 576px) {
+=======
 #weather-container {
   width: 25vw;
   margin: 8px;
 }
 
 @media screen and (max-width: 576px) {
+>>>>>>> main
   .title {
     font-size: 60px;
   }
