@@ -1,6 +1,8 @@
 // CS weather API key
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
+const weatherContainer = $("#weather-container");
+
 const tempContainer = $("#temperature");
 
 const holidayDropdownButton = $("#holiday-dropdown-btn");
@@ -65,25 +67,51 @@ const fetchWeatherData = async (place) => {
   // await fetch response
   const currentData = await fetchData(currentWeatherUrl);
 
-  //   TODO check structure
   // get temperature for place
   const temp = currentData?.main?.temp || "";
   const humidity = currentData?.main?.humidity || "";
+  const weatherIcon = currentData?.weather[0].icon || "";
 
   // return data retrieved from api
-  return temp;
+  return {
+    temp: temp,
+    humidity: humidity,
+    icon: weatherIcon,
+  };
 };
 
 const renderWeatherData = async (place) => {
   try {
     // fetch weather data
-    const temperature = await fetchWeatherData(place);
+    const weather = await fetchWeatherData(place);
 
     // empty container
-    tempContainer.empty();
+    weatherContainer.empty();
 
     // render current data
-    tempContainer.append(`<span>${temperature}&deg;C</span>`);
+    weatherContainer.append(`<div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img
+            src="http://openweathermap.org/img/w/${weather.icon}.png"
+            alt="Weather Icon"
+          />
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4 is-size-6-mobile" id="temperature">${weather.temp}&deg;C</p>
+        <p class="subtitle is-6 is-size-7-mobile" id="humidity">
+          Humidity: ${weather.humidity}&percnt;
+        </p>
+      </div>
+    </div>
+
+    <div class="content is-size-7-mobile">
+      Set your thermostat to recreate the temperature in
+      ${place}.
+    </div>
+  </div>`);
 
     return true;
   } catch (error) {
