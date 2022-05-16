@@ -39,6 +39,54 @@
   margin: 8px;
 }
 
+/* webcam section */
+
+.webcam-title {
+  text-align: center;
+}
+
+.locationtitle {
+  text-align: center;
+}
+
+.webcam-title {
+  color: #212529;
+  padding: 20px;
+  font-size: 2rem;
+}
+
+.card {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.column {
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+img.bw {
+  filter: grayscale(30%);
+}
+
+img.bw:hover {
+  filter: brightness(115%);
+}
+
+/* end of webcam section */
+
+.package {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 30rem;
+}
+
+/* .container {
+  display: flex;
+} */
+
 @media screen and (max-width: 576px) {
   .title {
     font-size: 60px;
