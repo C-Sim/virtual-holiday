@@ -23,9 +23,15 @@ const handleButtonClick = async () => {
 
   const response = await fetch(url, options);
   const data = await response.json();
-  console.log(data);
 
   // get jokes from data
+  const jokes = data.items;
+  console.log(jokes);
+
+  const randomIndex = Math.floor(Math.random() * jokes.length);
+  console.log(randomIndex);
+  const randomJoke = jokes[randomIndex];
+  console.log(randomJoke);
 };
 
 jokeApiButton.addEventListener("click", handleButtonClick);
