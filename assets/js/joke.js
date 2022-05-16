@@ -1,8 +1,10 @@
 // https://papajoke.p.rapidapi.com/api/jokes
 
+const apiKey = "ca45ec61a4msh24fe699dc35cc23p1151b5jsn5e05295b9d8f";
+
 const jokeApiButton = document.getElementById("joke-api");
 
-const handleButtonClick = () => {
+const handleButtonClick = async () => {
   // requires a URL
   const url = "https://papajoke.p.rapidapi.com/api/jokes";
 
@@ -15,27 +17,16 @@ const handleButtonClick = () => {
     method: "GET",
     headers: {
       "X-RapidAPI-Host": "papajoke.p.rapidapi.com",
-      "X-RapidAPI-Key": "ca45ec61a4msh24fe699dc35cc23p1151b5jsn5e05295b9d8f",
+      "X-RapidAPI-Key": apiKey,
     },
   };
 
-  const displayResults = (response) => {
-    console.log("displayResults");
-    console.log(response);
-  };
-
-  fetch("https://papajoke.p.rapidapi.com/api/jokes", options)
-    .then((response) => response.json())
-    .then((response) => console.log(response))
-    .catch((err) => console.error(err));
-
-  const data = fetch(url, options).then(displayResults);
-
+  const response = await fetch(url, options);
+  const data = await response.json();
   console.log(data);
+
+  // get jokes from data
 };
 
 jokeApiButton.addEventListener("click", handleButtonClick);
-
-$(document).ready = () => {
-  handleButtonClick();
-};
+console.log(jokeApiButton);
