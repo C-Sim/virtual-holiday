@@ -4,8 +4,14 @@
   --prussian-blue: #023047ff;
   --selective-yellow: #ffb703ff;
   --tangerine: #fb8500ff;
+  --black: black;
 }
 
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 /* hero image */
 #hero {
   height: 100vh;
@@ -33,59 +39,45 @@
 #holiday-dropdown-btn {
   width: 100%;
 }
+/*~ css for holiday snaps html */
 
-#weather-container {
-  width: 25vw;
-  margin: 8px;
+/* page title styling */
+
+.page-title {
+  font-weight: bold;
+  font-size: 40px;
+  margin-top: 20px;
+  color: var(--selective-yellow);
 }
 
-/* webcam section */
-
-.webcam-title {
-  text-align: center;
-}
-
-.locationtitle {
-  text-align: center;
-}
-
-.webcam-title {
-  color: #212529;
-  padding: 20px;
-  font-size: 2rem;
-}
-
+/* card styling */
 .card {
-  max-width: 500px;
-  margin: 0 auto;
-  margin-top: 25px;
+  margin: 70px 250px;
 }
 
-.column {
-  gap: 2rem;
+.card-title {
+  font-weight: bold;
+}
+
+.hastags {
+  padding-bottom: 25px;
+}
+
+.hastag-texts {
+  margin: 0 10px;
+  color: var(--blue-green);
+}
+
+.buttons {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  column-gap: 10px;
+  padding-bottom: 20px;
 }
 
-img.bw {
-  filter: grayscale(30%);
+.btn a:hover {
+  cursor: pointer;
 }
-
-img.bw:hover {
-  filter: brightness(115%);
-}
-
-/* end of webcam section */
-
-.package {
-  display: flex;
-  flex-wrap: wrap;
-  flex: 30rem;
-}
-
-/* .container {
-  display: flex;
-} */
 
 @media screen and (max-width: 576px) {
   .title {
