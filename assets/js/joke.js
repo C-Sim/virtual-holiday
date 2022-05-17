@@ -40,3 +40,7 @@ console.log(jokeApiButton);
 //get path for joke
 
 //append to main
+
+//open a pull request
+
+//someone approve it and then I will merge it
