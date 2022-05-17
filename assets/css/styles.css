@@ -41,7 +41,6 @@ body {
 }
 /*~ css for holiday snaps html */
 
-<<<<<<< HEAD
 /* page title styling */
 
 .page-title {
@@ -81,14 +80,6 @@ body {
 }
 
 .save @media screen and (max-width: 576px) {
-=======
-#weather-container {
-  width: 25vw;
-  margin: 8px;
-}
-
-@media screen and (max-width: 576px) {
->>>>>>> main
   .title {
     font-size: 60px;
   }
