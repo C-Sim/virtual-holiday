@@ -79,7 +79,7 @@ body {
   cursor: pointer;
 }
 
-.save @media screen and (max-width: 576px) {
+@media screen and (max-width: 576px) {
   .title {
     font-size: 60px;
   }
