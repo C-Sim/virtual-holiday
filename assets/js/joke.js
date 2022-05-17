@@ -36,3 +36,7 @@ const handleButtonClick = async () => {
 
 jokeApiButton.addEventListener("click", handleButtonClick);
 console.log(jokeApiButton);
+
+//get path for joke
+
+//append to main
