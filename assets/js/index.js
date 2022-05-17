@@ -2,7 +2,7 @@
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
 // webcam api
-const webcam_API_KEY = "XovCOj3SwYEeacsGPFXhtvmyx21SzxYg";
+const webcam_API_KEY = "YIN80HzTzxRw2dQuGfLYh6Cu3K9miN5E";
 
 const weatherContainer = $("#weather-container");
 
@@ -19,6 +19,12 @@ const holidayDropdown = $("#holiday-dropdown");
 const dropdownMenu = $("#dropdown-menu");
 
 const holidaySpan = $("#holiday-span");
+
+const countryToCountryCodeMapper = {
+  Jamaica: "JM",
+  Singapore: "SG",
+  Andorra: "AD",
+};
 
 const linkPlaceName = (holidayType) => {
   if (holidayType === "beach") {
@@ -89,17 +95,23 @@ const fetchWeatherData = async (place) => {
 
 const fetchWebcamData = async (place) => {
   // use API to fetch current weather data
+  const countryCode = countryToCountryCodeMapper[place];
   const currentWebcamUrl = constructUrl(
-    "https://api.windy.com/api/webcams/v2/",
+    `https://webcamstravel.p.rapidapi.com/webcams/list/country=${countryCode}`,
     {
-      country: place,
-      key: webcam_API_KEY,
+      lang: "en",
+      show: "webcams:image,url,player",
     }
   );
   console.log(currentWebcamUrl);
 
   // await fetch response
-  const currentData = await fetchData(currentWebcamUrl);
+  const currentData = await fetchData(currentWebcamUrl, {
+    headers: {
+      "X-RapidAPI-Host": "webcamstravel.p.rapidapi.com",
+      "X-RapidAPI-Key": "15da2cff6amshd1d5cc2632e414ep10847cjsn54d431a7a66e",
+    },
+  });
 
   console.log(currentData);
   // get temperature for place
