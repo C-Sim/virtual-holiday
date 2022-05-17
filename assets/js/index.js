@@ -1,7 +1,14 @@
 // CS weather API key
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
+// webcam api
+const webcam_API_KEY = "XovCOj3SwYEeacsGPFXhtvmyx21SzxYg";
+
 const weatherContainer = $("#weather-container");
+
+const webcamContainer = $("#webcam-section");
+
+const main = $("#main-container");
 
 const tempContainer = $("#temperature");
 
@@ -18,10 +25,10 @@ const linkPlaceName = (holidayType) => {
     return "Jamaica";
   }
   if (holidayType === "cityBreak") {
-    return "New York";
+    return "Singapore";
   }
   if (holidayType === "ski") {
-    return "Aspen";
+    return "Andorra";
   }
 };
 
@@ -80,6 +87,34 @@ const fetchWeatherData = async (place) => {
   };
 };
 
+const fetchWebcamData = async (place) => {
+  // use API to fetch current weather data
+  const currentWebcamUrl = constructUrl(
+    "https://api.windy.com/api/webcams/v2/",
+    {
+      country: place,
+      key: webcam_API_KEY,
+    }
+  );
+  console.log(currentWebcamUrl);
+
+  // await fetch response
+  const currentData = await fetchData(currentWebcamUrl);
+
+  console.log(currentData);
+  // get temperature for place
+  // const temp = currentData?.main?.temp || "";
+  // const humidity = currentData?.main?.humidity || "";
+  // const weatherIcon = currentData?.weather[0].icon || "";
+
+  // // return data retrieved from api
+  // return {
+  //   temp: temp,
+  //   humidity: humidity,
+  //   icon: weatherIcon,
+  // };
+};
+
 const renderWeatherData = async (place) => {
   try {
     // fetch weather data
@@ -110,6 +145,60 @@ const renderWeatherData = async (place) => {
     <div class="content is-size-7-mobile">
       Set your thermostat to recreate the temperature in
       ${place}.
+    </div>
+  </div>`);
+
+    return true;
+  } catch (error) {
+    renderError();
+    return false;
+  }
+};
+
+const renderWebcamData = async (place) => {
+  try {
+    // fetch weather data
+    const webcam = await fetchWebcamData(place);
+
+    // empty container
+    webcamContainer.empty();
+
+    // render current data
+    main.append(`<div id="webcam-section">
+    <h1 class="webcam-title">
+      LIVE Webcam/Footage <i class="fa fa-camera"></i>
+    </h1>
+    <div class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-100vwx100vw">
+                  <img
+                    src="./assets/images/hawaii-in-pictures-beautiful-places-to-photograph-diamond-head-oahu.jpeg"
+                    alt="Placeholder image"
+                  />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <h4 class="locationtitle">
+                    <i class="fas fa-map-marker-alt"></i> Hawaii
+                  </h4>
+                  <p>
+                    It is well known that Hawaii features some of the best
+                    beaches in the world, but the love for the Hawaiian
+                    Islands is also found in awe-inspiring waterfalls,
+                    bustling nightlife.Take a peek at this webcam of
+                    Hawaii for a small taste of it.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>`);
 
@@ -165,6 +254,8 @@ const startHolidayExperience = async (event) => {
     const place = linkPlaceName(holidayType);
 
     await renderWeatherData(place);
+
+    await renderWebcamData(place);
   }
 };
 
