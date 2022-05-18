@@ -25,7 +25,6 @@ body {
   text-align: center;
   font-size: 80px;
   padding-top: 80px;
-  padding-bottom: 18px;
   color: white;
   text-shadow: 2px 2px 5px #023047ff;
 }
@@ -80,6 +79,7 @@ body {
   cursor: pointer;
 }
 
+.save @media screen and (max-width: 576px) {
 #weather-container {
   width: 25vw;
   margin: 8px;
@@ -89,7 +89,8 @@ body {
   .title {
     font-size: 60px;
   }
-  #holiday-dropdown {
+  #holiday-dropdown,
+  #weather-container {
     width: 90vw;
   }
 }
