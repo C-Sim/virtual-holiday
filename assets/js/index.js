@@ -84,35 +84,61 @@ const fetchWeatherData = async (place) => {
   };
 };
 
-const renderWeatherData = async (place) => {
+const consoleContainer = $("#console-container");
+
+const renderConsoleData = async (place) => {
   try {
     // fetch weather data
     const weather = await fetchWeatherData(place);
 
     // render current data
-    mainView.append(`<div class="card" id="weather-container"><div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image is-48x48">
-          <img
-            src="http://openweathermap.org/img/w/${weather.icon}.png"
-            alt="Weather Icon"
-          />
-        </figure>
-      </div>
-      <div class="media-content">
-        <p class="title is-4 is-size-6-mobile" id="temperature">${weather.temp}&deg;C</p>
-        <p class="subtitle is-6 is-size-7-mobile" id="humidity">
-          Humidity: ${weather.humidity}&percnt;
-        </p>
-      </div>
-    </div>
+    mainView.append(`<div class="columns is-centered" id="console-container">
+    <div class="card column" id="weather-container">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <img
+                src="http://openweathermap.org/img/w/${weather.icon}.png"
+                alt="Weather Icon"
+              />
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4 is-size-6-mobile" id="temperature">
+              ${weather.temp}&deg;C
+            </p>
+            <p class="subtitle is-6 is-size-7-mobile" id="humidity">
+              Humidity: ${weather.humidity}&percnt;
+            </p>
+          </div>
+        </div>
 
-    <div class="content is-size-7-mobile">
-      Set your thermostat to recreate the temperature in
-      ${place}.
+        <div class="content is-size-7-mobile">
+          Set your thermostat to recreate the temperature in ${place}.
+        </div>
+      </div>
     </div>
-  </div></div>`);
+    <div class="card column" id="bartender-container">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image bartender-image">
+              <img src="./assets/images/${place}.jpg" alt="Bartender" />
+            </figure>
+          </div>
+          <div class="media-content bartender-buttons">
+            <button class="console-btn" id="joke-api">
+              Tell Me A Joke
+            </button>
+            <button class="console-btn" id="offer-drink">
+              Offer Me A Drink
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`);
 
     return true;
   } catch (error) {
@@ -121,27 +147,7 @@ const renderWeatherData = async (place) => {
   }
 };
 
-renderBartender = (place) => {
-  mainView.append(`<div class="card" id="bartender-container">
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image is-48x48">
-          <img
-            src="./assets/images/${place}.jpg"
-            alt="Bartender avatar"
-          />
-        </figure>
-      </div>
-      <div class="media-content">
-        <button id="joke-api">Tell Me A Joke</button>
-        <button id="offer-drink">Offer Me A Drink</button>
-      </div>
-    </div>
-  </div>
-</div>`);
-};
-
+// TO DO ensure can select other holiday types in dropdown
 moveDropdown = (displayLabel) => {
   mainView.append(`<div class="is-flex is-justify-content-center">
   <div class="dropdown" id="holiday-dropdown">
@@ -193,12 +199,9 @@ moveDropdown = (displayLabel) => {
 };
 
 const renderError = () => {
-  //    remove existing data from container
-  tempContainer.empty();
-
   const message = "Oops, that didn't work. Please try again.";
 
-  tempContainer.append(`<h2 class="message">${message}</h2>`);
+  mainView.append(`<h2 class="message">${message}</h2>`);
 };
 
 const handleNavBarToggle = () => {
@@ -239,9 +242,7 @@ const startHolidayExperience = async (event) => {
 
     const place = linkPlaceName(holidayType);
 
-    await renderWeatherData(place);
-
-    renderBartender(place);
+    await renderConsoleData(place);
 
     moveDropdown(displayLabel);
   }

@@ -80,23 +80,50 @@ body {
   cursor: pointer;
 }
 
-@media screen and (max-width: 576px) {
-  #weather-container {
-    width: 25vw;
-    margin: 8px;
-  }
+#weather-container,
+#bartender-container {
+  width: 40vw;
+  margin: 8px;
+}
 
+.console-btn {
+  width: 15vw;
+  background-color: var(--prussian-blue);
+  color: var(--light-cornflower-blue);
+  border-radius: 8px;
+  padding: 8px;
+  margin: 8px;
+}
+
+.console-btn:hover {
+  cursor: pointer;
+  color: var(--selective-yellow);
+}
+
+.bartender-image {
+  height: 20vh;
+  width: 10vw;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 576px) {
   .title {
     font-size: 60px;
   }
   #holiday-dropdown,
-  #weather-container {
+  #weather-container,
+  #bartender-container {
     width: 90vw;
+  }
+
+  .console-btn {
+    width: 30vw;
   }
 }
 
 @media screen and (max-width: 768px) {
-  #weather-container {
-    width: 50vw;
+  #weather-container,
+  #bartender-container {
+    width: 90vw;
   }
 }
