@@ -253,6 +253,17 @@ const holidayDropdownToggle = () => {
 };
 
 const startHolidayExperience = async (event) => {
+  $("html, body").animate(
+    {
+      scrollTop: $("#holiday-experience").offset().top,
+    },
+    800,
+    function () {
+      // Add hash (#) to URL when done scrolling (default click behavior)
+      window.location.hash = "#holiday-experience";
+    }
+  );
+
   const target = $(event.target);
   if (target.is('div[name="holiday-type"]')) {
     const holidayType = target.attr("id");
@@ -260,14 +271,19 @@ const startHolidayExperience = async (event) => {
     holidayDropdown.toggleClass("is-active");
     const displayLabel = target.attr("data-label");
     holidaySpan.text(displayLabel);
-    window.location.replace(`#${holidayType}`);
+
+    const videoPlayer = document.getElementById("my-video");
+
+    // videoPlayer.requestFullscreen();
+    videoPlayer.play();
+
     playRandomSong(holidayType);
 
-    const place = linkPlaceName(holidayType);
+    // const place = linkPlaceName(holidayType);
 
-    await renderWeatherData(place);
+    // await renderWeatherData(place);
 
-    await renderWebcamData(place);
+    // await renderWebcamData(place);
   }
 };
 
