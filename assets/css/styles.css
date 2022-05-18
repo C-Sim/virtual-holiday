@@ -39,6 +39,7 @@ body {
 #holiday-dropdown-btn {
   width: 100%;
 }
+
 /*~ css for holiday snaps html */
 
 /* page title styling */
@@ -79,13 +80,12 @@ body {
   cursor: pointer;
 }
 
-.save @media screen and (max-width: 576px) {
-#weather-container {
-  width: 25vw;
-  margin: 8px;
-}
-
 @media screen and (max-width: 576px) {
+  #weather-container {
+    width: 25vw;
+    margin: 8px;
+  }
+
   .title {
     font-size: 60px;
   }
