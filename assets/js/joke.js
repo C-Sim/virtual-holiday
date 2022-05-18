@@ -35,7 +35,7 @@ const handleButtonClick = async () => {
   console.log(headline);
   const punchline = randomJoke.punchline;
   console.log(punchline);
-  mainContainer.append(`${headline}`);
+  mainContainer.append(`${headline}${punchline}`);
 };
 
 jokeApiButton.addEventListener("click", handleButtonClick);
