@@ -47,12 +47,12 @@ body {
 .page-title {
   font-weight: bold;
   font-size: 40px;
-  margin-top: 20px;
+  margin-top: 10px;
   color: var(--selective-yellow);
 }
 
 /* card styling */
-.card {
+.hs-card {
   margin: 70px 250px;
 }
 
@@ -119,6 +119,18 @@ body {
   border-radius: 4px;
   border: none;
   padding: 8px;
+}
+
+.about-us-container {
+  margin: 8px;
+}
+
+.about-card {
+  margin: 18px auto;
+}
+
+.headshot {
+  object-fit: cover;
 }
 
 @media screen and (max-width: 576px) {
