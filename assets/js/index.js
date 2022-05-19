@@ -316,6 +316,13 @@ holidayDropdownButton.click(holidayDropdownToggle);
 
 dropdownMenu.click(startHolidayExperience);
 
+const createPostcard = () => {
+  const temperature = $("#temperature").attr("data-temperature");
+  console.log(temperature);
+};
+
+$("#holiday-snap-btn").click(createPostcard);
+
 $(document).ready(() => {
   handleNavBarToggle();
 });
