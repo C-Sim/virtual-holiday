@@ -142,7 +142,7 @@ const renderConsoleData = async (place) => {
           <div class="media-left">
          
             <figure class="image waiter-image">
-              <img src="./assets/images/${place}.jpg" alt="Waiter" />
+              <img src="./assets/images/${place}-waiter.jpg" alt="Waiter" />
             </figure>
           </div>
           <div id="welcome">Welcome to the restaurant. Can I offer you some food? Some entertainment?</div>
@@ -168,9 +168,9 @@ const renderConsoleData = async (place) => {
 };
 
 renderHolidaySnapsButton = () => {
-  mainView.append(`<button class="btn" id="holiday-snap">
+  mainView.append(`<div id="holiday-snap"><button id="holiday-snap-btn">
   Save a Holiday Snap
-</button>`);
+</button><div>`);
 };
 
 // TO DO ensure can select other holiday types in dropdown
@@ -264,7 +264,7 @@ const startHolidayExperience = async (event) => {
     const displayLabel = target.attr("data-label");
     holidaySpan.text(displayLabel);
     // window.location.replace(`#${holidayType}`);
-    playRandomSong(holidayType);
+    // playRandomSong(holidayType);
 
     const place = linkPlaceName(holidayType);
 

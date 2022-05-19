@@ -106,6 +106,19 @@ body {
   object-fit: contain;
 }
 
+#holiday-snap {
+  width: 50vw;
+  margin: 18px auto;
+}
+
+#holiday-snap-btn {
+  width: 100%;
+  background-color: var(--prussian-blue);
+  color: var(--light-cornflower-blue);
+  border-radius: 8px;
+  padding: 8px;
+}
+
 @media screen and (max-width: 576px) {
   .title {
     font-size: 60px;
