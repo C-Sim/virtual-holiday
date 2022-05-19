@@ -124,7 +124,7 @@ const renderConsoleData = async (place) => {
               </figure>
             </div>
             <div class="media-content">
-              <p class="title is-4 is-size-6-mobile" id="temperature">
+              <p class="title is-4 is-size-6-mobile" id="temperature" data-temperature="${weather.temp}">
                 ${weather.temp}&deg;C
               </p>
               <p class="subtitle is-6 is-size-7-mobile" id="humidity">
