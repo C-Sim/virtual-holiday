@@ -113,9 +113,11 @@ body {
 
 #holiday-snap-btn {
   width: 100%;
-  background-color: var(--prussian-blue);
-  color: var(--light-cornflower-blue);
-  border-radius: 8px;
+  background-color: var(--light-cornflower-blue);
+  color: var(--prussian-blue);
+  font-weight: 400;
+  border-radius: 4px;
+  border: none;
   padding: 8px;
 }
 

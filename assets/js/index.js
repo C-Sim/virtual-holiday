@@ -169,7 +169,7 @@ const renderConsoleData = async (place) => {
 
 renderHolidaySnapsButton = () => {
   mainView.append(`<div id="holiday-snap"><button id="holiday-snap-btn">
-  Save a Holiday Snap
+  Save A Holiday Snap
 </button><div>`);
 };
 
@@ -250,6 +250,7 @@ const handleNavBarToggle = () => {
 
 const holidayDropdownToggle = () => {
   holidayDropdown.toggleClass("is-active");
+  console.log("clicked");
 };
 
 const startHolidayExperience = async (event) => {
