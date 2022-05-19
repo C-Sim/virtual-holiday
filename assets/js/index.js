@@ -175,3 +175,24 @@ dropdownMenu.click(startHolidayExperience);
 $(document).ready(() => {
   handleNavBarToggle();
 });
+
+//LOCAL STORAGE
+
+const holidaySnapsObjects = [
+  {
+    label: "Temperature",
+    key: 30,
+  },
+  {
+    label: "Song",
+    key: 22,
+  },
+];
+
+const objectsString = JSON.stringify(holidaySnapsObjects);
+
+localStorage.setItem("objectsString", objectsString);
+
+const objectsParse = JSON.parse(localStorage.getItem("objectsString"));
+
+console.log(objectsParse);
