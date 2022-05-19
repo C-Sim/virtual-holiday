@@ -25,13 +25,6 @@ const linkPlaceName = (holidayType) => {
   }
 };
 
-const writeToLocalStorage = (key, value) => {
-  // stringify object value
-  const stringifiedValue = JSON.stringify(value);
-  // set value for each key within LS
-  localStorage.setItem(key, stringifiedValue);
-};
-
 const constructUrl = (baseUrl, params) => {
   const queryParams = new URLSearchParams(params).toString();
 
@@ -196,3 +189,10 @@ localStorage.setItem("objectsString", objectsString);
 const objectsParse = JSON.parse(localStorage.getItem("objectsString"));
 
 console.log(objectsParse);
+
+// const writeToLocalStorage = (key, value) => {
+//   // stringify object value
+//   const stringifiedValue = JSON.stringify(value);
+//   // set value for each key within LS
+//   localStorage.setItem(key, stringifiedValue);
+// };
