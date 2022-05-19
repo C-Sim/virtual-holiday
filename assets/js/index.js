@@ -1,6 +1,8 @@
 // CS weather API key
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
+const apiKey = "ca45ec61a4msh24fe699dc35cc23p1151b5jsn5e05295b9d8f";
+
 const mainView = $(".main-container");
 
 const consoleContainer = $("#console-container");
@@ -110,34 +112,35 @@ const renderConsoleData = async (place) => {
 
     // render current data
     mainView.append(`<div class="columns is-centered" id="console-container">
-    <div class="card column" id="weather-container">
-      <div class="card-content">
-        <div class="media">
-          <div class="media-left">
-            <figure class="image is-48x48">
-              <img
-                src="http://openweathermap.org/img/w/${weather.icon}.png"
-                alt="Weather Icon"
-              />
-            </figure>
+      <div class="card column" id="weather-container">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img
+                  src="http://openweathermap.org/img/w/${weather.icon}.png"
+                  alt="Weather Icon"
+                />
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4 is-size-6-mobile" id="temperature">
+                ${weather.temp}&deg;C
+              </p>
+              <p class="subtitle is-6 is-size-7-mobile" id="humidity">
+                Humidity: ${weather.humidity}&percnt;
+              </p>
+            </div>
           </div>
-          <div class="media-content">
-            <p class="title is-4 is-size-6-mobile" id="temperature">
-              ${weather.temp}&deg;C
-            </p>
-            <p class="subtitle is-6 is-size-7-mobile" id="humidity">
-              Humidity: ${weather.humidity}&percnt;
-            </p>
-          </div>
-        </div>
 
-        <div class="content is-size-7-mobile">
-          Set your thermostat to recreate the temperature in ${place}.
+          <div class="content is-size-7-mobile">
+            Set your thermostat to recreate the temperature in ${place}.
+          </div>
         </div>
       </div>
     </div>
     <div class="card column" id="waiter-container">
-      <div class="card-content">
+      <div class="card-content" id="bartender-card">
         <div class="media">
           <div class="media-left">
          
@@ -157,8 +160,9 @@ const renderConsoleData = async (place) => {
           </div>
         </div>
       </div>
-    </div>
-  </div>`);
+    </div>`);
+
+    $("#joke-api").click(handleButtonClick);
 
     return true;
   } catch (error) {
@@ -228,6 +232,37 @@ const renderError = () => {
   const message = "Oops, that didn't work. Please try again.";
 
   mainView.append(`<h2 class="message">${message}</h2>`);
+};
+
+const handleButtonClick = async () => {
+  // requires a URL
+  const url = "https://papajoke.p.rapidapi.com/api/jokes";
+
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Host": "papajoke.p.rapidapi.com",
+      "X-RapidAPI-Key": apiKey,
+    },
+  };
+
+  const response = await fetch(url, options);
+  const data = await response.json();
+
+  // get jokes from data
+  const jokes = data.items;
+  console.log(jokes);
+
+  const randomIndex = Math.floor(Math.random() * jokes.length);
+  console.log(randomIndex);
+  const randomJoke = jokes[randomIndex];
+  console.log(randomJoke);
+  const headline = randomJoke.headline;
+  console.log(headline);
+  const punchline = randomJoke.punchline;
+  console.log(punchline);
+  const jokeDiv = `<div>${headline} ${punchline}</div>`;
+  $("#bartender-card").append(jokeDiv);
 };
 
 const handleNavBarToggle = () => {
