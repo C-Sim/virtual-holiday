@@ -1,4 +1,17 @@
-const holidaySnapsLocalStorage = target.attr("data-label");
+const dataLabel = target.is('div[name="holiday-type"]');
+const holidaySnapsLocalStorage = dataLabel.getAttribute("data-label");
+
+// create an object with fullName and age
+const localStorageObject = [
+  {
+    label: temperature,
+    value: 30,
+  },
+  {
+    label: joke,
+    value: 30,
+  },
+];
 
 // get snaps from local storage
 const readFromLocalStorage = () => {
@@ -32,3 +45,5 @@ const renderHolidaySnaps = () => {
   renderHolidaySnaps();
   console.log(holidaySnaps);
 };
+
+holidaySnapsLocalStorage.addEventListener("click", readFromLocalStorage);
