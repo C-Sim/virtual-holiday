@@ -39,6 +39,7 @@ body {
 #holiday-dropdown-btn {
   width: 100%;
 }
+
 /*~ css for holiday snaps html */
 
 /* page title styling */
@@ -79,18 +80,65 @@ body {
   cursor: pointer;
 }
 
+#weather-container,
+#waiter-container {
+  width: 40vw;
+  margin: 8px;
+}
+
+.console-btn {
+  width: 15vw;
+  background-color: var(--prussian-blue);
+  color: var(--light-cornflower-blue);
+  border-radius: 8px;
+  padding: 8px;
+  margin: 8px;
+}
+
+.console-btn:hover {
+  cursor: pointer;
+  color: var(--selective-yellow);
+}
+
+.waiter-image {
+  height: 20vh;
+  width: 10vw;
+  object-fit: contain;
+}
+
+#holiday-snap {
+  width: 50vw;
+  margin: 18px auto;
+}
+
+#holiday-snap-btn {
+  width: 100%;
+  background-color: var(--light-cornflower-blue);
+  color: var(--prussian-blue);
+  font-weight: 400;
+  border-radius: 4px;
+  border: none;
+  padding: 8px;
+}
+
 @media screen and (max-width: 576px) {
   .title {
     font-size: 60px;
   }
   #holiday-dropdown,
-  #weather-container {
+  #weather-container,
+  #waiter-container {
     width: 90vw;
+  }
+
+  .console-btn {
+    width: 30vw;
   }
 }
 
 @media screen and (max-width: 768px) {
-  #weather-container {
-    width: 50vw;
+  #weather-container,
+  #waiter-container {
+    width: 90vw;
   }
 }

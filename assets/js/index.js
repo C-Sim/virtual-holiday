@@ -1,9 +1,15 @@
 // CS weather API key
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
+const mainView = $(".main-container");
+
+const consoleContainer = $("#console-container");
+
 const weatherContainer = $("#weather-container");
 
 const tempContainer = $("#temperature");
+
+const waiterContainer = $("#waiter-container");
 
 const holidayDropdownButton = $("#holiday-dropdown-btn");
 
@@ -12,6 +18,23 @@ const holidayDropdown = $("#holiday-dropdown");
 const dropdownMenu = $("#dropdown-menu");
 
 const holidaySpan = $("#holiday-span");
+
+const welcome = $("#welcome");
+
+// const typewriter = new Typewriter(welcome, {
+//   loop: true,
+// });
+
+// typewriter
+//   .typeString("Welcome to the restaurant.")
+//   .pauseFor(2500)
+//   .deleteAll()
+//   .typeString("Can I offer you some food?")
+//   .pauseFor(2500)
+//   .deleteChars(11)
+//   .typeString("some entertainment?")
+//   .pauseFor(2500)
+//   .start();
 
 const linkPlaceName = (holidayType) => {
   if (holidayType === "beach") {
@@ -80,36 +103,60 @@ const fetchWeatherData = async (place) => {
   };
 };
 
-const renderWeatherData = async (place) => {
+const renderConsoleData = async (place) => {
   try {
     // fetch weather data
     const weather = await fetchWeatherData(place);
 
-    // empty container
-    weatherContainer.empty();
-
     // render current data
-    weatherContainer.append(`<div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image is-48x48">
-          <img
-            src="http://openweathermap.org/img/w/${weather.icon}.png"
-            alt="Weather Icon"
-          />
-        </figure>
-      </div>
-      <div class="media-content">
-        <p class="title is-4 is-size-6-mobile" id="temperature">${weather.temp}&deg;C</p>
-        <p class="subtitle is-6 is-size-7-mobile" id="humidity">
-          Humidity: ${weather.humidity}&percnt;
-        </p>
+    mainView.append(`<div class="columns is-centered" id="console-container">
+    <div class="card column" id="weather-container">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <img
+                src="http://openweathermap.org/img/w/${weather.icon}.png"
+                alt="Weather Icon"
+              />
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4 is-size-6-mobile" id="temperature">
+              ${weather.temp}&deg;C
+            </p>
+            <p class="subtitle is-6 is-size-7-mobile" id="humidity">
+              Humidity: ${weather.humidity}&percnt;
+            </p>
+          </div>
+        </div>
+
+        <div class="content is-size-7-mobile">
+          Set your thermostat to recreate the temperature in ${place}.
+        </div>
       </div>
     </div>
+    <div class="card column" id="waiter-container">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+         
+            <figure class="image waiter-image">
+              <img src="./assets/images/${place}-waiter.jpg" alt="Waiter" />
+            </figure>
+          </div>
+          <div id="welcome">Welcome to the restaurant. Can I offer you some food? Some entertainment?</div>
 
-    <div class="content is-size-7-mobile">
-      Set your thermostat to recreate the temperature in
-      ${place}.
+          <div class="media-content waiter-buttons">
+            <button class="console-btn" id="joke-api">
+              Tell Me A Joke
+            </button>
+            <button class="console-btn" id="offer-snack">
+              Offer Me A Snack
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>`);
 
@@ -120,13 +167,67 @@ const renderWeatherData = async (place) => {
   }
 };
 
-const renderError = () => {
-  //    remove existing data from container
-  tempContainer.empty();
+renderHolidaySnapsButton = () => {
+  mainView.append(`<div id="holiday-snap"><button id="holiday-snap-btn">
+  Save A Holiday Snap
+</button><div>`);
+};
 
+// TO DO ensure can select other holiday types in dropdown
+moveDropdown = (displayLabel) => {
+  mainView.append(`<div class="is-flex is-justify-content-center">
+  <div class="dropdown" id="holiday-dropdown">
+    <div class="dropdown-trigger">
+      <button
+        class="button"
+        aria-haspopup="true"
+        aria-controls="dropdown-menu"
+        id="holiday-dropdown-btn"
+      >
+        <span id="holiday-span">${displayLabel}</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+      <div class="dropdown-content">
+        <div
+          name="holiday-type"
+          class="dropdown-item is-clickable"
+          id="beach"
+          data-label="Beach Holiday"
+        >
+          Beach Holiday
+        </div>
+        <hr class="dropdown-divider" />
+        <div
+          name="holiday-type"
+          class="dropdown-item is-clickable"
+          id="cityBreak"
+          data-label="City Break"
+        >
+          City Break
+        </div>
+        <hr class="dropdown-divider" />
+        <div
+          name="holiday-type"
+          class="dropdown-item is-clickable"
+          id="ski"
+          data-label="Ski Trip"
+        >
+          Ski Trip
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`);
+};
+
+const renderError = () => {
   const message = "Oops, that didn't work. Please try again.";
 
-  tempContainer.append(`<h2 class="message">${message}</h2>`);
+  mainView.append(`<h2 class="message">${message}</h2>`);
 };
 
 const handleNavBarToggle = () => {
@@ -149,22 +250,30 @@ const handleNavBarToggle = () => {
 
 const holidayDropdownToggle = () => {
   holidayDropdown.toggleClass("is-active");
+  console.log("clicked");
 };
 
 const startHolidayExperience = async (event) => {
   const target = $(event.target);
+
+  mainView.empty();
+
   if (target.is('div[name="holiday-type"]')) {
     const holidayType = target.attr("id");
 
     holidayDropdown.toggleClass("is-active");
     const displayLabel = target.attr("data-label");
     holidaySpan.text(displayLabel);
-    window.location.replace(`#${holidayType}`);
-    playRandomSong(holidayType);
+    // window.location.replace(`#${holidayType}`);
+    // playRandomSong(holidayType);
 
     const place = linkPlaceName(holidayType);
 
-    await renderWeatherData(place);
+    await renderConsoleData(place);
+
+    renderHolidaySnapsButton();
+
+    moveDropdown(displayLabel);
   }
 };
 
