@@ -23,6 +23,8 @@ const holidaySpan = $("#holiday-span");
 
 const welcome = $("#welcome");
 
+//const holidaySnapBtn = $("#holiday-snap-btn");
+
 // const typewriter = new Typewriter(welcome, {
 //   loop: true,
 // });
