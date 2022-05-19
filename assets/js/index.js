@@ -93,7 +93,7 @@ const renderWeatherData = async (place) => {
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-4 is-size-6-mobile" id="temperature">${weather.temp}&deg;C</p>
+        <p class="title is-4 is-size-6-mobile" id="temperature" data-temperature="${weather.temp}">${weather.temp}&deg;C</p>
         <p class="subtitle is-6 is-size-7-mobile" id="humidity">
           Humidity: ${weather.humidity}&percnt;
         </p>
@@ -153,7 +153,7 @@ const startHolidayExperience = async (event) => {
     const displayLabel = target.attr("data-label");
     holidaySpan.text(displayLabel);
     window.location.replace(`#${holidayType}`);
-    playRandomSong(holidayType);
+    //playRandomSong(holidayType);
 
     const place = linkPlaceName(holidayType);
 
@@ -165,34 +165,41 @@ holidayDropdownButton.click(holidayDropdownToggle);
 
 dropdownMenu.click(startHolidayExperience);
 
+const createPostcard = () => {
+  const temperature = $("#temperature").attr("data-temperature");
+  console.log(temperature);
+};
+
+$("#create-postcard-btn").click(createPostcard);
+
 $(document).ready(() => {
   handleNavBarToggle();
 });
 
-//LOCAL STORAGE
+// //LOCAL STORAGE
 
-const holidaySnapsObjects = [
-  {
-    label: "Temperature",
-    key: 30,
-  },
-  {
-    label: "Song",
-    key: 22,
-  },
-];
+// const holidaySnapsObjects = [
+//   {
+//     label: "Temperature",
+//     key: 30,
+//   },
+//   {
+//     label: "Song",
+//     key: 22,
+//   },
+// ];
 
-const objectsString = JSON.stringify(holidaySnapsObjects);
+// const objectsString = JSON.stringify(holidaySnapsObjects);
 
-localStorage.setItem("objectsString", objectsString);
+// localStorage.setItem("objectsString", objectsString);
 
-const objectsParse = JSON.parse(localStorage.getItem("objectsString"));
+// const objectsParse = JSON.parse(localStorage.getItem("objectsString"));
 
-console.log(objectsParse);
+// console.log(objectsParse);
 
-// const writeToLocalStorage = (key, value) => {
-//   // stringify object value
-//   const stringifiedValue = JSON.stringify(value);
-//   // set value for each key within LS
-//   localStorage.setItem(key, stringifiedValue);
-// };
+// // const writeToLocalStorage = (key, value) => {
+// //   // stringify object value
+// //   const stringifiedValue = JSON.stringify(value);
+// //   // set value for each key within LS
+// //   localStorage.setItem(key, stringifiedValue);
+// // };

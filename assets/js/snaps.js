@@ -1,6 +1,3 @@
-const dataLabel = target.is('div[name="holiday-type"]');
-const holidaySnapsLocalStorage = dataLabel.getAttribute("data-label");
-
 // create an object with fullName and age
 const localStorageObject = [
   {
