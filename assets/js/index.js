@@ -3,11 +3,13 @@ const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
 const mainView = $(".main-container");
 
+const consoleContainer = $("#console-container");
+
 const weatherContainer = $("#weather-container");
 
 const tempContainer = $("#temperature");
 
-const bartenderContainer = $("#bartender-container");
+const waiterContainer = $("#waiter-container");
 
 const holidayDropdownButton = $("#holiday-dropdown-btn");
 
@@ -16,6 +18,23 @@ const holidayDropdown = $("#holiday-dropdown");
 const dropdownMenu = $("#dropdown-menu");
 
 const holidaySpan = $("#holiday-span");
+
+const welcome = $("#welcome");
+
+// const typewriter = new Typewriter(welcome, {
+//   loop: true,
+// });
+
+// typewriter
+//   .typeString("Welcome to the restaurant.")
+//   .pauseFor(2500)
+//   .deleteAll()
+//   .typeString("Can I offer you some food?")
+//   .pauseFor(2500)
+//   .deleteChars(11)
+//   .typeString("some entertainment?")
+//   .pauseFor(2500)
+//   .start();
 
 const linkPlaceName = (holidayType) => {
   if (holidayType === "beach") {
@@ -84,8 +103,6 @@ const fetchWeatherData = async (place) => {
   };
 };
 
-const consoleContainer = $("#console-container");
-
 const renderConsoleData = async (place) => {
   try {
     // fetch weather data
@@ -119,20 +136,23 @@ const renderConsoleData = async (place) => {
         </div>
       </div>
     </div>
-    <div class="card column" id="bartender-container">
+    <div class="card column" id="waiter-container">
       <div class="card-content">
         <div class="media">
           <div class="media-left">
-            <figure class="image bartender-image">
-              <img src="./assets/images/${place}.jpg" alt="Bartender" />
+         
+            <figure class="image waiter-image">
+              <img src="./assets/images/${place}.jpg" alt="Waiter" />
             </figure>
           </div>
-          <div class="media-content bartender-buttons">
+          <div id="welcome">Welcome to the restaurant. Can I offer you some food? Some entertainment?</div>
+
+          <div class="media-content waiter-buttons">
             <button class="console-btn" id="joke-api">
               Tell Me A Joke
             </button>
-            <button class="console-btn" id="offer-drink">
-              Offer Me A Drink
+            <button class="console-btn" id="offer-snack">
+              Offer Me A Snack
             </button>
           </div>
         </div>
@@ -145,6 +165,12 @@ const renderConsoleData = async (place) => {
     renderError();
     return false;
   }
+};
+
+renderHolidaySnapsButton = () => {
+  mainView.append(`<button class="btn" id="holiday-snap">
+  Save a Holiday Snap
+</button>`);
 };
 
 // TO DO ensure can select other holiday types in dropdown
@@ -243,6 +269,8 @@ const startHolidayExperience = async (event) => {
     const place = linkPlaceName(holidayType);
 
     await renderConsoleData(place);
+
+    renderHolidaySnapsButton();
 
     moveDropdown(displayLabel);
   }
