@@ -176,43 +176,51 @@ const renderWebcamData = async (place) => {
     webcamContainer.empty();
 
     // render current data
-    main.append(`<div id="webcam-section">
-    <h1 class="webcam-title">
-      LIVE Webcam/Footage <i class="fa fa-camera"></i>
-    </h1>
-    <div class="section">
-      <div class="container">
-        <div class="columns">
-          <div class="column">
-            <div class="card">
-              <div class="card-image">
-                <figure class="image is-100vwx100vw">
-                  <img
-                    src="./assets/images/hawaii-in-pictures-beautiful-places-to-photograph-diamond-head-oahu.jpeg"
-                    alt="Placeholder image"
-                  />
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="content">
-                  <h4 class="locationtitle">
-                    <i class="fas fa-map-marker-alt"></i> Hawaii
-                  </h4>
-                  <p>
-                    It is well known that Hawaii features some of the best
-                    beaches in the world, but the love for the Hawaiian
-                    Islands is also found in awe-inspiring waterfalls,
-                    bustling nightlife.Take a peek at this webcam of
-                    Hawaii for a small taste of it.
-                  </p>
-                </div>
-              </div>
-            </div>
+    webcamContainer.append(`<div class="section">
+      <div class="card webcam-card">
+        <div class="card-video">
+          <video
+            id="my-video"
+            class="video-js"
+            muted
+            loop
+            preload="auto"
+            width="900"
+            height="450"
+            poster="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173"
+            data-setup='{"aspectRatio":"16:9", "fluid": true}'
+          >
+            <source
+              src="./assets/videos/holiday-1.mp4"
+              type="video/mp4"
+            />
+            <p class="vjs-no-js">
+              To view this video please enable JavaScript, and consider
+              upgrading to a web browser that
+              <a
+                href="https://videojs.com/html5-video-support/"
+                target="_blank"
+                >supports HTML5 video</a
+              >
+            </p>
+          </video>
+        </div>
+        <div class="card-content">
+          <div class="content">
+            <h4 class="location-title">
+              <i class="fas fa-map-marker-alt"></i> Hawaii
+            </h4>
+            <p>
+              It is well known that Hawaii features some of the best
+              beaches in the world, but the love for the Hawaiian Islands
+              is also found in awe-inspiring waterfalls, bustling
+              nightlife. Take a peek at this webcam of Hawaii for a small
+              taste of it.
+            </p>
           </div>
         </div>
       </div>
-    </div>
-  </div>`);
+    </div>`);
 
     return true;
   } catch (error) {
