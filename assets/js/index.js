@@ -112,7 +112,7 @@ const renderConsoleData = async (place) => {
 
     // render current data
     mainView.append(`<div class="columns is-centered" id="console-container">
-      <div class="card column" id="weather-container">
+      <div class="card column is-centered is-full-width-mobile is-half" id="weather-container">
         <div class="card-content">
           <div class="media">
             <div class="media-left">
@@ -138,14 +138,14 @@ const renderConsoleData = async (place) => {
           </div>
         </div>
       </div>
-    </div>
-    <div class="card column" id="waiter-container">
+    
+    <div class="card column is-centered is-full-width-mobile is-half" id="waiter-container">
       <div class="card-content" id="bartender-card">
         <div class="media">
           <div class="media-left">
          
-            <figure class="image waiter-image">
-              <img src="./assets/images/${place}-waiter.jpg" alt="Waiter" />
+            <figure class="image is-5by4 waiter-image">
+              <img class="is-rounded" src="./assets/images/${place}-waiter.jpg" alt="Waiter" />
             </figure>
           </div>
           <div id="welcome">Welcome to the restaurant. Can I offer you some food? Some entertainment?</div>
@@ -160,6 +160,7 @@ const renderConsoleData = async (place) => {
           </div>
         </div>
       </div>
+    </div>
     </div>`);
 
     $("#joke-api").click(handleButtonClick);

@@ -80,12 +80,6 @@ body {
   cursor: pointer;
 }
 
-#weather-container,
-#waiter-container {
-  width: 40vw;
-  margin: 8px;
-}
-
 .console-btn {
   width: 15vw;
   background-color: var(--prussian-blue);
@@ -103,7 +97,7 @@ body {
 .waiter-image {
   height: 20vh;
   width: 10vw;
-  object-fit: contain;
+  object-fit: scale-down;
 }
 
 #holiday-snap {
@@ -138,19 +132,11 @@ body {
     font-size: 60px;
   }
   #holiday-dropdown,
-  #weather-container,
-  #waiter-container {
+  #holiday-snap {
     width: 90vw;
   }
 
   .console-btn {
     width: 30vw;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  #weather-container,
-  #waiter-container {
-    width: 90vw;
   }
 }
