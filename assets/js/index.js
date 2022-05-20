@@ -228,6 +228,7 @@ moveDropdown = (displayLabel) => {
     </div>
   </div>
 </div>`);
+//targets the holiday snap button
   $("#holiday-snap-btn").click(createPostcard);
 };
 
