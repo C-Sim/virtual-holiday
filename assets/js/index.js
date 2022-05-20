@@ -320,8 +320,10 @@ holidayDropdownButton.click(holidayDropdownToggle);
 dropdownMenu.click(startHolidayExperience);
 
 const createPostcard = () => {
+  // takes the current temperature for holiday type
   const temperature = $("#temperature").attr("data-temperature");
   console.log(temperature);
+  // takes the location for the holiday type
   const location = $("#place").attr("data-place");
   console.log(location);
 };
