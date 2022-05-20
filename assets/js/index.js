@@ -5,6 +5,8 @@ const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 // webcam api
 const webcam_API_KEY = "YIN80HzTzxRw2dQuGfLYh6Cu3K9miN5E";
 
+const snacks_API_KEY = "a03019689amshf53ea6e702883adp12db0ajsnb0cacc3b0328"
+
 const weatherContainer = $("#weather-container");
 
 const webcamDiv = $("#webcam-section");
@@ -281,7 +283,31 @@ const startHolidayExperience = async (event) => {
 
 // snacks api fetch function
 const snacks = () => {
-  console.log("button working ");
+  try {
+    // make request to API
+    const data = await fetch(
+      "https://pizza-and-desserts.p.rapidapi.com/desserts",
+      {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Host": "pizza-and-desserts.p.rapidapi.com",
+          "X-RapidAPI-Key": snacks_API_KEY,
+        },
+      }
+    );
+    if (data.status === 200) {
+      // if successful display date
+      const response = await data.json();
+      getRandomFood(response);
+      // throw error
+    } else {
+      throw new Error("something went wrong");
+    }
+  } catch (error) {
+    // throw log error
+    console.log(error);
+  }
+
 };
 
 // Event listener for snacks button
