@@ -162,8 +162,8 @@ const renderConsoleData = async (place) => {
     const weather = await fetchWeatherData(place);
 
     // render current data
-    mainView.append(`<div class="columns is-mobile is-centered" id="console-container">
-      <div class="card column is-centered is-three-quarters-mobile is-half" id="weather-container">
+    mainView.append(`<div class="columns is-centered" id="console-container">
+      <div class="card column is-centered is-half" id="weather-container">
         <div class="card-content">
           <div class="media">
             <div class="media-left">
@@ -190,7 +190,7 @@ const renderConsoleData = async (place) => {
         </div>
       </div>
     
-    <div class="card column is-centered is-full-width-mobile is-half" id="waiter-container">
+    <div class="card column is-centered is-half" id="waiter-container">
       <div class="card-content" id="bartender-card">
         <div class="media">
           <div class="media-left">

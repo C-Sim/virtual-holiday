@@ -152,7 +152,9 @@ body {
     font-size: 60px;
   }
   #holiday-dropdown,
-  #holiday-snap {
+  #holiday-snap,
+  #weather-container,
+  #waiter-container {
     width: 90vw;
   }
 
