@@ -179,6 +179,7 @@ renderHolidaySnapsButton = () => {
 };
 
 // TO DO ensure can select other holiday types in dropdown
+// TO DO render waiter text using typewriter function
 moveDropdown = (displayLabel) => {
   mainView.append(`<div class="is-flex is-justify-content-center">
   <div class="dropdown" id="holiday-dropdown">
@@ -263,6 +264,9 @@ const handleButtonClick = async () => {
   const punchline = randomJoke.punchline;
   console.log(punchline);
   const jokeDiv = `<div>${headline} ${punchline}</div>`;
+
+  // jokeDiv.empty();
+
   $("#bartender-card").append(jokeDiv);
 };
 
@@ -301,7 +305,7 @@ const startHolidayExperience = async (event) => {
     const displayLabel = target.attr("data-label");
     holidaySpan.text(displayLabel);
     // window.location.replace(`#${holidayType}`);
-    // playRandomSong(holidayType);
+    playRandomSong(holidayType);
 
     const place = linkPlaceName(holidayType);
 
