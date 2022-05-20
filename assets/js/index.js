@@ -1,3 +1,4 @@
+// DECLARATIONS
 // CS weather API key
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
@@ -21,6 +22,8 @@ const holidayDropdown = $("#holiday-dropdown");
 const dropdownMenu = $("#dropdown-menu");
 
 const holidaySpan = $("#holiday-span");
+
+const generateSnacksBtn = $("#snacks-button");
 
 const linkPlaceName = (holidayType) => {
   if (holidayType === "beach") {
@@ -275,6 +278,14 @@ const startHolidayExperience = async (event) => {
     videoPlayer.play();
   }
 };
+
+// snacks api fetch function
+const snacks = () => {
+  console.log("button working ");
+};
+
+// Event listener for snacks button
+generateSnacksBtn.click(snacks);
 
 holidayDropdownButton.click(holidayDropdownToggle);
 
