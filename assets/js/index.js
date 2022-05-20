@@ -286,6 +286,8 @@ const startHolidayExperience = async (event) => {
 // get random snack in the array
 const getRandomSnacks = (response) => {
   const randomSnack = Math.floor(Math.random() * response.length);
+  // target the div where text appears
+  snacksDiv.append(`<p>${response[randomSnack].name}</p>`);
 };
 
 // snacks api fetch function
