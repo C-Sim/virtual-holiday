@@ -40,7 +40,7 @@ body {
   width: 100%;
 }
 
-/*~ css for holiday snaps html */
+/* holiday snaps page styling */
 
 /* page title styling */
 
@@ -79,6 +79,20 @@ body {
 .btn a:hover {
   cursor: pointer;
 }
+
+/* webcam section styling */
+
+.card-video {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.location-title {
+  text-align: center;
+}
+
+/* weather section styling */
 
 #weather-container,
 #waiter-container {

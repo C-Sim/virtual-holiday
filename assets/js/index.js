@@ -22,12 +22,6 @@ const dropdownMenu = $("#dropdown-menu");
 
 const holidaySpan = $("#holiday-span");
 
-// const countryToCountryCodeMapper = {
-//   Jamaica: "JM",
-//   Singapore: "SG",
-//   Andorra: "AD",
-// };
-
 const linkPlaceName = (holidayType) => {
   if (holidayType === "beach") {
     return "Jamaica";
