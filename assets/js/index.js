@@ -1,17 +1,18 @@
 // CS weather API key
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
-const apiKey = "ca45ec61a4msh24fe699dc35cc23p1151b5jsn5e05295b9d8f";
-
-const mainView = $(".main-container");
-
-const consoleContainer = $("#console-container");
+// webcam api
+const webcam_API_KEY = "YIN80HzTzxRw2dQuGfLYh6Cu3K9miN5E";
 
 const weatherContainer = $("#weather-container");
 
-const tempContainer = $("#temperature");
+const webcamDiv = $("#webcam-section");
 
-const waiterContainer = $("#waiter-container");
+const webcamContainer = $("#holiday-experience");
+
+const mainView = $(".main-container");
+
+const tempContainer = $("#temperature");
 
 const holidayDropdownButton = $("#holiday-dropdown-btn");
 
@@ -20,23 +21,6 @@ const holidayDropdown = $("#holiday-dropdown");
 const dropdownMenu = $("#dropdown-menu");
 
 const holidaySpan = $("#holiday-span");
-
-const welcome = $("#welcome");
-
-// const typewriter = new Typewriter(welcome, {
-//   loop: true,
-// });
-
-// typewriter
-//   .typeString("Welcome to the restaurant.")
-//   .pauseFor(2500)
-//   .deleteAll()
-//   .typeString("Can I offer you some food?")
-//   .pauseFor(2500)
-//   .deleteChars(11)
-//   .typeString("some entertainment?")
-//   .pauseFor(2500)
-//   .start();
 
 const linkPlaceName = (holidayType) => {
   if (holidayType === "beach") {
@@ -105,64 +89,72 @@ const fetchWeatherData = async (place) => {
   };
 };
 
-const renderConsoleData = async (place) => {
+const fetchWebcamData = async (place) => {
+  // use API to fetch current weather data
+  const countryCode = countryToCountryCodeMapper[place];
+  const currentWebcamUrl = constructUrl(
+    `https://webcamstravel.p.rapidapi.com/webcams/list/country=${countryCode}`,
+    {
+      lang: "en",
+      show: "webcams:image,url,player",
+    }
+  );
+  console.log(currentWebcamUrl);
+
+  // await fetch response
+  const currentData = await fetchData(currentWebcamUrl, {
+    headers: {
+      "X-RapidAPI-Host": "webcamstravel.p.rapidapi.com",
+      "X-RapidAPI-Key": "15da2cff6amshd1d5cc2632e414ep10847cjsn54d431a7a66e",
+    },
+  });
+
+  console.log(currentData);
+  // get temperature for place
+  // const temp = currentData?.main?.temp || "";
+  // const humidity = currentData?.main?.humidity || "";
+  // const weatherIcon = currentData?.weather[0].icon || "";
+
+  // // return data retrieved from api
+  // return {
+  //   temp: temp,
+  //   humidity: humidity,
+  //   icon: weatherIcon,
+  // };
+};
+
+const renderWeatherData = async (place) => {
   try {
     // fetch weather data
     const weather = await fetchWeatherData(place);
 
-    // render current data
-    mainView.append(`<div class="columns is-centered" id="console-container">
-      <div class="card column" id="weather-container">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-48x48">
-                <img
-                  src="http://openweathermap.org/img/w/${weather.icon}.png"
-                  alt="Weather Icon"
-                />
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-4 is-size-6-mobile" id="temperature">
-                ${weather.temp}&deg;C
-              </p>
-              <p class="subtitle is-6 is-size-7-mobile" id="humidity">
-                Humidity: ${weather.humidity}&percnt;
-              </p>
-            </div>
-          </div>
+    // empty container
+    weatherContainer.empty();
 
-          <div class="content is-size-7-mobile">
-            Set your thermostat to recreate the temperature in ${place}.
-          </div>
-        </div>
+    // render current data
+    weatherContainer.append(`<div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img
+            src="http://openweathermap.org/img/w/${weather.icon}.png"
+            alt="Weather Icon"
+          />
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4 is-size-6-mobile" id="temperature">${weather.temp}&deg;C</p>
+        <p class="subtitle is-6 is-size-7-mobile" id="humidity">
+          Humidity: ${weather.humidity}&percnt;
+        </p>
       </div>
     </div>
-    <div class="card column" id="waiter-container">
-      <div class="card-content" id="bartender-card">
-        <div class="media">
-          <div class="media-left">
-         
-            <figure class="image waiter-image">
-              <img src="./assets/images/${place}-waiter.jpg" alt="Waiter" />
-            </figure>
-          </div>
-          <div id="welcome">Welcome to the restaurant. Can I offer you some food? Some entertainment?</div>
 
-          <div class="media-content waiter-buttons">
-            <button class="console-btn" id="joke-api">
-              Tell Me A Joke
-            </button>
-            <button class="console-btn" id="offer-snack">
-              Offer Me A Snack
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>`);
-
-    $("#joke-api").click(handleButtonClick);
+    <div class="content is-size-7-mobile">
+      Set your thermostat to recreate the temperature in
+      ${place}.
+    </div>
+  </div>`);
 
     return true;
   } catch (error) {
@@ -171,98 +163,60 @@ const renderConsoleData = async (place) => {
   }
 };
 
-renderHolidaySnapsButton = () => {
-  mainView.append(`<div id="holiday-snap"><button id="holiday-snap-btn">
-  Save A Holiday Snap
-</button><div>`);
-};
-
-// TO DO ensure can select other holiday types in dropdown
-moveDropdown = (displayLabel) => {
-  mainView.append(`<div class="is-flex is-justify-content-center">
-  <div class="dropdown" id="holiday-dropdown">
-    <div class="dropdown-trigger">
-      <button
-        class="button"
-        aria-haspopup="true"
-        aria-controls="dropdown-menu"
-        id="holiday-dropdown-btn"
-      >
-        <span id="holiday-span">${displayLabel}</span>
-        <span class="icon is-small">
-          <i class="fas fa-angle-down" aria-hidden="true"></i>
-        </span>
-      </button>
-    </div>
-    <div class="dropdown-menu" id="dropdown-menu" role="menu">
-      <div class="dropdown-content">
-        <div
-          name="holiday-type"
-          class="dropdown-item is-clickable"
-          id="beach"
-          data-label="Beach Holiday"
-        >
-          Beach Holiday
-        </div>
-        <hr class="dropdown-divider" />
-        <div
-          name="holiday-type"
-          class="dropdown-item is-clickable"
-          id="cityBreak"
-          data-label="City Break"
-        >
-          City Break
-        </div>
-        <hr class="dropdown-divider" />
-        <div
-          name="holiday-type"
-          class="dropdown-item is-clickable"
-          id="ski"
-          data-label="Ski Trip"
-        >
-          Ski Trip
-        </div>
-      </div>
-    </div>
-  </div>
-</div>`);
+// fn to render webcam on page after drop down click
+const renderWebcamData = (place) => {
+  // append the html on to the page with correct webcam
+  mainView.append(`<section class="packages" id="holiday-experience">
+ <div id="webcam-section">
+   <div class="section">
+     <div class="card webcam-card">
+       <div class="card-video">
+         <video
+           id="my-video"
+           class="video-js"
+           muted
+           loop
+           preload="auto"
+           width="900"
+           height="450"
+           poster="./assets/images/${place}.jpg"
+           data-setup='{"aspectRatio":"16:9", "fluid": true}'
+         >
+           <source 
+             src="./assets/videos/${place}.mp4"
+             type="video/mp4"
+           />
+           <p class="vjs-no-js">
+             To view this video please enable JavaScript, and consider
+             upgrading to a web browser that
+             <a
+               href="https://videojs.com/html5-video-support/"
+               target="_blank"
+               >supports HTML5 video</a
+             >
+           </p>
+         </video>
+       </div>
+       <div class="card-content">
+         <div class="content">
+           <h4 class="location-title">
+             <i class="fas fa-map-marker-alt"></i> ${place}
+           </h4>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</section>`);
 };
 
 const renderError = () => {
+  //    remove existing data from container
+  tempContainer.empty();
+
   const message = "Oops, that didn't work. Please try again.";
 
-  mainView.append(`<h2 class="message">${message}</h2>`);
-};
-
-const handleButtonClick = async () => {
-  // requires a URL
-  const url = "https://papajoke.p.rapidapi.com/api/jokes";
-
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Host": "papajoke.p.rapidapi.com",
-      "X-RapidAPI-Key": apiKey,
-    },
-  };
-
-  const response = await fetch(url, options);
-  const data = await response.json();
-
-  // get jokes from data
-  const jokes = data.items;
-  console.log(jokes);
-
-  const randomIndex = Math.floor(Math.random() * jokes.length);
-  console.log(randomIndex);
-  const randomJoke = jokes[randomIndex];
-  console.log(randomJoke);
-  const headline = randomJoke.headline;
-  console.log(headline);
-  const punchline = randomJoke.punchline;
-  console.log(punchline);
-  const jokeDiv = `<div>${headline} ${punchline}</div>`;
-  $("#bartender-card").append(jokeDiv);
+  tempContainer.append(`<h2 class="message">${message}</h2>`);
 };
 
 const handleNavBarToggle = () => {
@@ -285,30 +239,40 @@ const handleNavBarToggle = () => {
 
 const holidayDropdownToggle = () => {
   holidayDropdown.toggleClass("is-active");
-  console.log("clicked");
 };
 
 const startHolidayExperience = async (event) => {
+  // $("html, body").animate(
+  //   {
+  //     scrollTop: $("#holiday-experience").offset().top,
+  //   },
+  //   800,
+  //   function () {
+  //     // Add hash (#) to URL when done scrolling (default click behavior)
+  //     window.location.hash = "#holiday-experience";
+  //   }
+  // );
+
   const target = $(event.target);
-
-  mainView.empty();
-
   if (target.is('div[name="holiday-type"]')) {
     const holidayType = target.attr("id");
 
     holidayDropdown.toggleClass("is-active");
     const displayLabel = target.attr("data-label");
     holidaySpan.text(displayLabel);
-    // window.location.replace(`#${holidayType}`);
-    // playRandomSong(holidayType);
+
+    playRandomSong(holidayType);
 
     const place = linkPlaceName(holidayType);
 
-    await renderConsoleData(place);
+    await renderWeatherData(place);
 
-    renderHolidaySnapsButton();
+    renderWebcamData(place);
 
-    moveDropdown(displayLabel);
+    const videoPlayer = document.getElementById("my-video");
+
+    // videoPlayer.requestFullscreen();
+    videoPlayer.play();
   }
 };
 
