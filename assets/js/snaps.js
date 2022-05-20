@@ -41,10 +41,19 @@
 //   recentSnaps.empty();
 //   renderHolidaySnaps();
 //   console.log(holidaySnaps);
+// // };
+
+// // holidaySnapsLocalStorage.addEventListener("click", readFromLocalStorage);
+
+// const getDataFromLS = () => {
+//   //get data from ls by keyname
+//   //if null set local storage with default value {} return {}
+//   // else return the parsed data from LS
 // };
 
-// holidaySnapsLocalStorage.addEventListener("click", readFromLocalStorage);
+// const handleSubmit = function (event) {
+//   //get data from LS
+//   const postcardItems = getDataFromLS();
+// };
 
-const getDataFromLS = () => {
-  //get data from ls by keyname
-};
+// window.addEventListener("load", handleLoad);
