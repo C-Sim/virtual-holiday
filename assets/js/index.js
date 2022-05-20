@@ -228,7 +228,7 @@ moveDropdown = (displayLabel) => {
     </div>
   </div>
 </div>`);
-//targets the holiday snap button
+  //targets the holiday snap button
   $("#holiday-snap-btn").click(createPostcard);
 };
 
@@ -327,6 +327,9 @@ const createPostcard = () => {
   // takes the location for the holiday type
   const location = $("#place").attr("data-place");
   console.log(location);
+
+  localStorage.setItem(temperature, location);
+  console.log(localStorage);
 };
 
 $(document).ready(() => {
