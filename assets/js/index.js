@@ -135,7 +135,7 @@ const renderConsoleData = async (place) => {
             </div>
           </div>
 
-          <div class="content is-size-7-mobile">
+          <div class="content is-size-7-mobile" id="place" data-place="${place}">
             Set your thermostat to recreate the temperature in ${place}.
           </div>
         </div>
@@ -322,6 +322,8 @@ dropdownMenu.click(startHolidayExperience);
 const createPostcard = () => {
   const temperature = $("#temperature").attr("data-temperature");
   console.log(temperature);
+  const location = $("#place").attr("data-place");
+  console.log(location);
 };
 
 $(document).ready(() => {
