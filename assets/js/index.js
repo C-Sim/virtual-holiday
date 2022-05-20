@@ -228,6 +228,7 @@ moveDropdown = (displayLabel) => {
     </div>
   </div>
 </div>`);
+  $("#holiday-snap-btn").click(createPostcard);
 };
 
 const renderError = () => {
@@ -322,8 +323,6 @@ const createPostcard = () => {
   const temperature = $("#temperature").attr("data-temperature");
   console.log(temperature);
 };
-
-$("#holiday-snap-btn").click(createPostcard);
 
 $(document).ready(() => {
   handleNavBarToggle();
