@@ -52,13 +52,6 @@ const linkPlaceName = (holidayType) => {
   }
 };
 
-const writeToLocalStorage = (key, value) => {
-  // stringify object value
-  const stringifiedValue = JSON.stringify(value);
-  // set value for each key within LS
-  localStorage.setItem(key, stringifiedValue);
-};
-
 const constructUrl = (baseUrl, params) => {
   const queryParams = new URLSearchParams(params).toString();
 
@@ -328,8 +321,17 @@ const createPostcard = () => {
   const location = $("#place").attr("data-place");
   console.log(location);
 
-  localStorage.setItem("temperature", temperature);
-  localStorage.setItem("location", location);
+  const postcard = {
+    location,
+    temperature,
+  };
+
+  const postcards = readFromLocalStorage("postcards", []);
+
+  postcards.push(postcard);
+
+  writeToLocalStorage("postcards", postcards);
+
   console.log(localStorage);
 };
 
