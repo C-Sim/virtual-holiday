@@ -210,6 +210,7 @@ const renderConsoleData = async (place) => {
             </button>
           </div>
         </div>
+        <div></div>
       </div>
     </div>
     </div>`);
@@ -288,6 +289,8 @@ const renderError = () => {
 };
 
 const handleButtonClick = async () => {
+  const bartenderCard = $("#bartender-card");
+
   // requires a URL
   const url = "https://papajoke.p.rapidapi.com/api/jokes";
 
@@ -316,9 +319,9 @@ const handleButtonClick = async () => {
   console.log(punchline);
   const jokeDiv = `<div>${headline} ${punchline}</div>`;
 
-  // jokeDiv.empty();
+  bartenderCard.children().last().remove();
 
-  $("#bartender-card").append(jokeDiv);
+  bartenderCard.append(jokeDiv);
 };
 
 const handleNavBarToggle = () => {
