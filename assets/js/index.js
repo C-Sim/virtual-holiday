@@ -7,6 +7,10 @@ const mainView = $(".main-container");
 
 const consoleContainer = $("#console-container");
 
+const webcamDiv = $("#webcam-section");
+
+const webcamContainer = $("#holiday-experience");
+
 const weatherContainer = $("#weather-container");
 
 const tempContainer = $("#temperature");
@@ -105,14 +109,61 @@ const fetchWeatherData = async (place) => {
   };
 };
 
+// fn to render webcam on page after drop down click
+const renderWebcamData = (place) => {
+  // append the html on to the page with correct webcam
+  mainView.append(`<section class="packages" id="holiday-experience">
+ <div id="webcam-section">
+   <div class="section">
+     <div class="card webcam-card">
+       <div class="card-video">
+         <video
+           id="my-video"
+           class="video-js"
+           muted
+           loop
+           preload="auto"
+           width="900"
+           height="450"
+           poster="./assets/images/${place}.jpg"
+           data-setup='{"aspectRatio":"16:9", "fluid": true}'
+         >
+           <source 
+             src="./assets/videos/${place}.mp4"
+             type="video/mp4"
+           />
+           <p class="vjs-no-js">
+             To view this video please enable JavaScript, and consider
+             upgrading to a web browser that
+             <a
+               href="https://videojs.com/html5-video-support/"
+               target="_blank"
+               >supports HTML5 video</a
+             >
+           </p>
+         </video>
+       </div>
+       <div class="card-content">
+         <div class="content">
+           <h4 class="location-title">
+             <i class="fas fa-map-marker-alt"></i> ${place}
+           </h4>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</section>`);
+};
+
 const renderConsoleData = async (place) => {
   try {
     // fetch weather data
     const weather = await fetchWeatherData(place);
 
     // render current data
-    mainView.append(`<div class="columns is-centered" id="console-container">
-      <div class="card column is-centered is-full-width-mobile is-half" id="weather-container">
+    mainView.append(`<div class="columns is-mobile is-centered" id="console-container">
+      <div class="card column is-centered is-three-quarters-mobile is-half" id="weather-container">
         <div class="card-content">
           <div class="media">
             <div class="media-left">
@@ -294,6 +345,17 @@ const holidayDropdownToggle = () => {
 };
 
 const startHolidayExperience = async (event) => {
+  // $("html, body").animate(
+  //   {
+  //     scrollTop: $("#holiday-experience").offset().top,
+  //   },
+  //   800,
+  //   function () {
+  //     // Add hash (#) to URL when done scrolling (default click behavior)
+  //     window.location.hash = "#holiday-experience";
+  //   }
+  // );
+
   const target = $(event.target);
 
   mainView.empty();
@@ -305,9 +367,17 @@ const startHolidayExperience = async (event) => {
     const displayLabel = target.attr("data-label");
     holidaySpan.text(displayLabel);
     // window.location.replace(`#${holidayType}`);
-    playRandomSong(holidayType);
+
+    // playRandomSong(holidayType);
 
     const place = linkPlaceName(holidayType);
+
+    renderWebcamData(place);
+
+    const videoPlayer = document.getElementById("my-video");
+
+    // videoPlayer.requestFullscreen();
+    videoPlayer.play();
 
     await renderConsoleData(place);
 
