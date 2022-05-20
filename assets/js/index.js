@@ -15,6 +15,8 @@ const webcamContainer = $("#holiday-experience");
 
 const mainView = $(".main-container");
 
+const snacksDiv = $(".snacks-items");
+
 const tempContainer = $("#temperature");
 
 const holidayDropdownButton = $("#holiday-dropdown-btn");
@@ -281,8 +283,9 @@ const startHolidayExperience = async (event) => {
   }
 };
 
+// get random snack in the array
 const getRandomSnacks = (response) => {
-  const randomSnack = Math.floor(Math.random() * response.length - 1);
+  const randomSnack = Math.floor(Math.random() * response.length);
 };
 
 // snacks api fetch function
@@ -308,7 +311,6 @@ const snacks = async () => {
     } else {
       throw new Error("something went wrong");
     }
-    console.log(randomSnack);
   } catch (error) {
     // throw log error
     console.log(error);
