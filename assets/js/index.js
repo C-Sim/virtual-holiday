@@ -328,7 +328,8 @@ const createPostcard = () => {
   const location = $("#place").attr("data-place");
   console.log(location);
 
-  localStorage.setItem(temperature, location);
+  localStorage.setItem("temperature", temperature);
+  localStorage.setItem("location", location);
   console.log(localStorage);
 };
 
