@@ -136,8 +136,12 @@ const renderWebcamData = (place) => {
              <i class="fas fa-map-marker-alt"></i> ${place}
            </h4>
          </div>
-         <button id="stop">Pause</button>
-         <button id="start">Play</button>
+         <button id="start" class="button is-success is-outlined">
+         Play
+       </button>
+<button id="stop" class="button is-success is-outlined">
+         Pause
+       </button>
        </div>
      </div>
    </div>
@@ -414,7 +418,6 @@ const startHolidayExperience = async (event) => {
 
     const videoPlayer = document.getElementById("my-video");
 
-    // videoPlayer.requestFullscreen();
     videoPlayer.play();
 
     await renderConsoleData(place);
@@ -463,6 +466,7 @@ const snacksGenerator = async () => {
   }
 };
 
+// stop music function
 const stopPlaying = () => {
   let isPlaying = true;
 
@@ -471,6 +475,7 @@ const stopPlaying = () => {
   }
 };
 
+// start music function
 const startPlaying = () => {
   let isPlaying = false;
 
