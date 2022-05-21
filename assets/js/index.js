@@ -221,6 +221,9 @@ const renderConsoleData = async (place) => {
 
     $("#joke-api").click(handleButtonClick);
 
+    // Event listener for snacks button
+    $("#offer-snack").click(snacksGenerator);
+
     return true;
   } catch (error) {
     renderError();
@@ -391,8 +394,6 @@ const startHolidayExperience = async (event) => {
   }
 };
 
-const snacksBtn = $("#offer-snack");
-
 // get random snack in the array
 const getRandomSnacks = (response) => {
   const randomSnack = Math.floor(Math.random() * response.length);
@@ -404,6 +405,7 @@ const getRandomSnacks = (response) => {
 
 // snacks api fetch function
 const snacksGenerator = async () => {
+  console.log("hi");
   try {
     // make request to API
     const data = await fetch(
@@ -416,7 +418,6 @@ const snacksGenerator = async () => {
         },
       }
     );
-    console.log("hi");
     if (data.status === 200) {
       // if successful display date
       const response = await data.json();
@@ -430,9 +431,6 @@ const snacksGenerator = async () => {
     console.log(error);
   }
 };
-
-// Event listener for snacks button
-snacksBtn.click(snacksGenerator);
 
 holidayDropdownButton.click(holidayDropdownToggle);
 
