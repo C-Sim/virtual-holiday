@@ -1,7 +1,10 @@
+// DECLARATIONS
 // CS weather API key
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
 const apiKey = "ca45ec61a4msh24fe699dc35cc23p1151b5jsn5e05295b9d8f";
+
+const snacks_API_KEY = "a03019689amshf53ea6e702883adp12db0ajsnb0cacc3b0328";
 
 const mainView = $(".main-container");
 
@@ -12,6 +15,8 @@ const webcamDiv = $("#webcam-section");
 const webcamContainer = $("#holiday-experience");
 
 const weatherContainer = $("#weather-container");
+
+const snacksDiv = $(".snacks-items");
 
 const tempContainer = $("#temperature");
 
@@ -213,6 +218,9 @@ const renderConsoleData = async (place) => {
 
     $("#joke-api").click(handleButtonClick);
 
+    // Event listener for snacks button
+    $("#offer-snack").click(snacksGenerator);
+
     return true;
   } catch (error) {
     renderError();
@@ -291,11 +299,11 @@ const popUpModal = () => {
               <h4>
                 Saved Postcard
               </h4>
-              <h5>Click here to view postcards</h5>
+              <h5><a href=./holiday-snaps.html>Click here to view postcards</a></h5>
             </div>
             <div class="field is-grouped">
               <p class="control">
-                <button class="button is-danger" id="ok-btn">OK</button>
+                <button class="button is-danger" id="ok-btn">Close</button>
               </p>
             </div>
           </div>
@@ -325,6 +333,7 @@ const renderError = () => {
 };
 
 const handleButtonClick = async () => {
+  $("#jokesContainer").remove();
   // requires a URL
   const url = "https://papajoke.p.rapidapi.com/api/jokes";
 
@@ -351,9 +360,7 @@ const handleButtonClick = async () => {
   console.log(headline);
   const punchline = randomJoke.punchline;
   console.log(punchline);
-  const jokeDiv = `<div>${headline} ${punchline}</div>`;
-
-  // jokeDiv.empty();
+  const jokeDiv = `<div id="jokesContainer"> <i class="fa-solid fa-face-grin-tongue-wink"></i>${headline} ${punchline}</div>`;
 
   $("#bartender-card").append(jokeDiv);
 };
@@ -378,7 +385,6 @@ const handleNavBarToggle = () => {
 
 const holidayDropdownToggle = () => {
   holidayDropdown.toggleClass("is-active");
-  console.log("clicked");
 };
 
 const startHolidayExperience = async (event) => {
@@ -421,6 +427,44 @@ const startHolidayExperience = async (event) => {
     renderHolidaySnapsButton();
 
     moveDropdown(displayLabel);
+  }
+};
+
+// get random snack in the array
+const getRandomSnacks = (response) => {
+  $("#snacksContainer").remove();
+  const randomSnack = Math.floor(Math.random() * response.length);
+  // create a div section for snacks to appear
+  const snacksDiv = `<div id="snacksContainer"> <i class="fa-solid fa-ice-cream"></i>${response[randomSnack].name}</div>`;
+  // target the div where text appears
+  $("#bartender-card").append(snacksDiv);
+};
+
+// snacks api fetch function
+const snacksGenerator = async () => {
+  try {
+    // make request to API
+    const data = await fetch(
+      "https://pizza-and-desserts.p.rapidapi.com/desserts",
+      {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Host": "pizza-and-desserts.p.rapidapi.com",
+          "X-RapidAPI-Key": snacks_API_KEY,
+        },
+      }
+    );
+    if (data.status === 200) {
+      // if successful display date
+      const response = await data.json();
+      getRandomSnacks(response);
+      // throw error
+    } else {
+      throw new Error("something went wrong");
+    }
+  } catch (error) {
+    // throw log error
+    console.log(error);
   }
 };
 
