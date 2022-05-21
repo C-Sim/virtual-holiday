@@ -35,10 +35,8 @@ const renderPostcards = (postcards) => {
       </div>
       <div class="card-content">
         <p class="card-title has-text-centered">${postcard.location}</p>
-        <!-- render user holiday destination in this div  -->
         <div class="holiday-type text-center">
         ${postcard.temperature}&deg;C
-          <!-- use template literal in js  -->
         </div>
       </div>
       <div class="hastags has-text-centered">
