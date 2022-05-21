@@ -268,7 +268,7 @@ const startHolidayExperience = async (event) => {
     const displayLabel = target.attr("data-label");
     holidaySpan.text(displayLabel);
 
-    playRandomSong(holidayType);
+    // playRandomSong(holidayType);
 
     const place = linkPlaceName(holidayType);
 
