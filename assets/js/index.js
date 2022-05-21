@@ -383,6 +383,8 @@ const holidayDropdownToggle = () => {
   holidayDropdown.toggleClass("is-active");
 };
 
+// check if we no longer need this
+
 const startHolidayExperience = async (event) => {
   // $("html, body").animate(
   //   {
