@@ -30,30 +30,6 @@ const dropdownMenu = $("#dropdown-menu");
 
 const holidaySpan = $("#holiday-span");
 
-const welcome = $("#welcome");
-
-// import Typewriter from "typewriter-effect/dist/core";
-
-// new Typewriter("#typewriter", {
-//   strings: ["Hello", "World"],
-//   autoStart: true,
-// });
-
-// const typewriter = new Typewriter(welcome, {
-//   loop: true,
-// });
-
-// typewriter
-//   .typeString("Welcome to the restaurant.")
-//   .pauseFor(2500)
-//   .deleteAll()
-//   .typeString("Can I offer you some food?")
-//   .pauseFor(2500)
-//   .deleteChars(11)
-//   .typeString("some entertainment?")
-//   .pauseFor(2500)
-//   .start();
-
 const linkPlaceName = (holidayType) => {
   if (holidayType === "beach") {
     return "Jamaica";
@@ -168,6 +144,32 @@ const renderWebcamData = (place) => {
 </section>`);
 };
 
+const renderWeatherCard = (weather, place) => {
+  return `<div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-96x96 ml-6">
+          <img
+            src="http://openweathermap.org/img/w/${weather.icon}.png"
+            alt="Weather Icon"
+          />
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4 is-size-6-mobile pt-3" id="temperature">
+          ${weather.temp}&deg;C
+        </p>
+        <p class="subtitle is-6 is-size-7-mobile" id="humidity">
+          Humidity: ${weather.humidity}&percnt;
+        </p>
+      </div>
+    </div>
+    <div class="content is-6 is-size-6-mobile">
+      Set your thermostat to recreate the temperature in ${place}.
+    </div>
+  </div>`;
+};
+
 // TO DO render waiter text using typewriter function
 const renderConsoleData = async (place) => {
   try {
@@ -177,57 +179,46 @@ const renderConsoleData = async (place) => {
     // render current data
     mainView.append(`<div class="columns is-centered" id="console-container">
       <div class="card column is-centered has-text-centered is-half" id="weather-container">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-96x96 ml-6">
-                <img
-                  src="http://openweathermap.org/img/w/${weather.icon}.png"
-                  alt="Weather Icon"
-                />
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-4 is-size-6-mobile pt-3" id="temperature">
-                ${weather.temp}&deg;C
-              </p>
-              <p class="subtitle is-6 is-size-7-mobile" id="humidity">
-                Humidity: ${weather.humidity}&percnt;
-              </p>
-            </div>
-          </div>
-
-          <div class="content is-5 is-size-6-mobile">
-            Set your thermostat to recreate the temperature in ${place}.
-          </div>
-        </div>
+        ${renderWeatherCard(weather, place)}
       </div>
     
-    <div class="card column is-centered" id="waiter-container">
-      <div class="card-content has-text-centered" id="bartender-card">
-      <div class="content is-size-6-mobile" id="welcome">Welcome to the restaurant. Can I offer you some food? Some entertainment?</div>
-
-        <div class="media">
-          <div class="media-left">
-         
-            <figure class="image is-128x128 waiter-image">
-              <img class="is-rounded ml-3 mt-2" src="./assets/images/${place}-waiter.jpg" alt="Waiter" />
-            </figure>
+      <div class="card column is-centered" id="waiter-container">
+        <div class="card-content has-text-centered" id="bartender-card">
+        <div class="content is-size-6-mobile title is-5" id="welcome"></div>
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-128x128 waiter-image">
+                <img class="is-rounded ml-3 mt-2" src="./assets/images/${place}-waiter.jpg" alt="Waiter" />
+              </figure>
+            </div>
+            <div class="media-content waiter-buttons">
+              <button class="console-btn" id="joke-api">
+                Tell Me A Joke
+              </button>
+              <button class="console-btn" id="offer-snack">
+                Offer Me A Snack
+              </button>
+            </div>
           </div>
-
-          <div class="media-content waiter-buttons">
-            <button class="console-btn" id="joke-api">
-              Tell Me A Joke
-            </button>
-            <button class="console-btn" id="offer-snack">
-              Offer Me A Snack
-            </button>
-          </div>
+          <div></div>
         </div>
-        <div></div>
       </div>
-    </div>
     </div>`);
+
+    const typewriter = new Typewriter(document.getElementById("welcome"), {
+      loop: true,
+    });
+
+    typewriter
+      .typeString("Welcome to the restaurant.")
+      .pauseFor(1000)
+      .deleteAll()
+      .typeString("Can I offer you some entertainment?")
+      .pauseFor(1000)
+      .deleteChars(20)
+      .typeString(" some food?")
+      .pauseFor(1000)
+      .start();
 
     $("#joke-api").click(handleJokeButtonClick);
 
@@ -236,6 +227,7 @@ const renderConsoleData = async (place) => {
 
     return true;
   } catch (error) {
+    console.log(error.message);
     renderError();
     return false;
   }
@@ -411,7 +403,7 @@ const getRandomSnacks = (response) => {
   $("#snacksContainer").remove();
   const randomSnack = Math.floor(Math.random() * response.length);
   // create a div section for snacks to appear
-  const snacksDiv = `<div id="snacksContainer"> <i class="fa-solid fa-ice-cream"></i>${response[randomSnack].name}</div>`;
+  const snacksDiv = `<div id="snacksContainer"> <i class="fa-solid fa-ice-cream mr-2"></i>${response[randomSnack].name}</div>`;
   // target the div where text appears
   $("#bartender-card").append(snacksDiv);
 };
