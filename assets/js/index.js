@@ -184,7 +184,7 @@ const renderConsoleData = async (place) => {
               </button>
             </div>
           </div>
-          <div></div>
+          <div id="waiter-provision"></div>
         </div>
       </div>
     </div>`);
@@ -314,7 +314,7 @@ const handleJokeButtonClick = async () => {
   console.log(punchline);
   const jokeDiv = `<div>${headline}</br>${punchline}</div>`;
 
-  bartenderCard.children().last().remove();
+  $("#waiter-provision").empty();
 
   bartenderCard.append(jokeDiv);
 };
