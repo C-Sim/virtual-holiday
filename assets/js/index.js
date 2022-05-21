@@ -34,23 +34,6 @@ const welcome = $("#welcome");
 
 const closeModalBtn = $(".modal-close");
 
-//const holidaySnapBtn = $("#holiday-snap-btn");
-
-// const typewriter = new Typewriter(welcome, {
-//   loop: true,
-// });
-
-// typewriter
-//   .typeString("Welcome to the restaurant.")
-//   .pauseFor(2500)
-//   .deleteAll()
-//   .typeString("Can I offer you some food?")
-//   .pauseFor(2500)
-//   .deleteChars(11)
-//   .typeString("some entertainment?")
-//   .pauseFor(2500)
-//   .start();
-
 const linkPlaceName = (holidayType) => {
   if (holidayType === "beach") {
     return "Jamaica";
@@ -229,7 +212,7 @@ const renderConsoleData = async (place) => {
 };
 
 renderHolidaySnapsButton = () => {
-  mainView.append(`<div id="holiday-snap"><button id="holiday-snap-btn">
+  mainView.append(`<div id="holiday-snap"><button id="holiday-snap-btn" class="holiday-snap-btn">
   Save A Holiday Snap
 </button><div>`);
 };
@@ -297,9 +280,9 @@ const popUpModal = () => {
           <div class="media-content">
             <div class="content">
               <h4>
-                Saved Postcard
+                Thank you for creating your postcard!!
               </h4>
-              <h5><a href=./holiday-snaps.html>Click here to view postcards</a></h5>
+              <div class="subtitle is-6">You can view your postcards <a href=./holiday-snaps.html>here</a> or close this modal and continue your virtual holiday experience.</div>
             </div>
             <div class="field is-grouped">
               <p class="control">
@@ -318,8 +301,12 @@ const popUpModal = () => {
   const closeModal = () => {
     modal.toggleClass("is-active");
 
-    $("#holiday-snap-btn").unbind("click", createPostcard);
-    $("#holiday-snap-btn").attr("disabled", true);
+    const saveButton = $("#holiday-snap-btn");
+
+    saveButton.unbind("click", createPostcard);
+    saveButton.attr("disabled", true);
+    saveButton.toggleClass("saved-postcard");
+    saveButton.text("Postcard on its way");
   };
 
   $(".modal-close").click(closeModal);

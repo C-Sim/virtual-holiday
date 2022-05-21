@@ -4,14 +4,26 @@ const handleClick = (event) => {
   const target = $(event.target);
   if (target.is('button[name="delete-btn"]')) {
     const postcardId = target.attr("id");
-    console.log(postcardId);
+
+    const postcards = readFromLocalStorage("postcards", []);
+
+    // filter out the postcard
+    const filteredPostcards = postcards.filter((postcard) => {
+      return postcard.id !== postcardId;
+    });
+
+    writeToLocalStorage("postcards", filteredPostcards);
+
+    renderPostcards(filteredPostcards);
   }
 };
 
 const renderPostcards = (postcards) => {
+  mainContainer.empty();
+
   const renderPostcard = (postcard) => {
     //create postcard
-    const eachPostcard = ` <div class="card">
+    const eachPostcard = `<div class="card">
       <div class="card-image">
         <img
           class="holiday-images"
@@ -43,17 +55,17 @@ const renderPostcards = (postcards) => {
     return eachPostcard;
   };
 
-  return postcards.map(renderPostcard).join("");
-};
-
-const onReady = () => {
-  const postcards = readFromLocalStorage("postcards");
-
-  const postcardsHTML = renderPostcards(postcards);
+  const postcardsHTML = postcards.map(renderPostcard).join("");
 
   mainContainer.append(postcardsHTML);
 
   mainContainer.click(handleClick);
+};
+
+const onReady = () => {
+  const postcards = readFromLocalStorage("postcards", []);
+
+  renderPostcards(postcards);
 };
 
 $(document).ready(onReady);
