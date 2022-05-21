@@ -30,8 +30,6 @@ const dropdownMenu = $("#dropdown-menu");
 
 const holidaySpan = $("#holiday-span");
 
-const generateSnacksBtn = $("#offer-snack");
-
 const welcome = $("#welcome");
 
 // const typewriter = new Typewriter(welcome, {
@@ -348,7 +346,6 @@ const handleNavBarToggle = () => {
 
 const holidayDropdownToggle = () => {
   holidayDropdown.toggleClass("is-active");
-  console.log("clicked");
 };
 
 const startHolidayExperience = async (event) => {
@@ -394,15 +391,19 @@ const startHolidayExperience = async (event) => {
   }
 };
 
+const snacksBtn = $("#offer-snack");
+
 // get random snack in the array
 const getRandomSnacks = (response) => {
   const randomSnack = Math.floor(Math.random() * response.length);
+  // create a div section for snacks to appear
+  const snacksDiv = `<div>${response[randomSnack].name}</div>`;
   // target the div where text appears
-  snacksDiv.append(`<div>${response[randomSnack].name}</div>`);
+  $("#bartender-card").append(snacksDiv);
 };
 
 // snacks api fetch function
-const snacks = async () => {
+const snacksGenerator = async () => {
   try {
     // make request to API
     const data = await fetch(
@@ -415,7 +416,7 @@ const snacks = async () => {
         },
       }
     );
-
+    console.log("hi");
     if (data.status === 200) {
       // if successful display date
       const response = await data.json();
@@ -431,7 +432,7 @@ const snacks = async () => {
 };
 
 // Event listener for snacks button
-generateSnacksBtn.click(snacks);
+snacksBtn.click(snacksGenerator);
 
 holidayDropdownButton.click(holidayDropdownToggle);
 
