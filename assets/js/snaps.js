@@ -6,6 +6,7 @@ const renderPostcards = (postcards) => {
       <img
         class="holiday-images"
         src="./assets/images/card-image.jpg"
+        id="postcard-image"
         alt="Placeholder image"
       />
     </div>
@@ -39,5 +40,17 @@ const onReady = () => {
   const postcardsHTML = renderPostcards(postcards);
   document.querySelector(".main-container").innerHTML = postcardsHTML;
 };
+
+const changeImage = () => {
+  //get image by id
+  const image = document.getElementById("postcard-image")
+
+  //change image src depending on the location
+  if () {
+
+  } if {
+
+  } else
+}
 
 document.addEventListener("DOMContentLoaded", onReady);
