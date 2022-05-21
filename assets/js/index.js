@@ -30,7 +30,8 @@ const dropdownMenu = $("#dropdown-menu");
 
 const holidaySpan = $("#holiday-span");
 
-const generateSnacksBtn = $("#snacks-button");
+const generateSnacksBtn = $("#offer-snack");
+
 const welcome = $("#welcome");
 
 // const typewriter = new Typewriter(welcome, {
@@ -397,7 +398,7 @@ const startHolidayExperience = async (event) => {
 const getRandomSnacks = (response) => {
   const randomSnack = Math.floor(Math.random() * response.length);
   // target the div where text appears
-  snacksDiv.append(`<p>${response[randomSnack].name}</p>`);
+  snacksDiv.append(`<div>${response[randomSnack].name}</div>`);
 };
 
 // snacks api fetch function
