@@ -1,7 +1,10 @@
+// DECLARATIONS
 // CS weather API key
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
 const apiKey = "ca45ec61a4msh24fe699dc35cc23p1151b5jsn5e05295b9d8f";
+
+const snacks_API_KEY = "a03019689amshf53ea6e702883adp12db0ajsnb0cacc3b0328";
 
 const mainView = $(".main-container");
 
@@ -12,6 +15,8 @@ const webcamDiv = $("#webcam-section");
 const webcamContainer = $("#holiday-experience");
 
 const weatherContainer = $("#weather-container");
+
+const snacksDiv = $(".snacks-items");
 
 const tempContainer = $("#temperature");
 
@@ -27,20 +32,7 @@ const holidaySpan = $("#holiday-span");
 
 const welcome = $("#welcome");
 
-// const typewriter = new Typewriter(welcome, {
-//   loop: true,
-// });
-
-// typewriter
-//   .typeString("Welcome to the restaurant.")
-//   .pauseFor(2500)
-//   .deleteAll()
-//   .typeString("Can I offer you some food?")
-//   .pauseFor(2500)
-//   .deleteChars(11)
-//   .typeString("some entertainment?")
-//   .pauseFor(2500)
-//   .start();
+const closeModalBtn = $(".modal-close");
 
 const linkPlaceName = (holidayType) => {
   if (holidayType === "beach") {
@@ -52,13 +44,6 @@ const linkPlaceName = (holidayType) => {
   if (holidayType === "ski") {
     return "Aspen";
   }
-};
-
-const writeToLocalStorage = (key, value) => {
-  // stringify object value
-  const stringifiedValue = JSON.stringify(value);
-  // set value for each key within LS
-  localStorage.setItem(key, stringifiedValue);
 };
 
 const constructUrl = (baseUrl, params) => {
@@ -175,7 +160,7 @@ const renderConsoleData = async (place) => {
               </figure>
             </div>
             <div class="media-content">
-              <p class="title is-4 is-size-6-mobile" id="temperature">
+              <p class="title is-4 is-size-6-mobile" id="temperature" data-temperature="${weather.temp}">
                 ${weather.temp}&deg;C
               </p>
               <p class="subtitle is-6 is-size-7-mobile" id="humidity">
@@ -183,8 +168,7 @@ const renderConsoleData = async (place) => {
               </p>
             </div>
           </div>
-
-          <div class="content is-size-7-mobile">
+          <div class="content is-size-7-mobile" id="place" data-place="${place}">
             Set your thermostat to recreate the temperature in ${place}.
           </div>
         </div>
@@ -200,7 +184,6 @@ const renderConsoleData = async (place) => {
             </figure>
           </div>
           <div id="welcome">Welcome to the restaurant. Can I offer you some food? Some entertainment?</div>
-
           <div class="media-content waiter-buttons">
             <button class="console-btn" id="joke-api">
               Tell Me A Joke
@@ -216,6 +199,9 @@ const renderConsoleData = async (place) => {
 
     $("#joke-api").click(handleButtonClick);
 
+    // Event listener for snacks button
+    $("#offer-snack").click(snacksGenerator);
+
     return true;
   } catch (error) {
     renderError();
@@ -224,7 +210,7 @@ const renderConsoleData = async (place) => {
 };
 
 renderHolidaySnapsButton = () => {
-  mainView.append(`<div id="holiday-snap"><button id="holiday-snap-btn">
+  mainView.append(`<div id="holiday-snap"><button id="holiday-snap-btn" class="holiday-snap-btn">
   Save A Holiday Snap
 </button><div>`);
 };
@@ -279,6 +265,50 @@ moveDropdown = (displayLabel) => {
     </div>
   </div>
 </div>`);
+  //targets the holiday snap button
+  $("#holiday-snap-btn").click(createPostcard);
+};
+
+const popUpModal = () => {
+  const modal = $(`<div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box m-2">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <h4>
+                Thank you for creating your postcard!!
+              </h4>
+              <div class="subtitle is-6">You can view your postcards <a href=./holiday-snaps.html>here</a> or close this modal and continue your virtual holiday experience.</div>
+            </div>
+            <div class="field is-grouped">
+              <p class="control">
+                <button class="button is-danger" id="ok-btn">Close</button>
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>`);
+
+  mainView.append(modal);
+
+  const closeModal = () => {
+    modal.toggleClass("is-active");
+
+    const saveButton = $("#holiday-snap-btn");
+
+    saveButton.unbind("click", createPostcard);
+    saveButton.attr("disabled", true);
+    saveButton.toggleClass("saved-postcard");
+    saveButton.text("Postcard on its way");
+  };
+
+  $(".modal-close").click(closeModal);
+  $("#ok-btn").click(closeModal);
 };
 
 const renderError = () => {
@@ -288,6 +318,7 @@ const renderError = () => {
 };
 
 const handleButtonClick = async () => {
+  $("#jokesContainer").remove();
   // requires a URL
   const url = "https://papajoke.p.rapidapi.com/api/jokes";
 
@@ -314,9 +345,7 @@ const handleButtonClick = async () => {
   console.log(headline);
   const punchline = randomJoke.punchline;
   console.log(punchline);
-  const jokeDiv = `<div>${headline} ${punchline}</div>`;
-
-  // jokeDiv.empty();
+  const jokeDiv = `<div id="jokesContainer"> <i class="fa-solid fa-face-grin-tongue-wink"></i>${headline} ${punchline}</div>`;
 
   $("#bartender-card").append(jokeDiv);
 };
@@ -341,7 +370,6 @@ const handleNavBarToggle = () => {
 
 const holidayDropdownToggle = () => {
   holidayDropdown.toggleClass("is-active");
-  console.log("clicked");
 };
 
 const startHolidayExperience = async (event) => {
@@ -387,9 +415,72 @@ const startHolidayExperience = async (event) => {
   }
 };
 
+// get random snack in the array
+const getRandomSnacks = (response) => {
+  $("#snacksContainer").remove();
+  const randomSnack = Math.floor(Math.random() * response.length);
+  // create a div section for snacks to appear
+  const snacksDiv = `<div id="snacksContainer"> <i class="fa-solid fa-ice-cream"></i>${response[randomSnack].name}</div>`;
+  // target the div where text appears
+  $("#bartender-card").append(snacksDiv);
+};
+
+// snacks api fetch function
+const snacksGenerator = async () => {
+  try {
+    // make request to API
+    const data = await fetch(
+      "https://pizza-and-desserts.p.rapidapi.com/desserts",
+      {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Host": "pizza-and-desserts.p.rapidapi.com",
+          "X-RapidAPI-Key": snacks_API_KEY,
+        },
+      }
+    );
+    if (data.status === 200) {
+      // if successful display date
+      const response = await data.json();
+      getRandomSnacks(response);
+      // throw error
+    } else {
+      throw new Error("something went wrong");
+    }
+  } catch (error) {
+    // throw log error
+    console.log(error);
+  }
+};
+
 holidayDropdownButton.click(holidayDropdownToggle);
 
 dropdownMenu.click(startHolidayExperience);
+
+const createPostcard = () => {
+  // takes the current temperature for holiday type
+  const temperature = $("#temperature").attr("data-temperature");
+  console.log(temperature);
+  // takes the location for the holiday type
+  const location = $("#place").attr("data-place");
+  console.log(location);
+
+  const postcard = {
+    id: uuid.v4(),
+    location,
+    temperature,
+  };
+
+  const postcards = readFromLocalStorage("postcards", []);
+
+  postcards.push(postcard);
+
+  writeToLocalStorage("postcards", postcards);
+
+  console.log(localStorage);
+
+  popUpModal();
+};
 
 $(document).ready(() => {
   handleNavBarToggle();

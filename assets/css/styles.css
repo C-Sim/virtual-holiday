@@ -125,9 +125,19 @@ body {
   margin: 18px auto;
 }
 
-#holiday-snap-btn {
+.holiday-snap-btn {
   width: 100%;
   background-color: var(--light-cornflower-blue);
+  color: var(--prussian-blue);
+  font-weight: 400;
+  border-radius: 4px;
+  border: none;
+  padding: 8px;
+}
+
+.saved-postcard {
+  width: 100%;
+  background-color: var(--tangerine);
   color: var(--prussian-blue);
   font-weight: 400;
   border-radius: 4px;
@@ -161,4 +171,15 @@ body {
   .console-btn {
     width: 30vw;
   }
+}
+
+@media screen and (max-width: 768px) {
+  #weather-container,
+  #waiter-container {
+    width: 90vw;
+  }
+}
+
+.holiday-type {
+  text-align: center;
 }
