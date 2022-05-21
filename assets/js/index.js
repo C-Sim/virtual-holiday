@@ -6,7 +6,6 @@ const apiKey = "ca45ec61a4msh24fe699dc35cc23p1151b5jsn5e05295b9d8f";
 
 const snacks_API_KEY = "a03019689amshf53ea6e702883adp12db0ajsnb0cacc3b0328";
 
-const weatherContainer = $("#weather-container");
 const mainView = $(".main-container");
 
 const consoleContainer = $("#console-container");
