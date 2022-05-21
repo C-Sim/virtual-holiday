@@ -26,6 +26,13 @@ const holidaySpan = $("#holiday-span");
 
 const welcome = $("#welcome");
 
+// import Typewriter from "typewriter-effect/dist/core";
+
+// new Typewriter("#typewriter", {
+//   strings: ["Hello", "World"],
+//   autoStart: true,
+// });
+
 // const typewriter = new Typewriter(welcome, {
 //   loop: true,
 // });
