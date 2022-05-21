@@ -1,7 +1,6 @@
-// CS weather API key
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
-const apiKey = "ca45ec61a4msh24fe699dc35cc23p1151b5jsn5e05295b9d8f";
+const joke_API_KEY = "ca45ec61a4msh24fe699dc35cc23p1151b5jsn5e05295b9d8f";
 
 const mainView = $(".main-container");
 
@@ -156,6 +155,7 @@ const renderWebcamData = (place) => {
 </section>`);
 };
 
+// TO DO render waiter text using typewriter function
 const renderConsoleData = async (place) => {
   try {
     // fetch weather data
@@ -163,11 +163,11 @@ const renderConsoleData = async (place) => {
 
     // render current data
     mainView.append(`<div class="columns is-centered" id="console-container">
-      <div class="card column is-centered is-half" id="weather-container">
+      <div class="card column is-centered has-text-centered is-half" id="weather-container">
         <div class="card-content">
           <div class="media">
             <div class="media-left">
-              <figure class="image is-48x48">
+              <figure class="image is-96x96 ml-6">
                 <img
                   src="http://openweathermap.org/img/w/${weather.icon}.png"
                   alt="Weather Icon"
@@ -175,7 +175,7 @@ const renderConsoleData = async (place) => {
               </figure>
             </div>
             <div class="media-content">
-              <p class="title is-4 is-size-6-mobile" id="temperature">
+              <p class="title is-4 is-size-6-mobile pt-3" id="temperature">
                 ${weather.temp}&deg;C
               </p>
               <p class="subtitle is-6 is-size-7-mobile" id="humidity">
@@ -184,22 +184,23 @@ const renderConsoleData = async (place) => {
             </div>
           </div>
 
-          <div class="content is-size-7-mobile">
+          <div class="content is-5 is-size-6-mobile">
             Set your thermostat to recreate the temperature in ${place}.
           </div>
         </div>
       </div>
     
-    <div class="card column is-centered is-half" id="waiter-container">
-      <div class="card-content" id="bartender-card">
+    <div class="card column is-centered" id="waiter-container">
+      <div class="card-content has-text-centered" id="bartender-card">
+      <div class="content is-size-6-mobile" id="welcome">Welcome to the restaurant. Can I offer you some food? Some entertainment?</div>
+
         <div class="media">
           <div class="media-left">
          
-            <figure class="image is-5by4 waiter-image">
-              <img class="is-rounded" src="./assets/images/${place}-waiter.jpg" alt="Waiter" />
+            <figure class="image is-128x128 waiter-image">
+              <img class="is-rounded ml-3 mt-2" src="./assets/images/${place}-waiter.jpg" alt="Waiter" />
             </figure>
           </div>
-          <div id="welcome">Welcome to the restaurant. Can I offer you some food? Some entertainment?</div>
 
           <div class="media-content waiter-buttons">
             <button class="console-btn" id="joke-api">
@@ -215,7 +216,7 @@ const renderConsoleData = async (place) => {
     </div>
     </div>`);
 
-    $("#joke-api").click(handleButtonClick);
+    $("#joke-api").click(handleJokeButtonClick);
 
     return true;
   } catch (error) {
@@ -231,9 +232,8 @@ renderHolidaySnapsButton = () => {
 };
 
 // TO DO ensure can select other holiday types in dropdown
-// TO DO render waiter text using typewriter function
 moveDropdown = (displayLabel) => {
-  mainView.append(`<div class="is-flex is-justify-content-center">
+  mainView.append(`<div class="is-flex is-justify-content-center m-4">
   <div class="dropdown" id="holiday-dropdown">
     <div class="dropdown-trigger">
       <button
@@ -252,7 +252,7 @@ moveDropdown = (displayLabel) => {
       <div class="dropdown-content">
         <div
           name="holiday-type"
-          class="dropdown-item is-clickable"
+          class="dropdown-item is-clickable has-text-centered"
           id="beach"
           data-label="Beach Holiday"
         >
@@ -261,7 +261,7 @@ moveDropdown = (displayLabel) => {
         <hr class="dropdown-divider" />
         <div
           name="holiday-type"
-          class="dropdown-item is-clickable"
+          class="dropdown-item is-clickable has-text-centered"
           id="cityBreak"
           data-label="City Break"
         >
@@ -270,7 +270,7 @@ moveDropdown = (displayLabel) => {
         <hr class="dropdown-divider" />
         <div
           name="holiday-type"
-          class="dropdown-item is-clickable"
+          class="dropdown-item is-clickable has-text-centered"
           id="ski"
           data-label="Ski Trip"
         >
@@ -288,7 +288,7 @@ const renderError = () => {
   mainView.append(`<h2 class="message">${message}</h2>`);
 };
 
-const handleButtonClick = async () => {
+const handleJokeButtonClick = async () => {
   const bartenderCard = $("#bartender-card");
 
   // requires a URL
@@ -298,7 +298,7 @@ const handleButtonClick = async () => {
     method: "GET",
     headers: {
       "X-RapidAPI-Host": "papajoke.p.rapidapi.com",
-      "X-RapidAPI-Key": apiKey,
+      "X-RapidAPI-Key": joke_API_KEY,
     },
   };
 
@@ -317,13 +317,14 @@ const handleButtonClick = async () => {
   console.log(headline);
   const punchline = randomJoke.punchline;
   console.log(punchline);
-  const jokeDiv = `<div>${headline} ${punchline}</div>`;
+  const jokeDiv = `<div>${headline}</br>${punchline}</div>`;
 
   bartenderCard.children().last().remove();
 
   bartenderCard.append(jokeDiv);
 };
 
+// TO DO nav burger doesn't always work
 const handleNavBarToggle = () => {
   const navBurgerBtn = $(".navbar-burger");
 

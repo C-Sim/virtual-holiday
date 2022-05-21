@@ -92,13 +92,11 @@ body {
   text-align: center;
 }
 
-/* weather section styling */
-
+/* 
 #weather-container,
 #waiter-container {
-  width: 40vw;
-  margin: 8px;
-}
+  border: none;
+} */
 
 .console-btn {
   width: 15vw;
@@ -148,17 +146,16 @@ body {
 }
 
 @media screen and (max-width: 576px) {
-  .title {
-    font-size: 60px;
+  .main-title {
+    font-size: 72px;
+    padding-top: 0;
   }
   #holiday-dropdown,
-  #holiday-snap,
-  #weather-container,
-  #waiter-container {
+  #holiday-snap {
     width: 90vw;
   }
 
   .console-btn {
-    width: 30vw;
+    width: 40vw;
   }
 }
