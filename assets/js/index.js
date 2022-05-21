@@ -78,7 +78,6 @@ const fetchWeatherData = async (place) => {
   };
 };
 
-// fn to render webcam on page after drop down click
 const renderWebcamData = (place) => {
   // append the html on to the page with correct webcam
   mainView.append(`<section class="packages" id="holiday-experience">
@@ -180,8 +179,9 @@ const renderConsoleData = async (place) => {
               </button>
             </div>
           </div>
-          <div id="waiter-provision"></div>
+          
         </div>
+        <div id="waiter-provision" class="has-text-centered"></div>
       </div>
     </div>`);
 
@@ -219,7 +219,6 @@ const renderHolidaySnapsButton = () => {
 </button><div>`);
 };
 
-// TO DO ensure can select other holiday types in dropdown
 const moveDropdown = (displayLabel) => {
   mainView.append(`<div class="is-flex is-justify-content-center m-4">
     <div class="dropdown" id="holiday-dropdown">
@@ -325,7 +324,8 @@ const renderError = () => {
 };
 
 const handleJokeButtonClick = async () => {
-  const bartenderCard = $("#bartender-card");
+  // const bartenderCard = $("#bartender-card");
+  const waiterProvision = $("#waiter-provision");
 
   // requires a URL
   const url = "https://papajoke.p.rapidapi.com/api/jokes";
@@ -355,9 +355,9 @@ const handleJokeButtonClick = async () => {
   console.log(punchline);
   const jokeDiv = `<div>${headline}</br>${punchline}</div>`;
 
-  $("#waiter-provision").empty();
+  waiterProvision.empty();
 
-  bartenderCard.append(jokeDiv);
+  waiterProvision.append(jokeDiv);
 };
 
 // TO DO nav burger doesn't always work
@@ -429,12 +429,15 @@ const startHolidayExperience = async (event) => {
 
 // get random snack in the array
 const getRandomSnacks = (response) => {
-  $("#snacksContainer").remove();
+  const waiterProvision = $("#waiter-provision");
+
   const randomSnack = Math.floor(Math.random() * response.length);
   // create a div section for snacks to appear
   const snacksDiv = `<div id="snacksContainer"> <i class="fa-solid fa-ice-cream mr-2"></i>${response[randomSnack].name}</div>`;
   // target the div where text appears
-  $("#bartender-card").append(snacksDiv);
+  waiterProvision.empty();
+
+  waiterProvision.append(snacksDiv);
 };
 
 // snacks api fetch function

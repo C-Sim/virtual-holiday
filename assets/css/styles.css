@@ -92,12 +92,6 @@ body {
   text-align: center;
 }
 
-/* 
-#weather-container,
-#waiter-container {
-  border: none;
-} */
-
 .console-btn {
   width: 15vw;
   background-color: var(--prussian-blue);
@@ -107,9 +101,10 @@ body {
   margin: 8px;
 }
 
-.console-btn:hover {
+.console-btn:hover,
+.holiday-snap-btn:hover {
   cursor: pointer;
-  color: var(--selective-yellow);
+  color: var(--tangerine);
 }
 
 .waiter-image {
