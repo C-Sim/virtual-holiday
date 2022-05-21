@@ -27,6 +27,8 @@ const holidaySpan = $("#holiday-span");
 
 const welcome = $("#welcome");
 
+const closeModalBtn = $(".modal-close");
+
 //const holidaySnapBtn = $("#holiday-snap-btn");
 
 // const typewriter = new Typewriter(welcome, {
@@ -278,6 +280,44 @@ moveDropdown = (displayLabel) => {
   $("#holiday-snap-btn").click(createPostcard);
 };
 
+const popUpModal = () => {
+  const modal = $(`<div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box m-2">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <h4>
+                Saved Postcard
+              </h4>
+              <h5>Click here to view postcards</h5>
+            </div>
+            <div class="field is-grouped">
+              <p class="control">
+                <button class="button is-danger" id="ok-btn">OK</button>
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>`);
+
+  mainView.append(modal);
+
+  const closeModal = () => {
+    modal.toggleClass("is-active");
+
+    $("#holiday-snap-btn").unbind("click", createPostcard);
+    $("#holiday-snap-btn").attr("disabled", true);
+  };
+
+  $(".modal-close").click(closeModal);
+  $("#ok-btn").click(closeModal);
+};
+
 const renderError = () => {
   const message = "Oops, that didn't work. Please try again.";
 
@@ -397,6 +437,7 @@ const createPostcard = () => {
   console.log(location);
 
   const postcard = {
+    id: uuid.v4(),
     location,
     temperature,
   };
@@ -408,6 +449,8 @@ const createPostcard = () => {
   writeToLocalStorage("postcards", postcards);
 
   console.log(localStorage);
+
+  popUpModal();
 };
 
 $(document).ready(() => {
