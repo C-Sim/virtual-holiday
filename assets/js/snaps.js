@@ -23,7 +23,7 @@ const renderPostcards = (postcards) => {
 
   const renderPostcard = (postcard) => {
     //create postcard
-    const eachPostcard = `<div class="card p-6">
+    const eachPostcard = `<div class="card p-6 m-6">
     <p class="card-title has-text-centered">Wish you were here in ${postcard.location}!</p>
       <div class="card-image">
         <img
