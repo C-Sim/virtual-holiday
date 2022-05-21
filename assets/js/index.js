@@ -130,18 +130,15 @@ const renderWebcamData = (place) => {
            </p>
          </video>
        </div>
-       <div class="card-content">
+       <div class="card-content is-centered">
          <div class="content">
            <h4 class="location-title">
              <i class="fas fa-map-marker-alt"></i> ${place}
            </h4>
          </div>
-         <button id="start" class="button is-success is-outlined">
-         Play
-       </button>
-<button id="stop" class="button is-success is-outlined">
-         Pause
-       </button>
+         <div class="buttons is-centered">
+         <a id="start" class="button is-light">Play Music </a>
+         <a id="stop" class="button is-light">Pause Music </a>
        </div>
      </div>
    </div>
