@@ -151,7 +151,6 @@ const renderWeatherCard = (weather, place) => {
   </div>`;
 };
 
-// TO DO render waiter text using typewriter function
 const renderConsoleData = async (place) => {
   try {
     // fetch weather data
@@ -214,7 +213,7 @@ const renderConsoleData = async (place) => {
   }
 };
 
-renderHolidaySnapsButton = () => {
+const renderHolidaySnapsButton = () => {
   mainView.append(`<div id="holiday-snap"><button id="holiday-snap-btn" class="holiday-snap-btn">
   Save A Holiday Snap
 </button><div>`);
