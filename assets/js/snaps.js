@@ -23,11 +23,11 @@ const renderPostcards = (postcards) => {
 
   const renderPostcard = (postcard) => {
     //create postcard
-    const eachPostcard = `<div class="card">
+    const eachPostcard = `<div class="card p-6">
     <p class="card-title has-text-centered">Wish you were here in ${postcard.location}!</p>
       <div class="card-image">
         <img
-          class="holiday-images"
+          class="card-image holiday-images"
           src="./assets/images/${postcard.location}.jpg"
 
           id="postcard-image"
