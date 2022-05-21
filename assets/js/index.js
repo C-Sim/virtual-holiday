@@ -296,6 +296,7 @@ const renderError = () => {
 };
 
 const handleButtonClick = async () => {
+  $("#jokesContainer").remove();
   // requires a URL
   const url = "https://papajoke.p.rapidapi.com/api/jokes";
 
@@ -322,9 +323,7 @@ const handleButtonClick = async () => {
   console.log(headline);
   const punchline = randomJoke.punchline;
   console.log(punchline);
-  const jokeDiv = `<div>${headline} ${punchline}</div>`;
-
-  // jokeDiv.empty();
+  const jokeDiv = `<div id="jokesContainer"> <i class="fa-solid fa-face-grin-tongue-wink"></i>${headline} ${punchline}</div>`;
 
   $("#bartender-card").append(jokeDiv);
 };
@@ -396,16 +395,16 @@ const startHolidayExperience = async (event) => {
 
 // get random snack in the array
 const getRandomSnacks = (response) => {
+  $("#snacksContainer").remove();
   const randomSnack = Math.floor(Math.random() * response.length);
   // create a div section for snacks to appear
-  const snacksDiv = `<div>${response[randomSnack].name}</div>`;
+  const snacksDiv = `<div id="snacksContainer"> <i class="fa-solid fa-ice-cream"></i>${response[randomSnack].name}</div>`;
   // target the div where text appears
   $("#bartender-card").append(snacksDiv);
 };
 
 // snacks api fetch function
 const snacksGenerator = async () => {
-  console.log("hi");
   try {
     // make request to API
     const data = await fetch(
