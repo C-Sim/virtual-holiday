@@ -24,6 +24,7 @@ const renderPostcards = (postcards) => {
   const renderPostcard = (postcard) => {
     //create postcard
     const eachPostcard = `<div class="card">
+    <p class="card-title has-text-centered">Wish you were here in ${postcard.location}!</p>
       <div class="card-image">
         <img
           class="holiday-images"
@@ -34,11 +35,15 @@ const renderPostcards = (postcards) => {
         />
       </div>
       <div class="card-content">
-        <p class="card-title has-text-centered">${postcard.location}</p>
-        <div class="holiday-type text-center">
-        ${postcard.temperature}&deg;C
+        
+
+        <div class="holiday-type">
+       <p>Where the current temp is: ${postcard.temperature}&deg;C</p>
         </div>
+
+        <div>The best food I had on holiday was </div>
       </div>
+
       <div class="hastags has-text-centered">
         <p>
           <span class="hastag-texts">#Virtual-holiday-experience</span>

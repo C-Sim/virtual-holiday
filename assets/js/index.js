@@ -306,7 +306,7 @@ const popUpModal = () => {
     saveButton.unbind("click", createPostcard);
     saveButton.attr("disabled", true);
     saveButton.toggleClass("saved-postcard");
-    saveButton.text("Postcard on its way");
+    saveButton.text("Postcard saved in Holiday Snaps!");
   };
 
   $(".modal-close").click(closeModal);
@@ -465,7 +465,6 @@ const createPostcard = () => {
   console.log(temperature);
   // takes the location for the holiday type
   const location = $("#place").attr("data-place");
-  console.log(location);
 
   const postcard = {
     id: uuid.v4(),
