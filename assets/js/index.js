@@ -8,23 +8,7 @@ const snacks_API_KEY = "a03019689amshf53ea6e702883adp12db0ajsnb0cacc3b0328";
 
 const mainView = $(".main-container");
 
-const consoleContainer = $("#console-container");
-
-const webcamDiv = $("#webcam-section");
-
-const webcamContainer = $("#holiday-experience");
-
-const weatherContainer = $("#weather-container");
-
-const snacksDiv = $(".snacks-items");
-
-const tempContainer = $("#temperature");
-
-const waiterContainer = $("#waiter-container");
-
 const holidayDropdownButton = $("#holiday-dropdown-btn");
-
-const holidayDropdown = $("#holiday-dropdown");
 
 const dropdownMenu = $("#dropdown-menu");
 
@@ -242,52 +226,55 @@ renderHolidaySnapsButton = () => {
 // TO DO ensure can select other holiday types in dropdown
 moveDropdown = (displayLabel) => {
   mainView.append(`<div class="is-flex is-justify-content-center m-4">
-  <div class="dropdown" id="holiday-dropdown">
-    <div class="dropdown-trigger">
-      <button
-        class="button"
-        aria-haspopup="true"
-        aria-controls="dropdown-menu"
-        id="holiday-dropdown-btn"
-      >
-        <span id="holiday-span">${displayLabel}</span>
-        <span class="icon is-small">
-          <i class="fas fa-angle-down" aria-hidden="true"></i>
-        </span>
-      </button>
-    </div>
-    <div class="dropdown-menu" id="dropdown-menu" role="menu">
-      <div class="dropdown-content">
-        <div
-          name="holiday-type"
-          class="dropdown-item is-clickable has-text-centered"
-          id="beach"
-          data-label="Beach Holiday"
+    <div class="dropdown" id="holiday-dropdown">
+      <div class="dropdown-trigger">
+        <button
+          class="button"
+          aria-haspopup="true"
+          aria-controls="dropdown-menu"
+          id="holiday-dropdown-btn"
         >
-          Beach Holiday
-        </div>
-        <hr class="dropdown-divider" />
-        <div
-          name="holiday-type"
-          class="dropdown-item is-clickable has-text-centered"
-          id="cityBreak"
-          data-label="City Break"
-        >
-          City Break
-        </div>
-        <hr class="dropdown-divider" />
-        <div
-          name="holiday-type"
-          class="dropdown-item is-clickable has-text-centered"
-          id="ski"
-          data-label="Ski Trip"
-        >
-          Ski Trip
+          <span id="holiday-span">${displayLabel}</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <div
+            name="holiday-type"
+            class="dropdown-item is-clickable has-text-centered"
+            id="beach"
+            data-label="Beach Holiday"
+          >
+            Beach Holiday
+          </div>
+          <hr class="dropdown-divider" />
+          <div
+            name="holiday-type"
+            class="dropdown-item is-clickable has-text-centered"
+            id="cityBreak"
+            data-label="City Break"
+          >
+            City Break
+          </div>
+          <hr class="dropdown-divider" />
+          <div
+            name="holiday-type"
+            class="dropdown-item is-clickable has-text-centered"
+            id="ski"
+            data-label="Ski Trip"
+          >
+            Ski Trip
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>`);
+  </div>`);
+
+  $("#holiday-dropdown-btn").click(holidayDropdownToggle);
+  $("#dropdown-menu").click(startHolidayExperience);
 };
 
 const renderError = () => {
@@ -352,7 +339,8 @@ const handleNavBarToggle = () => {
 };
 
 const holidayDropdownToggle = () => {
-  holidayDropdown.toggleClass("is-active");
+  console.log("toggle dropdown");
+  $("#holiday-dropdown").toggleClass("is-active");
 };
 
 const startHolidayExperience = async (event) => {
@@ -374,7 +362,7 @@ const startHolidayExperience = async (event) => {
   if (target.is('div[name="holiday-type"]')) {
     const holidayType = target.attr("id");
 
-    holidayDropdown.toggleClass("is-active");
+    $("#holiday-dropdown").toggleClass("is-active");
     const displayLabel = target.attr("data-label");
     holidaySpan.text(displayLabel);
     // window.location.replace(`#${holidayType}`);
