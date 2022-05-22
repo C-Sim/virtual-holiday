@@ -30,6 +30,8 @@ const dropdownMenu = $("#dropdown-menu");
 
 const holidaySpan = $("#holiday-span");
 
+const stopBnt = $("#stop");
+
 const welcome = $("#welcome");
 
 const closeModalBtn = $(".modal-close");
@@ -128,12 +130,15 @@ const renderWebcamData = (place) => {
            </p>
          </video>
        </div>
-       <div class="card-content">
+       <div class="card-content is-centered">
          <div class="content">
            <h4 class="location-title">
              <i class="fas fa-map-marker-alt"></i> ${place}
            </h4>
          </div>
+         <div class="buttons is-centered">
+         <a id="start" class="button is-light">Play Music </a>
+         <a id="stop" class="button is-light">Pause Music </a>
        </div>
      </div>
    </div>
@@ -203,6 +208,10 @@ const renderConsoleData = async (place) => {
 
     // Event listener for snacks button
     $("#offer-snack").click(snacksGenerator);
+
+    $("#stop").click(stopPlaying);
+
+    $("#start").click(startPlaying);
 
     return true;
   } catch (error) {
@@ -374,6 +383,8 @@ const holidayDropdownToggle = () => {
   holidayDropdown.toggleClass("is-active");
 };
 
+// check if we no longer need this
+
 const startHolidayExperience = async (event) => {
   // $("html, body").animate(
   //   {
@@ -406,7 +417,6 @@ const startHolidayExperience = async (event) => {
 
     const videoPlayer = document.getElementById("my-video");
 
-    // videoPlayer.requestFullscreen();
     videoPlayer.play();
 
     await renderConsoleData(place);
@@ -452,6 +462,24 @@ const snacksGenerator = async () => {
   } catch (error) {
     // throw log error
     console.log(error);
+  }
+};
+
+// stop music function
+const stopPlaying = () => {
+  let isPlaying = true;
+
+  if (isPlaying === true) {
+    audio.pause();
+  }
+};
+
+// start music function
+const startPlaying = () => {
+  let isPlaying = false;
+
+  if (isPlaying === false) {
+    audio.play();
   }
 };
 
