@@ -140,7 +140,7 @@ const renderWeatherCard = (weather, place) => {
           />
         </figure>
       </div>
-      <div class="media-content">
+      <div class="media-content weather-content">
         <p class="title is-4 is-size-6-mobile pt-3" id="temperature">
           ${weather.temp}&deg;C
         </p>
