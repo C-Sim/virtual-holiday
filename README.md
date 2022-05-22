@@ -110,7 +110,7 @@ From the scenery and atmospheric music, to the weather and a waiter who tells th
 <details>
 <summary>Experience Page</summary>
 
-![experience-page](...)
+![experience-page](./assets/screenshots/experience-mobile.png)
 
 </details>
 
