@@ -6,64 +6,127 @@ An interactive app which allows the user to select a holiday type to be provided
 
 ## Technologies
 
-- HTML & CSS
+<details>
+<summary>HTML & CSS</summary>
+- Video
+- Audio
+- Bulma frameworks
+- Media queries
+- Variables
+- Responsiveness
+- FontAwesome
+</details>
 
-  - Video
-  - Audio
-  - Bulma frameworks
-  - Media queries
-  - Variables
-  - Responsiveness
-  - FontAwesome
-
-- JavaScript
-
+<details>
+<summary>JavaScript</summary>
   - Event Listeners
   - Template Strings
   - Conditional Statements
-  - 3rd Party APIs: jQuery, Weather, Jokes, Drinks & Snacks
-  - Server-side APIs: Fetch
+</details>
 
-- Plug-Ins
-
+<details>
+<summary>Plug-Ins</summary>
   - Typewriter
   - Unique IDs
+</details>
 
-- Web APIs
-
+<details>
+<summary>Web APIs</summary>
   - Document Object Model
   - Local Storage
+</details>
 
-- Third Party APIs
-
+<details>
+<summary>Third Party APIs</summary>
   - jQuery
   - OneCall Weather
+  - Rapid API
   - FontAwesome
+</details>
 
-- Server-side APIs
-
+<details>
+<summary>Server-side APIs</summary>
   - Fetch
+</details>
 
-- GitHub Pages & Projects
+<details>
+<summary>GitHub Pages & Projects</summary>
   - Kanban board
   - Tickets
   - Assignees
+</details>
+</br>
 
 ## Screenshots
 
-<details>
-<summary>Desktop viewport</summary>
+# Desktop viewport
 
-![desktop-viewport](...)
+<details>
+<summary>Landing Page</summary>
+
+![landing-page](./assets/screenshots/landing-desktop.png)
 
 </details>
 
 <details>
-<summary>Mobile viewport</summary>
+<summary>Experience Page</summary>
 
-![mobile-viewport](...)
+![experience-page](./assets/screenshots/experience-desktop.png)
 
 </details>
+
+<details>
+<summary>Holiday Snaps Page</summary>
+
+![snaps-page](...)
+
+</details>
+
+<details>
+<summary>About Us Page</summary>
+
+![about-us-page](...)
+
+</details>
+
+<details>
+<summary>Modal</summary>
+
+![modal](./assets/screenshots/modal.png)
+
+</details>
+</br>
+
+# Mobile viewport
+
+<details>
+<summary>Landing Page</summary>
+
+![landing-page](./assets/screenshots/landing-mob.png)
+
+</details>
+
+<details>
+<summary>Experience Page</summary>
+
+![experience-page](...)
+
+</details>
+
+<details>
+<summary>Holiday Snaps Page</summary>
+
+![snaps-page](...)
+
+</details>
+
+<details>
+<summary>About Us Page</summary>
+
+![about-us-page](...)
+
+</details>
+
 </br>
 
 ## User Story

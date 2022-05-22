@@ -32,7 +32,7 @@ const renderPostcards = (postcards) => {
           src="./assets/images/${postcard.location}.jpg"
 
           id="postcard-image"
-          alt="Placeholder image"
+          alt="${postcard.location} Placeholder Image"
         />
       </div>
       <div class="card-content">
