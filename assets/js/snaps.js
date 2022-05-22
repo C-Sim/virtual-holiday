@@ -23,10 +23,12 @@ const renderPostcards = (postcards) => {
 
   const renderPostcard = (postcard) => {
     //create postcard
-    const eachPostcard = `<div class="card">
+    const eachPostcard = `<div class="card p-6 m-6">
+    <img src="./assets/images/virtual-holiday.png" class="card-image" width="100" />
+    <p class="card-title has-text-centered is-size-4 is-italic">Wish you were here in ${postcard.location}!</p>
       <div class="card-image">
         <img
-          class="holiday-images"
+          class="card-image holiday-images"
           src="./assets/images/${postcard.location}.jpg"
 
           id="postcard-image"
@@ -34,13 +36,13 @@ const renderPostcards = (postcards) => {
         />
       </div>
       <div class="card-content">
-        <p class="card-title has-text-centered">${postcard.location}</p>
-        <!-- render user holiday destination in this div  -->
-        <div class="holiday-type text-center">
-        ${postcard.temperature}&deg;C
-          <!-- use template literal in js  -->
+        
+
+        <div class="holiday-type">
+       <p class="has-text-centered">The current temperature is: ${postcard.temperature}&deg;C</p>
         </div>
       </div>
+
       <div class="hastags has-text-centered">
         <p>
           <span class="hastag-texts">#Virtual-holiday-experience</span>
