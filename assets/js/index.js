@@ -164,7 +164,7 @@ const renderConsoleData = async (place) => {
       <div class="card column is-centered" id="waiter-container">
         <div class="card-content has-text-centered" id="bartender-card">
         <div class="content is-size-6-mobile title is-5" id="welcome"></div>
-          <div class="media">
+          <div class="media waiter-interact">
             <div class="media-left">
               <figure class="image is-128x128 waiter-image">
                 <img class="is-rounded ml-3 mt-2" src="./assets/images/${place}-waiter.jpg" alt="Waiter" />

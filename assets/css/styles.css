@@ -161,7 +161,13 @@ body {
   }
 
   .console-btn {
-    width: 40vw;
+    width: 48vw;
+  }
+
+  .waiter-interact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
