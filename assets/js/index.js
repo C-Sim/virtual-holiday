@@ -1,5 +1,3 @@
-// DECLARATIONS
-// CS weather API key
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
 const joke_API_KEY = "ca45ec61a4msh24fe699dc35cc23p1151b5jsn5e05295b9d8f";
@@ -54,7 +52,6 @@ const fetchData = async (url, options = {}) => {
 };
 
 const fetchWeatherData = async (place) => {
-  // use API to fetch current weather data
   const currentWeatherUrl = constructUrl(
     "https://api.openweathermap.org/data/2.5/weather",
     {
@@ -64,15 +61,12 @@ const fetchWeatherData = async (place) => {
     }
   );
 
-  // await fetch response
   const currentData = await fetchData(currentWeatherUrl);
 
-  // get temperature for place
   const temp = currentData?.main?.temp || "";
   const humidity = currentData?.main?.humidity || "";
   const weatherIcon = currentData?.weather[0].icon || "";
 
-  // return data retrieved from api
   return {
     temp: temp,
     humidity: humidity,
@@ -81,7 +75,6 @@ const fetchWeatherData = async (place) => {
 };
 
 const renderWebcamData = (place) => {
-  // append the html on to the page with correct webcam
   mainView.append(`<section class="packages" id="holiday-experience">
  <div id="webcam-section">
    <div class="section">
@@ -157,10 +150,8 @@ const renderWeatherCard = (weather, place) => {
 
 const renderConsoleData = async (place) => {
   try {
-    // fetch weather data
     const weather = await fetchWeatherData(place);
 
-    // render current data
     mainView.append(`<div class="columns is-centered" id="console-container">
       <div class="card column is-centered has-text-centered is-half" id="weather-container">
         ${renderWeatherCard(weather, place)}
@@ -207,7 +198,6 @@ const renderConsoleData = async (place) => {
 
     $("#joke-api").click(handleJokeButtonClick);
 
-    // Event listener for snacks button
     $("#offer-snack").click(snacksGenerator);
 
     $("#stop").click(stopPlaying);
@@ -216,7 +206,6 @@ const renderConsoleData = async (place) => {
 
     return true;
   } catch (error) {
-    console.log(error.message);
     renderError();
     return false;
   }
@@ -280,7 +269,6 @@ const moveDropdown = (displayLabel) => {
   $("#holiday-dropdown-btn").click(holidayDropdownToggle);
   $("#dropdown-menu").click(startHolidayExperience);
 
-  //targets the holiday snap button
   $("#holiday-snap-btn").click(createPostcard);
 };
 
@@ -333,10 +321,8 @@ const renderError = () => {
 };
 
 const handleJokeButtonClick = async () => {
-  // const bartenderCard = $("#bartender-card");
   const waiterProvision = $("#waiter-provision");
 
-  // requires a URL
   const url = "https://papajoke.p.rapidapi.com/api/jokes";
 
   const options = {
@@ -350,38 +336,26 @@ const handleJokeButtonClick = async () => {
   const response = await fetch(url, options);
   const data = await response.json();
 
-  // get jokes from data
   const jokes = data.items;
-  console.log(jokes);
 
   const randomIndex = Math.floor(Math.random() * jokes.length);
-  console.log(randomIndex);
   const randomJoke = jokes[randomIndex];
-  console.log(randomJoke);
   const headline = randomJoke.headline;
-  console.log(headline);
   const punchline = randomJoke.punchline;
-  console.log(punchline);
-  const jokeDiv = `<div>${headline}</br>${punchline}</div>`;
+  const jokeDiv = `<div id="jokesContainer"> <i class="fa-solid fa-face-grin-tongue-wink"></i> ${headline}</br>${punchline}</div>`;
 
   waiterProvision.empty();
 
   waiterProvision.append(jokeDiv);
 };
 
-// TO DO nav burger doesn't always work
 const handleNavBarToggle = () => {
   const navBurgerBtn = $(".navbar-burger");
 
   const toggleNavBar = () => {
-    // get the nav container id (the div to show and hide)
     const navContainerId = navBurgerBtn.attr("data-target");
     const navContainer = $(`#${navContainerId}`);
-
-    // toggle the class for hamburger button to show/hide
     navBurgerBtn.toggleClass("is-active");
-
-    // toggle the class for nav container to show/hide
     navContainer.toggleClass("is-active");
   };
 
@@ -389,24 +363,10 @@ const handleNavBarToggle = () => {
 };
 
 const holidayDropdownToggle = () => {
-  console.log("toggle dropdown");
   $("#holiday-dropdown").toggleClass("is-active");
 };
 
-// check if we no longer need this
-
 const startHolidayExperience = async (event) => {
-  // $("html, body").animate(
-  //   {
-  //     scrollTop: $("#holiday-experience").offset().top,
-  //   },
-  //   800,
-  //   function () {
-  //     // Add hash (#) to URL when done scrolling (default click behavior)
-  //     window.location.hash = "#holiday-experience";
-  //   }
-  // );
-
   const target = $(event.target);
 
   mainView.empty();
@@ -417,7 +377,6 @@ const startHolidayExperience = async (event) => {
     $("#holiday-dropdown").toggleClass("is-active");
     const displayLabel = target.attr("data-label");
     holidaySpan.text(displayLabel);
-    // window.location.replace(`#${holidayType}`);
 
     // playRandomSong(holidayType);
 
@@ -437,23 +396,20 @@ const startHolidayExperience = async (event) => {
   }
 };
 
-// get random snack in the array
 const getRandomSnacks = (response) => {
   const waiterProvision = $("#waiter-provision");
 
   const randomSnack = Math.floor(Math.random() * response.length);
-  // create a div section for snacks to appear
+
   const snacksDiv = `<div id="snacksContainer"> <i class="fa-solid fa-ice-cream mr-2"></i>${response[randomSnack].name}</div>`;
-  // target the div where text appears
+
   waiterProvision.empty();
 
   waiterProvision.append(snacksDiv);
 };
 
-// snacks api fetch function
 const snacksGenerator = async () => {
   try {
-    // make request to API
     const data = await fetch(
       "https://pizza-and-desserts.p.rapidapi.com/desserts",
       {
@@ -465,20 +421,14 @@ const snacksGenerator = async () => {
       }
     );
     if (data.status === 200) {
-      // if successful display date
       const response = await data.json();
       getRandomSnacks(response);
-      // throw error
     } else {
       throw new Error("something went wrong");
     }
-  } catch (error) {
-    // throw log error
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
-// stop music function
 const stopPlaying = () => {
   let isPlaying = true;
 
@@ -487,7 +437,6 @@ const stopPlaying = () => {
   }
 };
 
-// start music function
 const startPlaying = () => {
   let isPlaying = false;
 
@@ -501,10 +450,8 @@ holidayDropdownButton.click(holidayDropdownToggle);
 dropdownMenu.click(startHolidayExperience);
 
 const createPostcard = () => {
-  // takes the current temperature for holiday type
   const temperature = $("#temperature").attr("data-temperature");
-  console.log(temperature);
-  // takes the location for the holiday type
+
   const location = $("#place").attr("data-place");
 
   const postcard = {
@@ -518,8 +465,6 @@ const createPostcard = () => {
   postcards.push(postcard);
 
   writeToLocalStorage("postcards", postcards);
-
-  console.log(localStorage);
 
   popUpModal();
 };
