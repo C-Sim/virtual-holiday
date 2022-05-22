@@ -24,6 +24,7 @@ const renderPostcards = (postcards) => {
   const renderPostcard = (postcard) => {
     //create postcard
     const eachPostcard = `<div class="card p-6 m-6">
+    <img src="./assets/images/virtual-holiday.png" class="card-image" width="100" />
     <p class="card-title has-text-centered is-size-4 is-italic">Wish you were here in ${postcard.location}!</p>
       <div class="card-image">
         <img
