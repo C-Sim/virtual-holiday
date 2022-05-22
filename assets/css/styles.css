@@ -151,7 +151,16 @@ body {
 }
 
 .about-card {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
   margin: 18px auto;
+}
+
+.card-footer {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
 }
 
 .headshot {

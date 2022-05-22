@@ -419,7 +419,7 @@ const startHolidayExperience = async (event) => {
     holidaySpan.text(displayLabel);
     // window.location.replace(`#${holidayType}`);
 
-    playRandomSong(holidayType);
+    // playRandomSong(holidayType);
 
     const place = linkPlaceName(holidayType);
 

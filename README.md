@@ -1,6 +1,7 @@
 # virtual_holiday
 
 An interactive app which allows the user to select a holiday type to be provided with everything they need to recreate the holiday feeling virtually.
+From the scenery and atmospheric music, to the weather and a waiter who tells them bad jokes.
 
 [Deployed GitHub URL](...)
 
@@ -59,7 +60,7 @@ An interactive app which allows the user to select a holiday type to be provided
 
 ## Screenshots
 
-# Desktop viewport
+### Desktop viewport
 
 <details>
 <summary>Landing Page</summary>
@@ -97,7 +98,7 @@ An interactive app which allows the user to select a holiday type to be provided
 </details>
 </br>
 
-# Mobile viewport
+### Mobile viewport
 
 <details>
 <summary>Landing Page</summary>
@@ -133,8 +134,8 @@ An interactive app which allows the user to select a holiday type to be provided
 
 ```md
 AS A person with limited resources available to escape reality
-I WANT to be able to recreate the holiday feeling from the comfort of my own home
-SO THAT I can recreate the relaxing holiday feeling
+I WANT to be able to recreate a holiday atmosphere from the comfort of my own home
+SO THAT I can manifest the relaxing holiday feeling
 ```
 
 ## Acceptance Criteria
