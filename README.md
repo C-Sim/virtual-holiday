@@ -6,32 +6,48 @@ An interactive app which allows the user to select a holiday type to be provided
 
 ## Technologies
 
-- HTML
-- CSS
-  <!-- - Animation
+- HTML & CSS
+
+  - Video
+  - Audio
+  - Bulma frameworks
   - Media queries
-  - Flexbox
-  - Variables -->
+  - Variables
+  - Responsiveness
+  - FontAwesome
+
 - JavaScript
-  <!-- - Objects
-  - Arrays
-  - Intervals
-  - Timeout
+
   - Event Listeners
   - Template Strings
-  - Event Bubbling
-  - Loops
-  - Conditional Statements -->
+  - Conditional Statements
+  - 3rd Party APIs: jQuery, Weather, Jokes, Drinks & Snacks
+  - Server-side APIs: Fetch
+
+- Plug-Ins
+
+  - Typewriter
+  - Unique IDs
+
 - Web APIs
-  <!-- - Document Object Model
-  - Local Storage -->
+
+  - Document Object Model
+  - Local Storage
+
 - Third Party APIs
-  <!-- - jQuery
-  - Bootstrap
+
+  - jQuery
+  - OneCall Weather
   - FontAwesome
-  - GoogleFonts -->
-- GitHub Pages
-- GitHub Projects
+
+- Server-side APIs
+
+  - Fetch
+
+- GitHub Pages & Projects
+  - Kanban board
+  - Tickets
+  - Assignees
 
 ## Screenshots
 
@@ -73,5 +89,5 @@ THEN the temperature is displayed for me to match
 WHEN I want to feel like I'm enjoying some down time in the destination
 THEN a barman will offer me a beverage and a random joke
 WHEN I click on the holiday snap button
-THEN all of my holiday details will be saved so I can revisit and/or share
+THEN all of my holiday details will be saved so I can revisit
 ```

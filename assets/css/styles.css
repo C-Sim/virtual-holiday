@@ -114,6 +114,13 @@ body {
   object-fit: scale-down;
 }
 
+.logo {
+  height: 48px;
+  width: 100px;
+  padding: 0;
+  object-fit: scale-down;
+}
+
 #holiday-snap {
   width: 50vw;
   margin: 18px auto;

@@ -527,5 +527,3 @@ const createPostcard = () => {
 $(document).ready(() => {
   handleNavBarToggle();
 });
-
-
