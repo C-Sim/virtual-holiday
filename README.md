@@ -5,6 +5,23 @@ From the scenery and atmospheric music, to the weather and a waiter who tells th
 
 [Deployed GitHub URL](...)
 
+## Tools
+
+<details>
+<summary>Wireframe</summary>
+
+![experience-page](./assets/screenshots/wireframe.png)
+
+</details>
+
+<details>
+<summary>Architectural Diagram</summary>
+
+![experience-page](./assets/screenshots/ad.png)
+
+</details>
+</br>
+
 ## Technologies
 
 <details>
@@ -86,7 +103,7 @@ From the scenery and atmospheric music, to the weather and a waiter who tells th
 <details>
 <summary>About Us Page</summary>
 
-![about-us-page](...)
+![about-us-page](./assets/screenshots/about-us-desktop.png)
 
 </details>
 
@@ -124,7 +141,7 @@ From the scenery and atmospheric music, to the weather and a waiter who tells th
 <details>
 <summary>About Us Page</summary>
 
-![about-us-page](...)
+![about-us-page](./assets/screenshots/about-us-mobile.png)
 
 </details>
 

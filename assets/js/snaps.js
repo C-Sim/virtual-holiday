@@ -18,6 +18,8 @@ const handleClick = (event) => {
 };
 
 const renderPostcards = (postcards) => {
+  console.log(postcards);
+
   mainContainer.empty();
 
   const renderPostcard = (postcard) => {
@@ -37,7 +39,7 @@ const renderPostcards = (postcards) => {
         
 
         <div class="holiday-type">
-       <p class="has-text-centered">The current temperature is: ${postcard.temperature}&deg;C</p>
+       <p class="has-text-centered">Temperature: ${postcard.temperature}&deg;C</p>
         </div>
       </div>
 

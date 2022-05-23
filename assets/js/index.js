@@ -134,7 +134,7 @@ const renderWeatherCard = (weather, place) => {
         </figure>
       </div>
       <div class="media-content weather-content">
-        <p class="title is-4 is-size-6-mobile pt-3" id="temperature">
+        <p class="title is-4 is-size-6-mobile pt-3" id="temperature" data-temperature="${weather.temp}>
           ${weather.temp}&deg;C
         </p>
         <p class="subtitle is-6 is-size-7-mobile" id="humidity">
@@ -142,7 +142,7 @@ const renderWeatherCard = (weather, place) => {
         </p>
       </div>
     </div>
-    <div class="content is-6 is-size-6-mobile">
+    <div class="content is-6 is-size-6-mobile" id="place" data-place="${place}">
       Set your thermostat to recreate the temperature in ${place}.
     </div>
   </div>`;
