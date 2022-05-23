@@ -1,28 +1,12 @@
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
-const apiKey = "ca45ec61a4msh24fe699dc35cc23p1151b5jsn5e05295b9d8f";
+const joke_API_KEY = "ca45ec61a4msh24fe699dc35cc23p1151b5jsn5e05295b9d8f";
 
 const snacks_API_KEY = "a03019689amshf53ea6e702883adp12db0ajsnb0cacc3b0328";
 
 const mainView = $(".main-container");
 
-const consoleContainer = $("#console-container");
-
-const webcamDiv = $("#webcam-section");
-
-const webcamContainer = $("#holiday-experience");
-
-const weatherContainer = $("#weather-container");
-
-const snacksDiv = $(".snacks-items");
-
-const tempContainer = $("#temperature");
-
-const waiterContainer = $("#waiter-container");
-
 const holidayDropdownButton = $("#holiday-dropdown-btn");
-
-const holidayDropdown = $("#holiday-dropdown");
 
 const dropdownMenu = $("#dropdown-menu");
 
@@ -138,63 +122,81 @@ const renderWebcamData = (place) => {
 </section>`);
 };
 
+const renderWeatherCard = (weather, place) => {
+  return `<div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-96x96 ml-6">
+          <img
+            src="http://openweathermap.org/img/w/${weather.icon}.png"
+            alt="Weather Icon"
+          />
+        </figure>
+      </div>
+      <div class="media-content weather-content">
+        <p class="title is-4 is-size-6-mobile pt-3" id="temperature" data-temperature="${weather.temp}">
+          ${weather.temp}&deg;C
+        </p>
+        <p class="subtitle is-6 is-size-7-mobile" id="humidity">
+          Humidity: ${weather.humidity}&percnt;
+        </p>
+      </div>
+    </div>
+    <div class="content is-6 is-size-6-mobile" id="place" data-place="${place}">
+      Set your thermostat to recreate the temperature in ${place}.
+    </div>
+  </div>`;
+};
+
 const renderConsoleData = async (place) => {
   try {
     const weather = await fetchWeatherData(place);
 
     mainView.append(`<div class="columns is-centered" id="console-container">
-      <div class="card column is-centered is-half" id="weather-container">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-48x48">
-                <img
-                  src="http://openweathermap.org/img/w/${weather.icon}.png"
-                  alt="Weather Icon"
-                />
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-4 is-size-6-mobile" id="temperature" data-temperature="${weather.temp}">
-                ${weather.temp}&deg;C
-              </p>
-              <p class="subtitle is-6 is-size-7-mobile" id="humidity">
-                Humidity: ${weather.humidity}&percnt;
-              </p>
-            </div>
-          </div>
-
-          <div class="content is-size-7-mobile" id="place" data-place="${place}">
-            Set your thermostat to recreate the temperature in ${place}.
-          </div>
-        </div>
+      <div class="card column is-centered has-text-centered is-half" id="weather-container">
+        ${renderWeatherCard(weather, place)}
       </div>
     
-    <div class="card column is-centered is-half" id="waiter-container">
-      <div class="card-content" id="bartender-card">
-        <div class="media">
-          <div class="media-left">
-         
-            <figure class="image is-5by4 waiter-image">
-              <img class="is-rounded" src="./assets/images/${place}-waiter.jpg" alt="Waiter" />
-            </figure>
+      <div class="card column is-centered" id="waiter-container">
+        <div class="card-content has-text-centered" id="bartender-card">
+        <div class="content is-size-6-mobile title is-5" id="welcome"></div>
+          <div class="media waiter-interact">
+            <div class="media-left">
+              <figure class="image is-128x128 waiter-image">
+                <img class="is-rounded ml-3 mt-2" src="./assets/images/${place}-waiter.jpg" alt="Waiter" />
+              </figure>
+            </div>
+            <div class="media-content waiter-buttons">
+              <button class="console-btn" id="joke-api">
+                Tell Me A Joke
+              </button>
+              <button class="console-btn" id="offer-snack">
+                Offer Me A Snack
+              </button>
+            </div>
           </div>
-          <div id="welcome">Welcome to the restaurant. Can I offer you some food? Some entertainment?</div>
-
-          <div class="media-content waiter-buttons">
-            <button class="console-btn" id="joke-api">
-              Tell Me A Joke
-            </button>
-            <button class="console-btn" id="offer-snack">
-              Offer Me A Snack
-            </button>
-          </div>
+          
         </div>
+        <div id="waiter-provision" class="has-text-centered"></div>
       </div>
-    </div>
     </div>`);
 
-    $("#joke-api").click(handleButtonClick);
+    const typewriter = new Typewriter(document.getElementById("welcome"), {
+      loop: true,
+    });
+
+    typewriter
+      .typeString("Welcome to the restaurant.")
+      .pauseFor(1000)
+      .deleteAll()
+      .typeString("Can I offer you some entertainment?")
+      .pauseFor(1000)
+      .deleteChars(20)
+      .typeString(" some food?")
+      .pauseFor(1000)
+      .start();
+
+    $("#joke-api").click(handleJokeButtonClick);
 
     $("#offer-snack").click(snacksGenerator);
 
@@ -209,60 +211,64 @@ const renderConsoleData = async (place) => {
   }
 };
 
-renderHolidaySnapsButton = () => {
+const renderHolidaySnapsButton = () => {
   mainView.append(`<div id="holiday-snap"><button id="holiday-snap-btn" class="holiday-snap-btn">
   Save A Holiday Snap
 </button><div>`);
 };
 
-moveDropdown = (displayLabel) => {
-  mainView.append(`<div class="is-flex is-justify-content-center">
-  <div class="dropdown" id="holiday-dropdown">
-    <div class="dropdown-trigger">
-      <button
-        class="button"
-        aria-haspopup="true"
-        aria-controls="dropdown-menu"
-        id="holiday-dropdown-btn"
-      >
-        <span id="holiday-span">${displayLabel}</span>
-        <span class="icon is-small">
-          <i class="fas fa-angle-down" aria-hidden="true"></i>
-        </span>
-      </button>
-    </div>
-    <div class="dropdown-menu" id="dropdown-menu" role="menu">
-      <div class="dropdown-content">
-        <div
-          name="holiday-type"
-          class="dropdown-item is-clickable"
-          id="beach"
-          data-label="Beach Holiday"
+const moveDropdown = (displayLabel) => {
+  mainView.append(`<div class="is-flex is-justify-content-center m-4">
+    <div class="dropdown" id="holiday-dropdown">
+      <div class="dropdown-trigger">
+        <button
+          class="button"
+          aria-haspopup="true"
+          aria-controls="dropdown-menu"
+          id="holiday-dropdown-btn"
         >
-          Beach Holiday
-        </div>
-        <hr class="dropdown-divider" />
-        <div
-          name="holiday-type"
-          class="dropdown-item is-clickable"
-          id="cityBreak"
-          data-label="City Break"
-        >
-          City Break
-        </div>
-        <hr class="dropdown-divider" />
-        <div
-          name="holiday-type"
-          class="dropdown-item is-clickable"
-          id="ski"
-          data-label="Ski Trip"
-        >
-          Ski Trip
+          <span id="holiday-span">${displayLabel}</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <div
+            name="holiday-type"
+            class="dropdown-item is-clickable has-text-centered"
+            id="beach"
+            data-label="Beach Holiday"
+          >
+            Beach Holiday
+          </div>
+          <hr class="dropdown-divider" />
+          <div
+            name="holiday-type"
+            class="dropdown-item is-clickable has-text-centered"
+            id="cityBreak"
+            data-label="City Break"
+          >
+            City Break
+          </div>
+          <hr class="dropdown-divider" />
+          <div
+            name="holiday-type"
+            class="dropdown-item is-clickable has-text-centered"
+            id="ski"
+            data-label="Ski Trip"
+          >
+            Ski Trip
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>`);
+  </div>`);
+
+  $("#holiday-dropdown-btn").click(holidayDropdownToggleOnIndex);
+  $("#dropdown-menu").click(startHolidayExperience);
+
   $("#holiday-snap-btn").click(createPostcard);
 };
 
@@ -314,15 +320,16 @@ const renderError = () => {
   mainView.append(`<h2 class="message">${message}</h2>`);
 };
 
-const handleButtonClick = async () => {
-  $("#jokesContainer").remove();
+const handleJokeButtonClick = async () => {
+  const waiterProvision = $("#waiter-provision");
+
   const url = "https://papajoke.p.rapidapi.com/api/jokes";
 
   const options = {
     method: "GET",
     headers: {
       "X-RapidAPI-Host": "papajoke.p.rapidapi.com",
-      "X-RapidAPI-Key": apiKey,
+      "X-RapidAPI-Key": joke_API_KEY,
     },
   };
 
@@ -335,26 +342,15 @@ const handleButtonClick = async () => {
   const randomJoke = jokes[randomIndex];
   const headline = randomJoke.headline;
   const punchline = randomJoke.punchline;
-  const jokeDiv = `<div id="jokesContainer"> <i class="fa-solid fa-face-grin-tongue-wink"></i>${headline} ${punchline}</div>`;
+  const jokeDiv = `<div id="jokesContainer"> <i class="fa-solid fa-face-grin-tongue-wink"></i> ${headline}</br>${punchline}</div>`;
 
-  $("#bartender-card").append(jokeDiv);
-};
+  waiterProvision.empty();
 
-const handleNavBarToggle = () => {
-  const navBurgerBtn = $(".navbar-burger");
-
-  const toggleNavBar = () => {
-    const navContainerId = navBurgerBtn.attr("data-target");
-    const navContainer = $(`#${navContainerId}`);
-    navBurgerBtn.toggleClass("is-active");
-    navContainer.toggleClass("is-active");
-  };
-
-  navBurgerBtn.click(toggleNavBar);
+  waiterProvision.append(jokeDiv);
 };
 
 const holidayDropdownToggleOnIndex = () => {
-  holidayDropdown.toggleClass("is-active");
+  $("#holiday-dropdown").toggleClass("is-active");
 };
 
 const startHolidayExperience = async (event) => {
@@ -365,7 +361,7 @@ const startHolidayExperience = async (event) => {
   if (target.is('div[name="holiday-type"]')) {
     const holidayType = target.attr("id");
 
-    holidayDropdown.toggleClass("is-active");
+    $("#holiday-dropdown").toggleClass("is-active");
     const displayLabel = target.attr("data-label");
     holidaySpan.text(displayLabel);
 
@@ -388,11 +384,15 @@ const startHolidayExperience = async (event) => {
 };
 
 const getRandomSnacks = (response) => {
-  $("#snacksContainer").remove();
-  const randomSnack = Math.floor(Math.random() * response.length);
-  const snacksDiv = `<div id="snacksContainer"> <i class="fa-solid fa-ice-cream"></i>${response[randomSnack].name}</div>`;
+  const waiterProvision = $("#waiter-provision");
 
-  $("#bartender-card").append(snacksDiv);
+  const randomSnack = Math.floor(Math.random() * response.length);
+
+  const snacksDiv = `<div id="snacksContainer"> <i class="fa-solid fa-ice-cream mr-2"></i>${response[randomSnack].name}</div>`;
+
+  waiterProvision.empty();
+
+  waiterProvision.append(snacksDiv);
 };
 
 const snacksGenerator = async () => {
@@ -413,9 +413,7 @@ const snacksGenerator = async () => {
     } else {
       throw new Error("something went wrong");
     }
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 const stopPlaying = () => {
@@ -440,7 +438,6 @@ dropdownMenu.click(startHolidayExperience);
 
 const createPostcard = () => {
   const temperature = $("#temperature").attr("data-temperature");
-  console.log(temperature);
 
   const location = $("#place").attr("data-place");
 
@@ -456,11 +453,9 @@ const createPostcard = () => {
 
   writeToLocalStorage("postcards", postcards);
 
-  console.log(localStorage);
-
   popUpModal();
 };
 
 $(document).ready(() => {
-  holidayDropdownToggleOnIndex();
+  handleNavBarToggle();
 });

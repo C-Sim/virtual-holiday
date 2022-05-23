@@ -98,12 +98,8 @@ body {
   text-align: center;
 }
 
-/* weather section styling */
-
-#weather-container,
-#waiter-container {
-  width: 40vw;
-  margin: 8px;
+.weather-content {
+  min-height: 64px;
 }
 
 .console-btn {
@@ -115,14 +111,22 @@ body {
   margin: 8px;
 }
 
-.console-btn:hover {
+.console-btn:hover,
+.holiday-snap-btn:hover {
   cursor: pointer;
-  color: var(--selective-yellow);
+  color: var(--tangerine);
 }
 
 .waiter-image {
   height: 20vh;
   width: 10vw;
+  object-fit: scale-down;
+}
+
+.logo {
+  height: 48px;
+  width: 100px;
+  padding: 0;
   object-fit: scale-down;
 }
 
@@ -156,7 +160,15 @@ body {
 }
 
 .about-card {
+  position: relative;
+  min-height: 690px;
   margin: 18px auto;
+}
+
+.card-footer {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
 }
 
 .headshot {
@@ -164,25 +176,34 @@ body {
 }
 
 @media screen and (max-width: 576px) {
-  .title {
-    font-size: 60px;
+  .main-title {
+    font-size: 72px;
+    padding-top: 0;
   }
   #holiday-dropdown,
-  #holiday-snap,
-  #weather-container,
-  #waiter-container {
+  #holiday-snap {
     width: 90vw;
   }
 
   .console-btn {
-    width: 30vw;
+    width: 48vw;
   }
+
+  .waiter-interact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* .about-card {
+    min-height: 640px;
+  } */
 }
 
 @media screen and (max-width: 768px) {
   #weather-container,
   #waiter-container {
-    width: 90vw;
+    width: 110vw;
   }
 }
 
