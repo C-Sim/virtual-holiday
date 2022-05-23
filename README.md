@@ -96,7 +96,7 @@ From the scenery and atmospheric music, to the weather and a waiter who tells th
 <details>
 <summary>Holiday Snaps Page</summary>
 
-![snaps-page](...)
+![snaps-page](./assets/screenshots/snaps-desktop.png)
 
 </details>
 
@@ -134,7 +134,7 @@ From the scenery and atmospheric music, to the weather and a waiter who tells th
 <details>
 <summary>Holiday Snaps Page</summary>
 
-![snaps-page](...)
+![snaps-page](./assets/screenshots/snaps-mobile.png)
 
 </details>
 
