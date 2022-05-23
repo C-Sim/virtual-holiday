@@ -362,7 +362,7 @@ const handleNavBarToggle = () => {
   navBurgerBtn.click(toggleNavBar);
 };
 
-const holidayDropdownToggle = () => {
+const holidayDropdownToggleOnIndex = () => {
   $("#holiday-dropdown").toggleClass("is-active");
 };
 
@@ -445,7 +445,7 @@ const startPlaying = () => {
   }
 };
 
-holidayDropdownButton.click(holidayDropdownToggle);
+holidayDropdownButton.click(holidayDropdownToggleOnIndex);
 
 dropdownMenu.click(startHolidayExperience);
 
@@ -470,5 +470,5 @@ const createPostcard = () => {
 };
 
 $(document).ready(() => {
-  handleNavBarToggle();
+  holidayDropdownToggleOnIndex();
 });
