@@ -459,7 +459,7 @@ const createPostcard = () => {
 
   const postcards = readFromLocalStorage("postcards", []);
 
-  postcards.push(postcard);
+  postcards.unshift(postcard);
 
   writeToLocalStorage("postcards", postcards);
 

@@ -21,6 +21,11 @@ body {
   background-repeat: no-repeat;
 }
 
+.logo {
+  width: 90px;
+  height: auto;
+}
+
 .main-title {
   text-align: center;
   font-size: 80px;
