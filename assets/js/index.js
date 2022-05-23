@@ -266,7 +266,7 @@ const moveDropdown = (displayLabel) => {
     </div>
   </div>`);
 
-  $("#holiday-dropdown-btn").click(holidayDropdownToggle);
+  $("#holiday-dropdown-btn").click(holidayDropdownToggleOnIndex);
   $("#dropdown-menu").click(startHolidayExperience);
 
   $("#holiday-snap-btn").click(createPostcard);
