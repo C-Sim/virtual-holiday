@@ -1,4 +1,3 @@
-
 const weather_API_KEY = "7ec1ea2463d21d115915eb7b42565bed";
 
 const apiKey = "ca45ec61a4msh24fe699dc35cc23p1151b5jsn5e05295b9d8f";
@@ -78,15 +77,12 @@ const fetchWeatherData = async (place) => {
     }
   );
 
-
   const currentData = await fetchData(currentWeatherUrl);
-
 
   const temp = currentData?.main?.temp || "";
   const humidity = currentData?.main?.humidity || "";
   const weatherIcon = currentData?.weather[0].icon || "";
 
-  
   return {
     temp: temp,
     humidity: humidity,
@@ -94,9 +90,7 @@ const fetchWeatherData = async (place) => {
   };
 };
 
-
 const renderWebcamData = (place) => {
-
   mainView.append(`<section class="packages" id="holiday-experience">
  <div id="webcam-section">
    <div class="section">
@@ -359,7 +353,7 @@ const handleNavBarToggle = () => {
   navBurgerBtn.click(toggleNavBar);
 };
 
-const holidayDropdownToggle = () => {
+const holidayDropdownToggleOnIndex = () => {
   holidayDropdown.toggleClass("is-active");
 };
 
@@ -432,7 +426,6 @@ const stopPlaying = () => {
   }
 };
 
-
 const startPlaying = () => {
   let isPlaying = false;
 
@@ -441,7 +434,7 @@ const startPlaying = () => {
   }
 };
 
-holidayDropdownButton.click(holidayDropdownToggle);
+holidayDropdownButton.click(holidayDropdownToggleOnIndex);
 
 dropdownMenu.click(startHolidayExperience);
 
@@ -469,5 +462,5 @@ const createPostcard = () => {
 };
 
 $(document).ready(() => {
-  handleNavBarToggle();
+  holidayDropdownToggleOnIndex();
 });

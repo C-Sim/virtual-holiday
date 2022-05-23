@@ -1,4 +1,4 @@
-const handleNavBarToggle = () => {
+const handleNavBarToggleOnAboutUs = () => {
   const navBurgerBtn = $(".navbar-burger");
 
   const toggleNavBar = () => {
@@ -14,5 +14,5 @@ const handleNavBarToggle = () => {
 };
 
 $(document).ready(() => {
-  handleNavBarToggle();
+  handleNavBarToggleOnAboutUs();
 });
