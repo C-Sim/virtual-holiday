@@ -2,7 +2,9 @@
 
 This interactive app allows the user to experience a virtual holiday abroad. Begin by selecting a holiday type and be transported away to a new destination. Everything the user needs to recreate the holiday feeling virtually is included - from the scenery and atmospheric music, to a waiter who offers a snack and tells bad jokes!
 
-Please click here to view our [Deployed GitHub URL](https://c-sim.github.io/virtual-holiday/) and enjoy a holiday experience of your own!
+Please click here to view our [deployed GitHub URL](https://c-sim.github.io/virtual-holiday/) and enjoy a holiday experience of your own!
+
+Our [slide deck](https://docs.google.com/presentation/d/1hn8X5MmWIc6nBWaWMmlve2kIOyq5lL6oKKpnApON138/edit#slide=id.p) will help bring the processes we used to develop the project to life.
 
 ## User Story
 
