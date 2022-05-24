@@ -1,11 +1,20 @@
 # virtual_holiday
 
-An interactive app which allows the user to select a holiday type to be provided with everything they need to recreate the holiday feeling virtually.
-From the scenery and atmospheric music, to the weather and a waiter who tells them bad jokes.
+This interactive app allows the user to experience a virtual holiday abroad. Begin by selecting a holiday type and be transported away to a new destination. Everything the user needs to recreate the holiday feeling virtually is included - from the scenery and atmospheric music, to a waiter who offers a snack and tells bad jokes!
 
-[Deployed GitHub URL](https://c-sim.github.io/virtual-holiday/)
+Please click here to view our [Deployed GitHub URL](https://c-sim.github.io/virtual-holiday/) and enjoy a holiday experience of your own!
+
+## User Story
+
+```md
+AS A person with limited resources available to escape reality
+I WANT to be able to recreate a holiday atmosphere from the comfort of my own home
+SO THAT I can manifest the relaxing holiday feeling
+```
 
 ## Tools
+
+-We began by creating a wireframe of our project, in order to plan the layout and ensure we were all following the same direction:
 
 <details>
 <summary>Wireframe</summary>
@@ -13,6 +22,8 @@ From the scenery and atmospheric music, to the weather and a waiter who tells th
 ![experience-page](./assets/screenshots/wireframe.png)
 
 </details>
+
+-The architectural diagram explains the interaction between the users' device, the web APIS and local storage:
 
 <details>
 <summary>Architectural Diagram</summary>
@@ -23,6 +34,8 @@ From the scenery and atmospheric music, to the weather and a waiter who tells th
 </br>
 
 ## Technologies
+
+This project implements a variety of technologies:
 
 <details>
 <summary>HTML & CSS</summary>
@@ -76,6 +89,8 @@ From the scenery and atmospheric music, to the weather and a waiter who tells th
 </br>
 
 ## Screenshots
+
+Please see the various screenshots of the different pages in both desktop and mobile viewport below:
 
 ### Desktop viewport
 
@@ -147,13 +162,20 @@ From the scenery and atmospheric music, to the weather and a waiter who tells th
 
 </br>
 
-## User Story
+## Development
 
-```md
-AS A person with limited resources available to escape reality
-I WANT to be able to recreate a holiday atmosphere from the comfort of my own home
-SO THAT I can manifest the relaxing holiday feeling
-```
+As our time spent on the project progressed and we came up with more creative ideas, we made a variety of changes to the appearance and functionality of the webpage.
+
+Below is the very first appearance of our website. The css had not yet been implemented and our background image was a temporary low quality version. It is very rewarding to compare our beginning steps to our final version just to see how much our webpage has improved!
+
+<details>
+<summary>First webpage appearance</summary>
+
+![about-us-page](./assets/screenshots/first-page.png)
+
+</details>
+
+</br>
 
 ## Acceptance Criteria
 
