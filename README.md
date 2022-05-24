@@ -4,7 +4,7 @@ This interactive app allows the user to experience a virtual holiday abroad. Beg
 
 Please click here to view our [deployed GitHub URL](https://c-sim.github.io/virtual-holiday/) and enjoy a holiday experience of your own!
 
-Our [slide deck](https://docs.google.com/presentation/d/1hn8X5MmWIc6nBWaWMmlve2kIOyq5lL6oKKpnApON138/edit#slide=id.p) will help bring the processes we used to develop the project to life.
+Our [slide deck](https://docs.google.com/presentation/d/1hn8X5MmWIc6nBWaWMmlve2kIOyq5lL6oKKpnApON138/edit?usp=sharing) will help bring the processes we used to develop the project to life.
 
 ## User Story
 
