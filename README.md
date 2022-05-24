@@ -30,7 +30,7 @@ When you are ready, why not try another holiday type!
 
 ## Tools
 
--We began by creating a wireframe of our project, in order to plan the layout and ensure we were all following the same direction:
+We began by creating a wireframe of our project, in order to plan the layout and ensure we were all following the same direction:
 
 <details>
 <summary>Wireframe</summary>
@@ -38,8 +38,9 @@ When you are ready, why not try another holiday type!
 ![experience-page](./assets/screenshots/wireframe.png)
 
 </details>
+</br>
 
--The architectural diagram explains the interaction between the users' device, the web APIS and local storage:
+The architectural diagram explains the interaction between the users' device, the web APIS and local storage:
 
 <details>
 <summary>Architectural Diagram</summary>
