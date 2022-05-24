@@ -66,11 +66,11 @@ body {
   margin-bottom: 5px;
 }
 
-.hastags {
+.hashtags {
   padding-bottom: 25px;
 }
 
-.hastag-texts {
+.hashtag-texts {
   margin: 0 10px;
   color: var(--blue-green);
 }
