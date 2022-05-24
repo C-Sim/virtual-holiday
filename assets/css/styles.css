@@ -16,7 +16,7 @@ body {
 #hero {
   height: 100vh;
   width: 100vw;
-  background-image: url("/assets/images/departure-lounge-hq.jpg");
+  background-image: url("../images/departure-lounge-hq.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
