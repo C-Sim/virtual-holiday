@@ -12,6 +12,20 @@ I WANT to be able to recreate a holiday atmosphere from the comfort of my own ho
 SO THAT I can manifest the relaxing holiday feeling
 ```
 
+## The Virtual Holiday Experience
+
+When the user arrives on the page, they are presented with a home-page that resembles an airport departure lounge. The user is asked to select a holiday type out of three options: Beach Holiday, City Break or a Ski Trip.
+
+On selection of a holiday type, a video of a corresponding location is shown and themed music begins to play automatically. This gives the feeling that you have just been transported into a new destination.
+
+The live temperature for the location renders. Why not set your home's thermostat to match this temperature?
+
+At the restaurant, the local waiter will offer you a snack to eat and they will tell you a joke! Sit back and enjoy the view and let the ambience whisk your worries away.
+
+Once your video and song has ended, or once you are ready to try a new experience, don't forget to save a holiday snap! This saves the unique iD of your holiday into local storage. Head over to the 'holiday snaps' page to view the postcard for your holiday, complete with the name of the destination, the image of the destination and the temperature of the holiday.
+
+When you are ready, why not try another holiday type!
+
 ## Tools
 
 -We began by creating a wireframe of our project, in order to plan the layout and ensure we were all following the same direction:
@@ -65,6 +79,7 @@ This project implements a variety of technologies:
 <summary>Web APIs</summary>
   - Document Object Model
   - Local Storage
+  - SnacksAPI, WeatherAPI & PapaJokeAPI
 </details>
 
 <details>
@@ -190,7 +205,17 @@ THEN the music is relevant to the destination type
 WHEN I want to set my thermostat to the temperature of the destination
 THEN the temperature is displayed for me to match
 WHEN I want to feel like I'm enjoying some down time in the destination
-THEN a barman will offer me a beverage and a random joke
+THEN a waiter will offer me a snack and a joke
 WHEN I click on the holiday snap button
-THEN all of my holiday details will be saved so I can revisit
+THEN all of my holiday details will be saved as a postcard
 ```
+
+## Conclusion
+
+The virtual holiday project gives the user a unique holiday experience. This webpage utilises 3 Web APIs to render weather data for a particular location, a snack choice and a joke.
+
+The location, weather data and a corresponding image are then saved into local storage and rendered in the form of a virtual postcard.
+
+To conclude, this has been a challenging yet enjoyable project to complete. We believe this project meets the brief that we set out to create and we have developed our coding skills and knowledge.
+
+- Amal, Cherelle, Sophia, Tanveer and Zahra!
