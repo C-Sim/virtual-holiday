@@ -4,7 +4,6 @@ const handleClick = (event) => {
   const target = $(event.target);
   if (target.is('button[name="delete-btn"]')) {
     const postcardId = target.attr("id");
-    // return postcardId;
 
     popUpModal(postcardId);
   }
