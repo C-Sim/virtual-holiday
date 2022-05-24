@@ -3,7 +3,7 @@
 An interactive app which allows the user to select a holiday type to be provided with everything they need to recreate the holiday feeling virtually.
 From the scenery and atmospheric music, to the weather and a waiter who tells them bad jokes.
 
-[Deployed GitHub URL](...)
+[Deployed GitHub URL](https://c-sim.github.io/virtual-holiday/)
 
 ## Tools
 
